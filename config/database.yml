@@ -1,0 +1,13 @@
+development:
+ adapter: postgresql
+ encoding: unicode
+ database: tablework_development
+ pool: 5
+ host: localhost
+
+test:
+ adapter: postgresql
+ encoding: unicode
+ database: tablework_test
+ pool: 5
+ host: localhost
