@@ -7,8 +7,6 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'neat'
-gem 'erd'
-gem 'rails-erd'
 gem 'devise'
 
 group :development, :test do
