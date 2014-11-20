@@ -1,3 +1,10 @@
+production:
+ adapter: postgresql
+ encoding: unicode
+ database: tablework_production
+ pool: 5
+ host: localhost
+
 development:
  adapter: postgresql
  encoding: unicode
