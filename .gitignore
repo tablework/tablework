@@ -5,6 +5,8 @@
 *.rbc
 /.config
 /coverage/
+*.log
+
 /InstalledFiles
 /pkg/
 /spec/reports/
