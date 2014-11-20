@@ -39,6 +39,9 @@ GEM
     arel (6.0.0.beta2)
     binding_of_caller (0.7.3.pre1)
       debug_inspector (>= 0.0.1)
+    bourbon (4.0.2)
+      sass (~> 3.3)
+      thor
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -72,6 +75,9 @@ GEM
     mini_portile (0.6.1)
     minitest (5.4.2)
     multi_json (1.10.1)
+    neat (1.7.0)
+      bourbon (>= 4.0)
+      sass (>= 3.3)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     pg (0.17.1)
@@ -141,6 +147,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
+  neat
   pg
   rails (= 4.2.0.beta4)
   sass-rails (~> 5.0.0.beta1)
