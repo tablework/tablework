@@ -9,6 +9,7 @@ gem 'pg'
 gem 'neat'
 gem 'erd'
 gem 'rails-erd'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
