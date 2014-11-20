@@ -12,5 +12,9 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'
+  gem 'rspec-rails', '3.0.2'
+  gem 'meta_request'
+  gem 'binding_of_caller'
+  gem 'factory_girl_rails'
 end
 
