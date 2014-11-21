@@ -15,6 +15,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'
   gem 'rspec-rails', '3.0.2'
+  gem 'capybara'
   gem 'meta_request'
   gem 'binding_of_caller'
   gem 'factory_girl_rails'
