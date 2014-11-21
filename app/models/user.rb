@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   private
 
   def valid_gender
-    unless self.gender == 'male' or self.gender == 'female'
+    unless self.gender == 'male' or self.gender == 'female' or self.gender == nil
       errors.add(:gender, "must be valid.")
     end
   end
