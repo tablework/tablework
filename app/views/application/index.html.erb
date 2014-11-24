@@ -3,3 +3,7 @@
     <%= flash[key] %>
   <% end %>
 <% end %>
+
+<body>
+	<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+</body>

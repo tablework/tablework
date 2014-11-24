@@ -9,8 +9,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'neat'
 gem 'devise'
+gem 'omniauth-facebook'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'
