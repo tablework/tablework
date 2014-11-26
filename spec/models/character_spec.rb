@@ -9,6 +9,6 @@ RSpec.describe Character, :type => :model do
   it { is_expected.to respond_to :fields }
   it { expect(subject.fields).to eql({}) }
   it { is_expected.to respond_to :occupation }
-  it { is_expected.to respond_to :type }
+  it { is_expected.to respond_to :type_of_play }
   it { is_expected.to respond_to :age }
 end
