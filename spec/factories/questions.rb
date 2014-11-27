@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :question do
     title "MyString"
-answer "MyString"
-questionable nil
+	answer "MyString"
   end
 
 end
