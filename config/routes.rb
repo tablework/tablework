@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'profiles/index'
+
 
   resources :characters do
     resources :notes, only: [:create, :destroy]  
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "profile" => "profiles#index", as: :profile
+  get "profile" => "application#profile", as: :profile
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
