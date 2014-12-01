@@ -3,7 +3,7 @@
     <%= flash[key] %>
   <% end %>
 <% end %>
-<%= render 'users/profile'   if user_signed_in? %>
+
 <body>
   <% unless user_signed_in? %>
     <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
