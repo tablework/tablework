@@ -1,14 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe ProfilesController, :type => :controller do
+RSpec.describe ApplicationController, :type => :controller do
   context "when logged in" do 
 	  describe "GET index" do
-	  login_user
+	   login_user
 	    it "returns http success" do
 	      get :index
 	      expect(response).to be_success
 	    end
 	  end
+
+    describe "GET profile" do
+      login_user
+      it "returns http success" do
+        get :index
+        expect(response).to be_success
+      end
+    end
   end
 
   context "when logged out " do
