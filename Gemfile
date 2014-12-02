@@ -13,6 +13,8 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'erd'
 
+gem 'bower-rails'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug'
