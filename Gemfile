@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 ruby '2.1.3'
 
 gem 'rails', '4.1.7'
@@ -13,7 +14,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'erd'
 
-gem 'bower-rails'
+gem 'rails-assets-semantic-ui'
 
 group :development, :test do
   gem 'dotenv-rails'
