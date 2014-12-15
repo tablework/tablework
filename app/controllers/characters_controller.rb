@@ -1,8 +1,8 @@
 class CharactersController < ApplicationController
-  
-  before_filter :set_user, only: [:index, :new]
+
+  before_action :set_user, only: [:index, :new]
   before_action  :authenticate_user!
-  
+
   def index
   end
 
@@ -10,7 +10,7 @@ class CharactersController < ApplicationController
   end
 
   def set_user
-	@user = current_user
+    @user = current_user
   end
 
 end

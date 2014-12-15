@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <section class="flash">
+    <% if flash.present? %>
+        <% flash.each do |key,value| %>
+          <p><%= flash[key] %></p>
+      <% end %>
+    <% end %>
+  </section>
 <%= render 'layouts/header' if user_signed_in? %>
 <div>
 	<%= yield %>
