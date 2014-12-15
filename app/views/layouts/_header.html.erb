@@ -1,7 +1,13 @@
-<div style="height:50px; width: 100%; margin:-8px; padding: 0px; background-color: #EEC; top:0px" >
+<div>
   <ul >
+    <li style="display:inline"><%= image_tag 'logo-brand' %></li>
     <li style="display:inline"><%= link_to 'Dashboard', root_path %> </li>
-    <li style="display:inline"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+    <li style="display:inline"><%= link_to 'Learning Centre', '#' %> </li>
+    <li style="display:inline">
+      Profile
+      <ul>
+        <li style="display:inline"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+      </ul>
+    </li>
   </ul>
-
 </div>
