@@ -1,11 +1,30 @@
-<% if flash.present? %>
-    <% flash.each do |key,value| %>
-    <%= flash[key] %>
-  <% end %>
-<% end %>
-
-<body>
-  <% unless user_signed_in? %>
-    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-  <% end %>
-</body>
+<aside class="profile">
+  <header>
+    <p>
+      <%=image_tag @user.profile_photo%>
+    </p>
+    <p>
+      First Name: <%= @user.first_name %>
+    </p>
+    <p>
+      Last Name: <%= @user.last_name %>
+    </p>
+  </header>
+  <section>
+    <p>
+      Date of Birth: <%= @user.DOB %>
+    </p>
+    <p>
+      Gender: <%= @user.gender %>
+    </p>
+    <p>
+      Occupation: <%= @user.occupation %>
+    </p>
+    <p>
+      Location: Kuala Lumpur
+    </p>
+  </section>
+  <footer>
+    <%= link_to 'EDIT PROFILE', '#' %>
+  </footer>
+</section>

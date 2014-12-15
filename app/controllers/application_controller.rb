@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def profile
-  	
+  def dashboard
+
   end
 
   def set_user
