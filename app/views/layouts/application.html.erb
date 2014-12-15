@@ -14,9 +14,18 @@
       <% end %>
     <% end %>
   </section>
-<%= render 'layouts/header' if user_signed_in? %>
-<div>
-	<%= yield %>
-</div>
+  <header>
+    <%= render 'layouts/header' if user_signed_in? %>
+  </header>
+  <section>
+    <%= yield %>
+  </section>
+  <footer>
+    <ul>
+      <li>&copy; 2015 Tablework Sdn. Bhd. All Rights Reserved</li>
+      <li>Terms of Service</li>
+      <li>Privacy Policy</li>
+    </ul>
+  </footer>
 </body>
 </html>
