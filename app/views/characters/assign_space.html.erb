@@ -1,0 +1,12 @@
+<%= form_for @character do |f| %>
+  <% current_user.spaces.each do |space| %>
+    <section style="width:200px; height:200px; padding:10px; margin: 20px; background-color: #eee; text-align:center">
+      <%= image_placeholder %>
+    </section>
+    <section>
+      <%= space.name %>
+    </section>
+    <%= f.radio_button :space_id, space.id  %>
+  <% end %>
+  <%= f.submit 'JOIN SPACE' %>
+<% end %>

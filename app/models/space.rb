@@ -12,5 +12,6 @@
 #
 
 class Space < ActiveRecord::Base
+  has_many :characters
   belongs_to :director, class: User
 end
