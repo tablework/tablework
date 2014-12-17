@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :characters do
+    member do
+      get :assign_space
+    end
     resources :notes, only: [:create, :destroy]
     resources :scenes do
       resources :questions, only: [:create, :destroy]
