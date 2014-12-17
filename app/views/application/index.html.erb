@@ -21,11 +21,11 @@
       Occupation: <%= @user.occupation %>
     </p>
     <p>
-      Location: Kuala Lumpur
+      Location: <%= @user.location %>
     </p>
   </section>
   <footer>
-    <%= link_to 'EDIT PROFILE', '#' %>
+    <%= link_to 'EDIT PROFILE', edit_user_path(current_user) %>
   </footer>
 </section>
 <aside class="rehearsal-space">
