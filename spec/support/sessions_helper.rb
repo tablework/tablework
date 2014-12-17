@@ -28,10 +28,22 @@ module Features
      )
     end
 
+    def invalid_mock_oauth user
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+    end
+
     def sign_in user
       mock_oauth(user)
       visit '/'
-      click_link 'Facebook'
+      click_link 'Sign in with Facebook'
+    end
+
+    def invalid_sign_in user
+      invalid_mock_oauth(user)
+      p page
+      visit '/'
+      click_link 'Sign in with Facebook'
     end
 
   end

@@ -14,4 +14,12 @@ module ControllerMacros
       sign_in user
     end
   end
+
+  def invalid_login_user
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      user = FactoryGirl.create(:user)
+      invalid_sign_in user
+    end
+  end
 end
