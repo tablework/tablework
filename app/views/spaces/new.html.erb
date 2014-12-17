@@ -1,0 +1,7 @@
+<h1>Add new space</h1>
+
+<%= simple_form_for @space do |f| %>
+  <%= f.input :name %>
+  <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
+  <%= f.submit %>
+<% end %>

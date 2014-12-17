@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217063453) do
+ActiveRecord::Schema.define(version: 20141217071712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20141217063453) do
     t.string   "type_of_play"
     t.integer  "age"
     t.string   "occupation"
-    t.hstore   "fields",       default: {}
+    t.hstore   "fields",       default: ""
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20141217063453) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "spaces", force: true do |t|
+    t.string   "name"
+    t.string   "type_of_play"
+    t.string   "description"
+    t.integer  "director_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spaces", ["director_id"], name: "index_spaces_on_director_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

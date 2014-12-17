@@ -12,6 +12,8 @@
 #  user_id      :integer
 #  created_at   :datetime
 #  updated_at   :datetime
+#  nationality  :string(255)
+#  DOB          :datetime
 #
 
 FactoryGirl.define do
