@@ -29,6 +29,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'better_errors'
 end
 
 gem "codeclimate-test-reporter", group: :test, require: nil
