@@ -1,4 +1,10 @@
-<div style="width:200px; height:200px; padding:10px; margin: 20px; background-color: #eee; float:left; text-align:center">
-	<%= image_placeholder%> 
-	<span style="position:relative; top:-25px">	<%= character.name %> </span>
-</div>
+<section class="character-card">
+  <section class="card-image" style="width:200px; height:200px; padding:10px; margin: 20px; background-color: #eee; text-align:center">
+    <%= image_placeholder%>
+    <%= character.name %>
+  </section>
+  <footer>
+    <small>Space unassigned</small>
+    <%= link_to '+', '#assign-space-path' %>
+  </footer>
+</section>

@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
 
 
   has_many :characters
+  has_many :spaces, foreign_key: 'director_id'
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

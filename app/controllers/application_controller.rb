@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action   :authenticate_user!
 
   def index
+    @characters = @user.characters
+    @spaces = @user.spaces
   end
 
   def set_user
