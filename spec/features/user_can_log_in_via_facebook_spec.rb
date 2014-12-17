@@ -7,5 +7,4 @@ feature "user should see facebook log in link" do
     visit root_path
     expect(page).to have_link('Sign in with Facebook', href: '/users/auth/facebook')
   end
-
 end

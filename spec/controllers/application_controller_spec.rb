@@ -21,10 +21,19 @@ RSpec.describe ApplicationController, :type => :controller do
 
   context "when logged out " do
     describe "GET index" do
-
       it "redirects to root" do
         get :index
         expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  context 'without valid login' do
+    describe "GET index" do
+      invalid_login_user
+      xit "redirects to registration page" do
+        get :index
+        expect(response).to redirect_to(new_user_registration_path)
       end
     end
   end
