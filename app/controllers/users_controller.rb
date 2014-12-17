@@ -1,14 +1,10 @@
 class UsersController < ApplicationController
-  def show
-    @user = current_user || not_found
-  end
-
   def edit
     @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     @user.update(user_params)
     if @user.save
       flash[:notice] = 'Successfully edited user profile.'

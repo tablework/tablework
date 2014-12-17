@@ -9,7 +9,7 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "#update" do
     it "should update the user information" do
-      put :update, id: user.id, user: valid_user_params
+      put :update, id: user.id, user: user_params
       expect(assigns[:user].first_name).to eql 'Debra'
       expect(assigns[:user].last_name).to eql 'Moore'
       expect(assigns[:user].DOB).to eql Date.today - 20.year
@@ -17,12 +17,24 @@ RSpec.describe UsersController, :type => :controller do
       expect(assigns[:user].occupation).to eql 'Actor'
       expect(assigns[:user].location).to eql 'Kuala Lumpur'
     end
+
+    context 'invalid' do
+      it "if gender is invalid" do
+        put :update, id: user.id, user: user_params({ gender: 'invalid' })
+        expect(response).to render_template 'users/edit'
+        expect(flash.now[:error]).to eql "Can't save user profile. Please try again."
+      end
+    end
   end
 
-  def valid_user_params
-    {
+  def user_params param={}
+    params = {
       first_name: 'Debra', last_name: 'Moore', DOB: Date.today - 20.year,
       gender: 'female', occupation: 'Actor', location: 'Kuala Lumpur'
     }
+    param.each do |key, value|
+      params[key] = value
+    end
+    return params
   end
 end
