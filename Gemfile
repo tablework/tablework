@@ -13,6 +13,7 @@ gem 'neat'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'erd'
+gem 'simple_form'
 
 gem 'rails-assets-semantic-ui'
 
@@ -26,6 +27,8 @@ group :development, :test do
   gem 'meta_request'
   gem 'binding_of_caller'
   gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
 
 gem "codeclimate-test-reporter", group: :test, require: nil
