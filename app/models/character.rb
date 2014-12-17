@@ -18,5 +18,6 @@
 
 class Character < ActiveRecord::Base
   belongs_to :user
+  belongs_to :space
   # has_many :questions, :as => :questionable
 end

@@ -4,7 +4,11 @@
     <%= character.name %>
   </section>
   <footer>
-    <small>Space unassigned</small>
-    <%= link_to '+', '#assign-space-path' %>
+    <% if character.space %>
+      <%= character.space.name %>
+    <% else %>
+      <small>Space unassigned</small>
+    <% end %>
+    <%= link_to '+', assign_space_character_path(character) %>
   </footer>
 </section>
