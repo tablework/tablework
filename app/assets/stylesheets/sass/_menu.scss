@@ -1,0 +1,20 @@
+.ui.menu.topbar {
+  background: black;
+  height: 64px;
+  .brand {
+    background: asset-url('logo-tablework-color.png', image) no-repeat center;
+    width: 125px;
+    height:64px;
+    &:hover {
+      border-bottom: none;
+    }
+  }
+  .item {
+    padding: 0 10px;
+    color: #eee !important;
+    &:before {
+      content: none;
+    }
+  }
+}
+
