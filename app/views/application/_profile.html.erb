@@ -44,28 +44,28 @@
     <section class="extra content">
       <a>
         <i class="calendar outline icon"></i>
-        <%= @user.DOB.strftime('%d %B %Y') %>
+        <%= @user.DOB.strftime('%d %B %Y') if @user.DOB %>
       </a>
     </section>
 
     <section class="extra content">
       <a>
         <i class="user icon"></i>
-        <%= @user.gender.titleize %>
+        <%= @user.gender.titleize if @user.gender %>
       </a>
     </section>
 
     <section class="extra content">
       <a>
         <i class="suitcase icon"></i>
-        <%= @user.occupation.titleize %>
+        <%= @user.occupation.titleize if @user.occupation %>
       </a>
     </section>
 
     <section class="extra content">
       <a>
         <i class="home icon"></i>
-        <%= @user.location.titleize %>
+        <%= @user.location.titleize if @user.location %>
       </a>
     </section>
 
