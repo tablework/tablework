@@ -1,20 +1,18 @@
 <section class="ui menu topbar">
   <%= content_tag 'a', href: root_path, class: 'item' do %>
-    <section class="brand"></section>
+  <section class="brand"></section>
   <% end %>
   <%= content_tag 'a', href: root_path, class: 'item' do %>
-    Dashboard
+  Dashboard
   <% end %>
   <%= link_to("Learning Centre", "#" , class: 'item') %>
   <section class="right menu">
-  <a class="item">
-    <img src="images/bell.jpg" />
-  </a>
-  <a class="item">
-    <img src="images/login.jpg" />
-      <!-- <ul>
-        <li style="display:inline"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-      </ul> -->
-  </a>
+    <a class="item">
+      <img src="images/bell.jpg" />
+    </a>
+    <a class="item">
+      <img src="images/login.jpg" />
+    </a>
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item') %>
   </section>
 </section>
