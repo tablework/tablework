@@ -1,21 +1,45 @@
-<%= render 'application/profile' %>
-<aside class="rehearsal-space">
-  <header>
-    Rehearsal Space
-  </header>
-  <section>
-    <%= render @spaces %>
+<section>
+  <section class="dashboard_header">
+    <section class="ui page grid">
+      <h3>Dashboard</h3>
+    </section>
   </section>
-  <footer>
-    <%= link_to 'Create a Space', new_space_path %>
-  </footer>
-</aside>
-<main>
-  <header>
-    Your Character
-  </header>
-  <section>
-    <%= render @characters %>
-    <%= link_to 'Create Character', new_character_path %>
+  <section class="ui page grid">
+    <%= render 'application/profile' %>
+    <!--   <aside class="rehearsal-space">
+        <header>
+          Rehearsal Space
+        </header>
+        <section>
+          <%= render @spaces %>
+        </section>
+        <footer>
+          <%= link_to 'Create a Space', new_space_path %>
+        </footer>
+      </aside> -->
+    <!--   <main>
+        <header>
+          Your Character
+        </header>
+        <section>
+          <%= render @characters %>
+          <%= link_to 'Create Character', new_character_path %>
+        </section>
+      </main> -->
+    <main class="eleven wide column centerbox ui segment">
+      <h3>
+        Your Persona
+      </h3>
+      <section class="ui button one wide column">
+        <section class="content">
+          <section class="header">
+            <i class="plus icon"></i>
+          </section>
+          <section class="meta">
+            <h4>Create Persona</h4>
+          </section>
+        </section>
+      </section>
+    </main>
   </section>
-</main>
+</section>

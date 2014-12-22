@@ -1,13 +1,20 @@
-<div>
-  <ul >
-    <li style="display:inline"><%= image_tag 'logo-brand' %></li>
-    <li style="display:inline"><%= link_to 'Dashboard', root_path %> </li>
-    <li style="display:inline"><%= link_to 'Learning Centre', '#' %> </li>
-    <li style="display:inline">
-      Profile
-      <ul>
+<section class="ui menu topbar">
+  <%= content_tag 'a', href: root_path, class: 'item' do %>
+    <section class="brand"></section>
+  <% end %>
+  <%= content_tag 'a', href: root_path, class: 'item' do %>
+    Dashboard
+  <% end %>
+  <%= link_to("Learning Centre", "#" , class: 'item') %>
+  <section class="right menu">
+  <a class="item">
+    <img src="images/bell.jpg" />
+  </a>
+  <a class="item">
+    <img src="images/login.jpg" />
+      <!-- <ul>
         <li style="display:inline"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-      </ul>
-    </li>
-  </ul>
-</div>
+      </ul> -->
+  </a>
+  </section>
+</section>
