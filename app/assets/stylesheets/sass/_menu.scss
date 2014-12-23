@@ -1,19 +1,38 @@
 .ui.menu.topbar {
   background: black;
   height: 64px;
+  margin-bottom: 14px;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  color: $body-light;
   .brand {
     background: asset-url('logo-tablework-color.png', image) no-repeat center;
-    width: 125px;
-    height:64px;
+    -webkit-background-size: 135px 25px;
+    -o-background-size: 135px 25px;
+    background-size: 135px 25px;    
+    width: 135px;
+    height: 64px;
+    margin-left: 25px;
+    margin-right: 80px;
     &:hover {
       border-bottom: none;
     }
   }
   .item {
-    padding: 0 10px;
-    color: #eee !important;
+    padding: 0;
+    margin-right: 40px;
+    color: $body-mid !important;
+    &:first-child {
+      padding: 0 10px;
+      margin: 0;
+      border: none !important;
+    }
     &:before {
       content: none;
+    }
+    &:hover {
+      color: $body-light !important;
+      // border-bottom: 3px solid $primary;
     }
   }
 }
