@@ -1,0 +1,48 @@
+// Text Application
+@mixin font-family($family, $serif) {
+	font-family: $family, $serif;
+}
+@mixin font-style($weight, $style) {
+	font-weight: $weight;
+	font-style: $style;
+}
+@mixin font-size($size) {
+	font-size: $size;
+}
+
+// Text Style
+@mixin roboto() {
+	@include font-family('Roboto', sans-serif);
+}
+@mixin base-normal() {
+	@include font-style(400, normal);
+}
+@mixin base-italic() {
+	@include font-style(400, italic);
+}
+@mixin medium-normal() {
+	@include font-style(500, normal);
+}
+@mixin medium-italic() {
+	@include font-style(500, italic);
+}
+@mixin bold-normal() {
+	@include font-style(700, normal);
+}
+@mixin bold-italic() {
+	@include font-style(700, italic);
+}
+
+// Text Size
+@mixin text-headline() {
+	@include font-size(24px);
+}
+@mixin text-sub() {
+	@include font-size(20px);
+}
+@mixin text-body() {
+	@include font-size(16px);
+}
+@mixin text-small() {
+	@include font-size(12px);
+}
