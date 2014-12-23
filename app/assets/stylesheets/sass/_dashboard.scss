@@ -1,9 +1,9 @@
 .dashboard_header {
-  background: #FFEB3B;
-  height: 144px;
+	background: $secondary;
+	height: 144px;
 }
 .dashboard_header h3 {
-  position: absolute;
-  line-height: 144px;
-  margin: 0;
+	position: absolute;
+	padding-top: 90px;
+	margin: 0;
 }
