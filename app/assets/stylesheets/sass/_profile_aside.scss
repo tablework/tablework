@@ -5,7 +5,11 @@ aside {
       position:absolute;
       bottom:10px;
       margin-left: 20px;
-      color: #fff;
+      color: $body-light;
     }
+  }
+  footer {
+  	@include text-small();
+		color: $body-mid;
   }
 }
