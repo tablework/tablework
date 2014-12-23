@@ -1,7 +1,14 @@
 .centerbox {
   margin-top: -80px !important;
-  height: 700px !important;
-  padding: 30px 24px;
+  min-height: 700px !important;
+  padding: 30px 40px !important;
+  h3 {
+    @include base-normal();
+    @include text-headline();
+    color: $primary;
+    margin-top: 0;
+    margin-bottom: 36px;
+  }
   .ui.button {
     .header {
       font-size: 30px;
