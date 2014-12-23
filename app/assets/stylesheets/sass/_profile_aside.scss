@@ -8,6 +8,15 @@ aside {
       color: $body-light;
     }
   }
+  .header {
+  	h3 {
+  		@include text-headline();
+  		@include base-normal();
+  		color: $primary;
+  		margin-top: 0;
+  		margin-bottom: 30px;
+  	}
+	}
   footer {
   	@include text-small();
 		color: $body-mid;
