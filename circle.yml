@@ -9,7 +9,7 @@ machine:
   environment:
     CIRCLE_ENV: test
     CODECLIMATE_REPO_TOKEN: 71d0e30563b01ad98a654442f629a11e46aeafc5ce0be1c87f4efbb4355612b1
-
+    
 ## Customize checkout
 checkout:
   post:
