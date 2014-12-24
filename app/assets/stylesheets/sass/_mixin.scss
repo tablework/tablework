@@ -46,3 +46,13 @@
 @mixin text-small() {
 	@include font-size(12px);
 }
+
+// Components
+@mixin input-field() {
+	background: $bg-light;
+	padding: 10px 12px;
+	margin: 5px 0;
+	border: 1px solid $border-light;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}

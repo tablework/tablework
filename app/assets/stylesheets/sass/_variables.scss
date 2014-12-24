@@ -1,16 +1,27 @@
-// Colour Groups
+// Border radius
+$small-rad: 3px;
+$big-rad: 5px;
+
+// Colour groups
 $orange: #FF5722;
 $yellow: #FFEB3B;
 $black: #000000;
-$grey: #707070;
+$grey-1: #F8F8F8;
+$grey-2: #ECECEC;
+$grey-3: #DCDCDC;
+$grey-4: #707070;
 $white: #FFFFFF;
 
-// Theme Colours
+// Theme colours
 $primary: $orange;
 $secondary: $yellow;
+$light: $white;
+$bg-light: $grey-1;
+$border-light: $grey-2;
+$border-dark: $grey-3;
 
-// Text Colours
+// Text colours
 $headline: $orange;
 $body-light: $white;
-$body-mid: $grey;
+$body-mid: $grey-4;
 $body-dark: $black;
