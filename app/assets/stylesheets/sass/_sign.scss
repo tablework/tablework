@@ -1,0 +1,36 @@
+.sign {
+  background: $light;
+  margin-top: 200px;
+  border: 1px solid $border-dark;
+  -webkit-border-radius: $big-rad;
+          border-radius: $big-rad;
+  .column {
+    padding: 30px !important;
+    &:first-child {
+      border-right: 1px solid $border-light;
+    }
+  }
+  .form-inputs {
+    input {
+      @include input-field();
+      &[type=submit] {
+        text-align: center;
+        margin-top: 20px;
+        border: none;
+      }
+    }
+    label {
+      display: none;
+    }
+    .hint {
+      // @include text-small();
+      // @include base-normal();
+      // color: $body-mid;
+      display: none;
+    }
+  }
+  h3 {
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+  }
+}

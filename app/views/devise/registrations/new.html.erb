@@ -1,17 +1,42 @@
-<h2>Sign up</h2>
+<section class="ui two columns centered grid">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+	<section class="column sign">
+		<section class="ui two columns grid">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
+			<!-- Normal Sign Up -->
+			<section class="column">
+				<h3>Sign up</h3>
+				
+				<div class="ui fluid input form-inputs">
+					<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					<%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+						<%= f.input :email, required: true, placeholder: 'Email address', autofocus: true %>
+						
+						<%= f.input :password, required: true, placeholder: 'Password', hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+						
+						<%= f.input :password_confirmation, placeholder: 'Confirm password', required: true %>
+						
+					<div class="form-actions">
+						<%= f.button :submit, "Sign up", class: 'ui primary' %>
+					</div>
+					<% end %>
+				</div>
+			</section>
+			<!-- End -->
 
-<%= render "devise/shared/links" %>
+			<!-- Facebook Sign Up -->
+			<section class="column">
+				<h3>Sign up with Facebook</h3>
+				<%- if devise_mapping.omniauthable? %>
+				<%- resource_class.omniauth_providers.each do |provider| %>
+				<%= link_to "Sign up with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'ui primary button' %><br />
+				<% end -%>
+				<% end -%>
+			</section>
+			<!-- End -->
+		</section>
+	</section>
+
+	<!-- <%= render "devise/shared/links" %> -->
+</section>
