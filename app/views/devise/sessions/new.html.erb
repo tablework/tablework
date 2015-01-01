@@ -1,15 +1,40 @@
-<h2>Sign in</h2>
+<section class="ui two columns centered grid">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+	<section class="column sign">
+		<section class="ui two columns grid">
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
+			<!-- Normal Sign Up -->
+			<section class="column">
+				<h3>Sign in</h3>
 
-<%= render "devise/shared/links" %>
+				<div class="ui fluid input form-inputs">
+					<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+					<div class="form-inputs">
+						<%= f.input :email, required: false, placeholder: 'Email address', autofocus: true %>
+						<%= f.input :password, placeholder: 'Password', required: false %>
+						<%= f.input :remember_me, label: 'Yes, remember me', as: :boolean if devise_mapping.rememberable? %>
+					</div>
+
+					<div class="form-actions">
+						<%= f.button :submit, "Sign in", class: 'ui primary' %>
+					</div>
+					<% end %>
+				</div>
+
+			</section>
+
+			<!-- Facebook Sign Up -->
+			<section class="column">
+				<h3>Sign up with Facebook</h3>
+				<%- if devise_mapping.omniauthable? %>
+				<%- resource_class.omniauth_providers.each do |provider| %>
+				<%= link_to "Sign up with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'ui primary button' %><br />
+				<% end -%>
+				<% end -%>
+			</section>
+			<!-- End -->
+
+			<!-- <%= render "devise/shared/links" %> -->
+		</section>
+	</section>
+</section>
