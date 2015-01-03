@@ -1,6 +1,7 @@
 .centerbox {
   margin-top: -80px !important;
-  min-height: 800px !important;
+  margin-bottom: 100px;
+  min-height: 824px !important;
   padding: 30px 40px !important;
   h3 {
     @include base-normal();
