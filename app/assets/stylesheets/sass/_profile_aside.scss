@@ -1,6 +1,8 @@
 aside {
   margin-top: 50px;
   .ui.card {
+    -webkit-border-radius: $small-rad;
+    border-radius: $small-rad;
     .image-text {
       position: absolute;
       bottom: 10px;
@@ -27,24 +29,27 @@ aside {
         color: $headline;
         padding: 10px;
       }
+      .header {
+        h3 {
+          @include text-headline();
+          @include base-normal();
+          color: $primary;
+          padding: 10px;
+          margin: 0;
+        }
+      }
+      .content {
+        padding: 10px;
+      }
     }
   }
   .shadow {
     @include shadow();
   }
-  .header {
-  	h3 {
-  		@include text-headline();
-  		@include base-normal();
-  		color: $primary;
-  		margin-top: 0;
-  		margin-bottom: 30px;
-  	}
-	}
   footer {
   	@include text-small();
     margin-top: 40px;
-		color: $body-mid;
+    color: $body-mid;
     a {
       color: $body-dark;
       &:hover {
