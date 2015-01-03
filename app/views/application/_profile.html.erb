@@ -33,58 +33,54 @@
   <section class="ui card">
     <section class="image">
       <% if @user.profile_photo %>
-        <%= image_tag @user.profile_photo %>
+      <%= image_tag @user.profile_photo %>
       <% else %>
-        <%= image_placeholder %>
+      <%= image_placeholder %>
       <% end %>
-      <h1 class="image-text">
+      <h2 class="image-text">
         <%= "#{@user.first_name} #{@user.last_name}" %>
-      </h1>
-    </section>
-    <section class="extra content">
-      <a>
-        <i class="calendar outline icon"></i>
-        <%= @user.DOB.strftime('%d %B %Y') if @user.DOB %>
-      </a>
+      </h2>
     </section>
 
     <section class="extra content">
-      <a>
-        <i class="user icon"></i>
-        <%= @user.gender.titleize if @user.gender %>
-      </a>
-    </section>
-
-    <section class="extra content">
-      <a>
-        <i class="suitcase icon"></i>
-        <%= @user.occupation.titleize if @user.occupation %>
-      </a>
-    </section>
-
-    <section class="extra content">
-      <a>
-        <i class="home icon"></i>
-        <%= @user.location.titleize if @user.location %>
-      </a>
+      <ul>
+        <li>
+          <i class="calendar outline icon"></i>
+          <%= @user.DOB.strftime('%d %B %Y') if @user.DOB %>
+        </li>
+        <li>
+          <i class="user icon"></i>
+      <%= @user.gender.titleize if @user.gender %>
+        </li>
+        <li>
+          <i class="suitcase icon"></i>
+      <%= @user.occupation.titleize if @user.occupation %>
+        </li>
+        <li>
+          <i class="home icon"></i>
+      <%= @user.location.titleize if @user.location %>
+        </li>
+      </ul>
     </section>
 
     <section class="extra content">
       <%= link_to 'EDIT PROFILE', edit_user_path(current_user) %>
     </section>
   </section>
+
   <section class="ui card">
     <section class="content">
-    <section class="header">
-      <h3>Rehearsal Space</h3>
-    </section>
-    <section class="extra content">
-      <a>
-        <i class="plus icon"></i> Create a space
-      </a>
-    </section>
+      <section class="header">
+        <h3>Rehearsal Space</h3>
+      </section>
+      <section class="extra content">
+        <a>
+          <i class="plus icon"></i> Create a space
+        </a>
+      </section>
     </section>
   </section>
+
   <footer>
     <p>&copy; 2014 Tablework Sdn. Bhd All Rights Reserved</p>
     <p>Terms of Service | Privacy Policy</p>
