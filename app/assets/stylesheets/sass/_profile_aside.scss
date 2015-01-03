@@ -29,6 +29,9 @@ aside {
       }
     }
   }
+  .shadow {
+    @include shadow();
+  }
   .header {
   	h3 {
   		@include text-headline();
@@ -40,6 +43,13 @@ aside {
 	}
   footer {
   	@include text-small();
+    margin-top: 40px;
 		color: $body-mid;
+    a {
+      color: $body-dark;
+      &:hover {
+        color: $headline;
+      }
+    }
   }
 }
