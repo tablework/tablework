@@ -50,15 +50,15 @@
         </li>
         <li>
           <i class="user icon"></i>
-      <%= @user.gender.titleize if @user.gender %>
+          <%= @user.gender.titleize if @user.gender %>
         </li>
         <li>
           <i class="suitcase icon"></i>
-      <%= @user.occupation.titleize if @user.occupation %>
+          <%= @user.occupation.titleize if @user.occupation %>
         </li>
         <li>
           <i class="home icon"></i>
-      <%= @user.location.titleize if @user.location %>
+          <%= @user.location.titleize if @user.location %>
         </li>
       </ul>
     </section>
@@ -69,15 +69,16 @@
   </section>
 
   <section class="ui card shadow">
-    <section class="content">
+    <section class="extra content">
       <section class="header">
         <h3>Rehearsal Space</h3>
       </section>
-      <section class="extra content">
-        <a>
-          <i class="plus icon"></i> Create a space
-        </a>
+      <section class="content">
+        No Space Added
       </section>
+    </section>
+    <section class="extra content">
+      <a>CREATE A SPACE</a>
     </section>
   </section>
 
