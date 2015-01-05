@@ -10,8 +10,12 @@
 #listCharacters {
 	.action-button {
 		background: $grey-1;
-		padding-top: 60px;
 		text-align: center;
+		.content {
+			width: 100%;
+			padding-top: 80px;
+			color: $body-dark;
+		}
 	}
 	.card {
 		min-height: 240px;
@@ -20,6 +24,7 @@
 			bottom: 0;
 			margin-left: 16px;
 			color: $body-light;
+			text-shadow: 0 0.5px 0.5px rgba(0, 0, 0, 0.7);
 		}
 	}
 }
