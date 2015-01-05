@@ -7,3 +7,19 @@
 	padding-top: 90px;
 	margin: 0;
 }
+#listCharacters {
+	.action-button {
+		background: $grey-1;
+		padding-top: 60px;
+		text-align: center;
+	}
+	.card {
+		min-height: 240px;
+		.image-text {
+			position: absolute;
+			bottom: 0;
+			margin-left: 16px;
+			color: $body-light;
+		}
+	}
+}

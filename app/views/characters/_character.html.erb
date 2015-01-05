@@ -1,14 +1,14 @@
 <div class="card shadow">
   <section class="image">
     <%= image_placeholder%>
-    <%= character.name %>
+    <h4 class="image-text"><%= character.name %></h4>
   </section>
-  <footer>
+  <div class="extra content">
     <% if character.space %>
     <%= character.space.name %>
     <% else %>
     <small>Space unassigned</small>
     <% end %>
     <%= link_to '+', assign_space_character_path(character) %>
-  </footer>
+  </div>
 </div>
