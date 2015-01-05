@@ -9,6 +9,8 @@
     <% else %>
     <small>Space unassigned</small>
     <% end %>
-    <%= link_to '+', assign_space_character_path(character) %>
+    <%= link_to assign_space_character_path(character) do %>
+      <i class="large add circle icon"></i>
+    <% end %>
   </div>
 </div>
