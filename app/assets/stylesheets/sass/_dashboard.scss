@@ -14,11 +14,15 @@
 		.content {
 			width: 100%;
 			padding-top: 80px;
-			color: $body-dark;
+			color: $body-mid;
 		}
 	}
 	.card {
 		min-height: 240px;
+		&:hover {
+			-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.7);
+			        box-shadow: 0 2px 4px rgba(0,0,0,0.7);
+		}
 		.image-text {
 			position: absolute;
 			bottom: 0;
