@@ -16,8 +16,11 @@
   .button {
     width: 100%;
   }
+  h3 {
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+  }
 }
-h3 {
-  margin-top: 0 !important;
-  margin-bottom: 20px;
+.form-actions {
+  margin-top: 20px;
 }
