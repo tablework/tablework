@@ -1,25 +1,72 @@
-<section>
-  <section class="dashboard_header">
-    <section class="ui page grid">
-      <h3>Dashboard</h3>
-    </section>
-  </section>
+<section class="dashboard_header">
   <section class="ui page grid">
-    <%= render 'application/profile' %>
-    <main class="ui eleven wide column segment centerbox shadow">
-      <h3>
-        Your Characters
-      </h3>
-      <section class="ui button one wide column">
-        <section class="content">
-          <section class="header">
-            <i class="plus icon"></i>
-          </section>
-          <section class="meta">
-            <h4>Create Persona</h4>
-          </section>
-        </section>
-      </section>
-    </main>
+    <h3>Dashboard</h3>
   </section>
 </section>
+
+<section class="ui page grid">
+
+  <%= render 'application/profile' %>
+
+  <main class="ui eleven wide column segment centerbox shadow">
+    <h3>Your Characters</h3>
+
+    <section id="jsPersonaButton" class="ui button one wide column">
+      <section class="content">
+        <section class="header">
+          <i class="plus icon"></i>
+        </section>
+
+        <section class="meta">
+          <h4>Create Persona</h4>
+        </section>
+      </section>
+
+      <section id="jsPersonaModal" class="ui modal">
+        <i class="close icon"></i>
+        <section class="header">
+          <p>Create a Persona</p>
+        </section>
+        <section class="content">
+          <small>Fill in the basic details for your persona.</small>
+          <section class="image">
+            <section class="ui card personabox">
+              <section class="content">
+                <section class="header"><i class="photo icon"></i></section>
+                <section class="meta">
+                  <a><h4>Upload Image</h4></a>
+                </section>
+              </section>
+            </section>  
+          </section>
+          <section class="description">
+            <section class="ui form">
+              <section class="field">
+                <input type="text" placeholder="Name">
+              </section>
+              <section class="field">
+                <input type="text" placeholder="Nationality">
+              </section>    
+              <section class="field">
+                <input type="text" placeholder="Date of Birth">
+              </section>      
+            </section>
+          </section>
+        </section>
+        <section class="actions">
+          <!--<section class="ui button">Cancel</section>-->
+        </section>
+      </section>
+    </section>
+
+  </main>
+
+</section>
+
+<script>
+  $(document).ready(function(){
+    $("#jsPersonaButton").click(function(){
+      $("#jsPersonaModal").modal("show")
+    })
+  })
+</script>
