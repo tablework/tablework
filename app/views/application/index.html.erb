@@ -8,10 +8,12 @@
 
   <%= render 'application/profile' %>
 
-  <main class="ui eleven wide column segment centerbox shadow">
+  <main class="ui twelve wide column segment centerbox shadow">
     <h3>Your Characters</h3>
+    
+    <div id="listCharacter" class="ui four cards">
+      <%= link_to new_character_path, :remote => true, id: 'jsPersonaButton', class: 'card shadow' do %>
 
-    <section id="jsPersonaButton" class="ui button one wide column">
       <section class="content">
         <section class="header">
           <i class="plus icon"></i>
@@ -21,46 +23,49 @@
           <h4>Create Persona</h4>
         </section>
       </section>
+      <% end %>
 
-      <section id="jsPersonaModal" class="ui modal">
-        <i class="close icon"></i>
-        <section class="header">
-          <p>Create a Persona</p>
-        </section>
-        <section class="content">
-          <small>Fill in the basic details for your persona.</small>
-          <section class="image">
-            <section class="ui card personabox">
-              <section class="content">
-                <section class="header"><i class="photo icon"></i></section>
-                <section class="meta">
-                  <a><h4>Upload Image</h4></a>
-                </section>
-              </section>
-            </section>  
-          </section>
-          <section class="description">
-            <section class="ui form">
-              <section class="field">
-                <input type="text" placeholder="Name">
-              </section>
-              <section class="field">
-                <input type="text" placeholder="Nationality">
-              </section>    
-              <section class="field">
-                <input type="text" placeholder="Date of Birth">
-              </section>      
-            </section>
-          </section>
-        </section>
-        <section class="actions">
-          <!--<section class="ui button">Cancel</section>-->
-        </section>
-      </section>
-    </section>
+      <%= render @characters %>
+    </div>
 
   </main>
+</section>
 
+<section id="jsPersonaModal" class="ui small modal">
+  <i class="close icon"></i>
+  <section class="header">
+    <p>Create a Persona</p>
+  </section>
+
+  <section class="content">
+    <p>Fill in the basic details for your persona.</p>
+
+    <div class="ui grid">
+      <div class="four wide column">
+        <a href="#">
+          <section class="ui card">
+            <section class="content">
+              <i class="photo icon"></i>
+              <h4>Upload Image</h4>
+            </section>
+          </section>
+        </a> 
+      </div> 
+
+      <div class="twelve wide column">
+        <div class="form-inputs">
+          <input type="text" placeholder="Name">
+          <input type="text" placeholder="Nationality">
+          <input type="text" placeholder="Date of Birth">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="actions">
+  <section class="ui button primary">Create Persona</section>
+</section>
 </section>
 
 <script>
