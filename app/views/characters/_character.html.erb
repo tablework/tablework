@@ -1,14 +1,14 @@
-<section class="character-card">
-  <section class="card-image" style="width:200px; height:200px; padding:10px; margin: 20px; background-color: #eee; text-align:center">
+<div class="card shadow">
+  <section class="image">
     <%= image_placeholder%>
     <%= character.name %>
   </section>
   <footer>
     <% if character.space %>
-      <%= character.space.name %>
+    <%= character.space.name %>
     <% else %>
-      <small>Space unassigned</small>
+    <small>Space unassigned</small>
     <% end %>
     <%= link_to '+', assign_space_character_path(character) %>
   </footer>
-</section>
+</div>
