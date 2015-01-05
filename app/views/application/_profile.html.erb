@@ -1,35 +1,4 @@
-<!-- <aside class="profile">
-  <header>
-    <p>
-      <%=image_tag @user.profile_photo%>
-    </p>
-    <p>
-      First Name: <%= @user.first_name %>
-    </p>
-    <p>
-      Last Name: <%= @user.last_name %>
-    </p>
-  </header>
-  <section>
-    <p>
-      Date of Birth: <%= @user.DOB %>
-    </p>
-    <p>
-      Gender: <%= @user.gender %>
-    </p>
-    <p>
-      Occupation: <%= @user.occupation %>
-    </p>
-    <p>
-      Location: <%= @user.location %>
-    </p>
-  </section>
-  <footer>
-    <%= link_to 'EDIT PROFILE', edit_user_path(current_user) %>
-  </footer>
-</section> -->
-
-<aside class="five wide column sidebox">
+<aside class="four wide column sidebox">
   <section class="ui card shadow">
     <section class="image">
       <% if @user.profile_photo %>
