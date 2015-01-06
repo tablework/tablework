@@ -1,0 +1,17 @@
+// Font Family
+body {
+	@include roboto();
+	@include base-normal();
+	color: $body-dark;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+	@include roboto();
+	@include medium-normal();
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}

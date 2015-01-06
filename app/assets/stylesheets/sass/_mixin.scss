@@ -1,0 +1,72 @@
+// Text Application
+@mixin font-family($family, $serif) {
+	font-family: $family, $serif;
+}
+@mixin font-style($weight, $style) {
+	font-weight: $weight;
+	font-style: $style;
+}
+@mixin font-size($size) {
+	font-size: $size;
+}
+
+// Text Style
+@mixin roboto() {
+	@include font-family('Roboto', sans-serif);
+}
+@mixin base-normal() {
+	@include font-style(400, normal);
+}
+@mixin base-italic() {
+	@include font-style(400, italic);
+}
+@mixin medium-normal() {
+	@include font-style(500, normal);
+}
+@mixin medium-italic() {
+	@include font-style(500, italic);
+}
+@mixin bold-normal() {
+	@include font-style(700, normal);
+}
+@mixin bold-italic() {
+	@include font-style(700, italic);
+}
+
+// Text Size
+@mixin text-headline() {
+	@include font-size(24px);
+}
+@mixin text-sub() {
+	@include font-size(20px);
+}
+@mixin text-body() {
+	@include font-size(16px);
+}
+@mixin text-small() {
+	@include font-size(12px);
+}
+
+// Components
+@mixin input-field() {
+	background: $bg-light;
+	width: 100%;
+	padding: 10px 12px;
+	margin: 5px 0;
+	border: 1px solid $border-light;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
+// Style
+@mixin shadow() {
+	-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2) !important;
+	        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+// Buttons
+.button {
+	@include base-normal();
+	-webkit-border-radius: 0 !important;
+	        border-radius: 0 !important;
+}

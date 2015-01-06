@@ -1,45 +1,72 @@
-<section>
-  <section class="dashboard_header">
-    <section class="ui page grid">
-      <h3>Dashboard</h3>
-    </section>
-  </section>
+<section class="dashboard_header">
   <section class="ui page grid">
-    <%= render 'application/profile' %>
-    <!--   <aside class="rehearsal-space">
-        <header>
-          Rehearsal Space
-        </header>
-        <section>
-          <%= render @spaces %>
-        </section>
-        <footer>
-          <%= link_to 'Create a Space', new_space_path %>
-        </footer>
-      </aside> -->
-    <!--   <main>
-        <header>
-          Your Character
-        </header>
-        <section>
-          <%= render @characters %>
-          <%= link_to 'Create Character', new_character_path %>
-        </section>
-      </main> -->
-    <main class="eleven wide column centerbox ui segment">
-      <h3>
-        Your Persona
-      </h3>
-      <section class="ui button one wide column">
-        <section class="content">
-          <section class="header">
-            <i class="plus icon"></i>
-          </section>
-          <section class="meta">
-            <h4>Create Persona</h4>
-          </section>
-        </section>
-      </section>
-    </main>
+    <h3>Dashboard</h3>
   </section>
 </section>
+
+<section class="ui page grid">
+
+  <%= render 'application/profile' %>
+
+  <main class="ui twelve wide column segment centerbox shadow">
+    <h3>Your Characters</h3>
+    
+    <div id="listCharacters" class="ui four cards">
+      <%= link_to new_character_path, :remote => true, id: 'jsPersonaButton', class: 'card action-button shadow' do %>
+
+        <section class="content">
+          <i class="large plus icon"></i>
+          <h4>Create Persona</h4>
+        </section>
+      <% end %>
+
+      <%= render @characters %>
+    </div>
+
+  </main>
+</section>
+
+<section id="jsPersonaModal" class="ui small modal">
+  <i class="close icon"></i>
+  <section class="header">
+    <p>Create a Persona</p>
+  </section>
+
+  <section class="content">
+    <p>Fill in the basic details for your persona.</p>
+
+    <div class="ui grid">
+      <div class="four wide column">
+        <a href="#">
+          <section class="ui card">
+            <section class="content">
+              <i class="photo icon"></i>
+              <h4>Upload Image</h4>
+            </section>
+          </section>
+        </a> 
+      </div> 
+
+      <div class="twelve wide column">
+        <div class="form-inputs">
+          <input type="text" placeholder="Name">
+          <input type="text" placeholder="Nationality">
+          <input type="text" placeholder="Date of Birth">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="actions">
+  <section class="ui button primary">Create Persona</section>
+</section>
+</section>
+
+<script>
+  $(document).ready(function(){
+    $("#jsPersonaButton").click(function(){
+      $("#jsPersonaModal").modal("show")
+    })
+  })
+</script>
