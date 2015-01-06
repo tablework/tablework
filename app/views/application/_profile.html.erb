@@ -33,7 +33,7 @@
     </section>
 
     <section class="extra content">
-      <%= link_to 'EDIT PROFILE', edit_user_path(current_user) %>
+      <%= link_to 'EDIT PROFILE', edit_user_path(current_user), remote: true, class: 'modal-edit-profile' %>
     </section>
   </section>
 
