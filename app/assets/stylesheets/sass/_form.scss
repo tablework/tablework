@@ -1,0 +1,26 @@
+.form-inputs {
+  input {
+    @include input-field();
+    &[type=submit] {
+      text-align: center;
+      margin-top: 20px;
+      border: none;
+    }
+  }
+  label {
+    display: none;
+  }
+  .hint {
+    display: none;
+  }
+  .button {
+    width: 100%;
+  }
+  h3 {
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+  }
+}
+.form-actions {
+  margin-top: 20px;
+}
