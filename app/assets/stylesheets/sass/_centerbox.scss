@@ -24,4 +24,9 @@
   &.hidden {
     display:none !important;
   }
+  .card {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
