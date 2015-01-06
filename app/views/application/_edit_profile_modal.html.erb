@@ -1,0 +1,49 @@
+<section id="js-edit-profile-modal" class="ui small modal">
+  <i class="close icon"></i>
+  <section class="header">
+    <p>Edit Profile</p>
+  </section>
+
+  <section class="content">
+    <p>Edit the details for your profile.</p>
+
+    <section class="ui grid">
+      <section class="five wide column">
+        <a href="#">
+          <section class="ui card">
+            <section class="content">
+              <i class="photo icon"></i>
+              <h4>Upload Image</h4>
+            </section>
+          </section>
+        </a>
+      </section>
+      <section class="eleven wide column">
+        <section class="form-inputs">
+          <form>
+            <input type="text" placeholder="First Name">
+            <input type="text" placeholder="Last Name">
+            <input type="date" placeholder="Date of Birth">
+            <select>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <input type="text" placeholder="Occupation">
+            <input type="text" placeholder="Location">
+          </form>
+        </section>
+      </section>
+    </section>
+  </section>
+  <footer class="modal footer">
+    <section class="actions">
+      <section class="ui button primary">Save</section>
+    </section>
+  </footer>
+</section>
+
+<script>
+  $(".modal-edit-profile").click(function(){
+    $("#js-edit-profile-modal").modal("show")
+  })
+</script>
