@@ -1,0 +1,46 @@
+<section id="js-create-space-modal" class="ui small modal">
+  <i class="close icon"></i>
+  <section class="header">
+    <p>Create Rehearsal Space</p>
+  </section>
+
+  <section class="content">
+    <p>Fill in the basic details for your space.</p>
+
+    <section class="ui grid">
+      <section class="five wide column">
+        <a href="#">
+          <section class="ui card">
+            <section class="content">
+              <i class="photo icon"></i>
+              <h4>Upload Image</h4>
+            </section>
+          </section>
+        </a>
+      </section>
+      <section class="eleven wide column">
+        <section class="form-inputs">
+          <form>
+            <input type="text" placeholder="Name">
+            <select class="ui dropdown">
+              <option value="">Theatre</option>
+              <option value="1">Movie</option>
+              <option value="0">TV Series</option>
+            </select>
+          </form>
+        </section>
+      </section>
+    </section>
+  </section>
+  <footer class="modal footer">
+    <section class="actions">
+      <section class="ui button primary">Create Space</section>
+    </section>
+  </footer>
+</section>
+
+<script>
+  $(".modal-create-space").click(function(){
+    $("#js-create-space-modal").modal("show")
+  })
+</script>
