@@ -1,9 +1,9 @@
-<div class="card shadow">
-  <section class="image">
-    <a href=""><%= image_placeholder%></a>
+<section class="card shadow">
+  <section id="js-show-character-<%= character.id %>" class="image">
+    <%= image_placeholder%>
     <h4 class="image-text"><%= character.name %></h4>
   </section>
-  <div class="extra content">
+  <section class="extra content">
     <% if character.space %>
       <%= character.space.name %>
     <% else %>
@@ -12,5 +12,38 @@
     <%= link_to assign_space_character_path(character) do %>
       <i class="large add circle icon"></i>
     <% end %>
-  </div>
-</div>
+  </section>
+</section>
+
+
+<% sym = character.name.to_sym %>
+<% content_for sym  do %>
+  <section id="js-persona-page-<%= character.id %>" style="opacity:0;display:none">
+    <a id="js-back-to-main-centerbox-<%= character.id %>" href="#">
+      <i class="big arrow circle left icon"></i>
+    </a>
+    <h1><%= character.name %></h1>
+  </section>
+<% end  %>
+
+<script>
+  $(document).ready(function(){
+    $('#js-show-character-<%= character.id %>').click(function(){
+      $('#js-main-centerbox').find('.find').animate({
+        left: "900px"
+        }, function(){
+          $(this).toggle();
+          $('#js-persona-page-<%= character.id %>').toggle().css('opacity', '100');
+        });
+    })
+    $('#js-back-to-main-centerbox-<%= character.id %>').click(function(){
+      $('#js-persona-page-<%= character.id %>').toggle().css('opacity', '0');
+      $('.find').show();
+      $('#js-main-centerbox').find('.find').animate({
+        left: "0px"
+      }, function(){
+
+      });
+    })
+  })
+</script>
