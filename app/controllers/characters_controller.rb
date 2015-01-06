@@ -7,7 +7,10 @@ class CharactersController < ApplicationController
   end
 
   def new
-    @character = @user.characters.build
+    respond_to do |format|
+      format.html { @character = @user.characters.build }
+      format.js
+    end
   end
 
   def create
