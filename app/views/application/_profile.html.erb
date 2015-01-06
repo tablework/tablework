@@ -47,7 +47,7 @@
       </section>
     </section>
     <section class="extra content">
-      <a href=" <%= new_space_path %> ">CREATE A SPACE</a>
+      <%= link_to 'CREATE A SPACE', new_space_path(current_user), remote: true, class: 'modal-create-space' %>
     </section>
   </section>
 
