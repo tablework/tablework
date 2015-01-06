@@ -1,0 +1,43 @@
+<section id="jsPersonaModal" class="ui small modal">
+  <i class="close icon"></i>
+  <section class="header">
+    <p>Create a Persona</p>
+  </section>
+
+  <section class="content">
+    <p>Fill in the basic details for your persona.</p>
+
+    <section class="ui grid">
+      <section class="four wide column">
+        <a href="#">
+          <section class="ui card">
+            <section class="content">
+              <i class="photo icon"></i>
+              <h4>Upload Image</h4>
+            </section>
+          </section>
+        </a>
+      </section>
+
+      <section class="twelve wide column">
+        <section class="form-inputs">
+          <input type="text" placeholder="Name">
+          <input type="text" placeholder="Nationality">
+          <input type="text" placeholder="Date of Birth">
+        </section>
+      </section>
+    </section>
+  </section>
+  <footer class="modal footer">
+    <section class="actions">
+      <section class="ui button primary">Create Persona</section>
+    </section>
+  </footer>
+</section>
+<script>
+  $(document).ready(function(){
+    $("#jsPersonaButton").click(function(){
+      $("#jsPersonaModal").modal("show")
+    })
+  })
+</script>
