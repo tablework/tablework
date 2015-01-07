@@ -9,7 +9,7 @@
     <% else %>
       <small>Space unassigned</small>
     <% end %>
-    <%= link_to assign_space_character_path(character) do %>
+    <%= link_to assign_space_character_path(character), class: 'modal-assign-space', remote: true do %>
       <i class="large add circle icon"></i>
     <% end %>
   </section>
