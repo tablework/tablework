@@ -20,17 +20,16 @@
       </section>
       <section class="eleven wide column">
         <section class="form-inputs">
-          <form>
-            <input type="text" placeholder="First Name">
-            <input type="text" placeholder="Last Name">
-            <input type="date" placeholder="Date of Birth">
-            <select>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-            <input type="text" placeholder="Occupation">
-            <input type="text" placeholder="Location">
-          </form>
+          <%= simple_form_for current_user do |f| %>
+            <%= f.input :first_name, placeholder: 'First Name' %>
+            <%= f.input :last_name, placeholder: 'Last Name' %>
+            <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
+            end_year: Date.today.year, discard_day: false,
+            order: [:day, :month, :year], class: 'ui selection dropdown' %>
+            <%= f.input :gender, as: :select, collection: ['male', 'female'], class: 'ui selection dropdown' %>
+            <%= f.input :occupation, placeholder: 'Occupation' %>
+            <%= f.input :location, placeholder: 'Location' %>
+          <% end %>
         </section>
       </section>
     </section>
@@ -38,6 +37,11 @@
   <footer class="modal footer">
     <section class="actions">
       <section class="ui button primary">Save</section>
+      <script>
+      $('.modal.footer .ui.button.primary').click(function(){
+        $('#edit_user_2').trigger('submit');
+      })
+      </script>
     </section>
   </footer>
 </section>
