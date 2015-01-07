@@ -19,10 +19,7 @@
 <% sym = character.name.to_sym %>
 <% content_for sym  do %>
   <section id="js-persona-page-<%= character.id %>" style="opacity:0;display:none">
-    <a id="js-back-to-main-centerbox-<%= character.id %>" href="#">
-      <i class="big arrow circle left icon"></i>
-    </a>
-    <h1><%= character.name %></h1>
+    <%= render 'characters/character_profile', character: character %>
   </section>
 <% end  %>
 
