@@ -29,9 +29,12 @@ class CharactersController < ApplicationController
 
   def update
     @character = @user.characters.find(params[:id]) || not_found
-    @character.update(params.require(:character).permit(:space_id))
+    @character.update(params.require(:character).permit(:space_id, :description))
     if @character.save
-      redirect_to root_path, notice: 'Space added'
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       redirect_to :back, notice: 'Fail to add space. Please try again.'
     end

@@ -1,10 +1,10 @@
-<aside class="four wide column sidebox">
+k,<aside class="four wide column sidebox">
   <section class="ui card shadow">
     <section class="image">
       <% if @user.profile_photo %>
-      <%= image_tag @user.profile_photo %>
+        <%= image_tag @user.profile_photo %>
       <% else %>
-      <%= image_placeholder %>
+        <%= image_placeholder %>
       <% end %>
       <h2 class="image-text">
         <%= "#{@user.first_name} #{@user.last_name}" %>
