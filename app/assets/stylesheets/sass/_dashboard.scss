@@ -18,11 +18,21 @@
 		}
 	}
 	.card {
-		min-height: 240px;
+		min-height: 236px;
 		&:hover {
 			-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.7);
 			        box-shadow: 0 2px 4px rgba(0,0,0,0.7);
+      cursor: pointer;
 		}
+    .extra.content {
+      color: $body-dark;
+      a {
+      	float: right;
+      	&:hover {
+      		color: $headline;
+      	}
+      }
+    }
 		.image-text {
 			position: absolute;
 			bottom: 0;
