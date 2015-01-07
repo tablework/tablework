@@ -7,7 +7,7 @@
     <% if character.space %>
       <%= character.space.name %>
     <% else %>
-      <small>Space unassigned</small>
+      Space unassigned
     <% end %>
     <%= link_to assign_space_character_path(character), class: 'modal-assign-space', remote: true do %>
       <i class="large plus square outline icon"></i>

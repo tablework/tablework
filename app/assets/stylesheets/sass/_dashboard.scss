@@ -25,8 +25,9 @@
       cursor: pointer;
 		}
     .extra.content {
-      color: $body-dark;
+      color: $body-mid;
       a {
+      	color: $grey-3;
       	float: right;
       	&:hover {
       		color: $headline;
