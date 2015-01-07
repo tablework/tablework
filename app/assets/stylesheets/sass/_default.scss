@@ -2,6 +2,7 @@
 body {
 	@include roboto();
 	@include base-normal();
+	min-width: 1024px;
 	color: $body-dark;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;

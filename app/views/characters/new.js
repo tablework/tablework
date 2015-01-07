@@ -1,1 +1,1 @@
-$("#jsPersonaModal").modal("show")
+$("#js-create-character-modal").modal("show")
