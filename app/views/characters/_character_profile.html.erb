@@ -1,0 +1,47 @@
+<section id="character-<%= character.id %>" class="profile ui grid">
+  <header class="sixteen wide column">
+    <a id="js-back-to-main-centerbox-<%= character.id %>" href="#">
+      <i class="big arrow circle left icon"></i><span>Character Profile</span>
+    </a>
+  </header>
+  <section class="row center">
+    <section class="five wide column">
+      <section class="ui card">
+        <section class="image">
+          <%= image_placeholder %>
+          <h2 class="image-text">
+            DENISE RICHARDS
+          </h2>
+        </section>
+        <section class="extra content">
+          <p>
+            <i class="small arrow circle left icon"></i><span>Russian</span>
+          </p>
+          <p>
+            <i class="small calendar outline icon"></i><span>July 1982</span>
+          </p>
+        </section>
+      </section>
+    </section>
+    <section class="two column"></section>
+    <section class="backstory nine wide column">
+      <h4>Backstory</h4>
+      <%= simple_form_for character, remote: true, html: { style: 'display:none', class: "edit-profile-form" } do |f| %>
+        <%= f.input :description, label: false %>
+        <%= f.submit 'SAVE' %>
+      <% end %>
+      <section class="content">
+        <section class="description"><%= simple_format character.description %></section>
+        <button class="js-edit-description">Edit</button>
+      </section>
+    </section>
+  </section>
+</section>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#character-<%= character.id %> .backstory .js-edit-description').click(function() {
+      $(this).parent().toggle();
+      $('#character-<%= character.id %> .backstory .edit-profile-form').toggle();
+    });
+  })
+</script>
