@@ -41,6 +41,22 @@ aside {
       }
       .content {
         padding: 10px;
+        ul {
+          padding: 0;
+          a {
+            padding: 0;
+            color: $body-dark !important;
+            li {
+              p {
+                margin-bottom: 0;
+              }
+            }
+            small {
+              @include text-small();
+              color: $body-mid;
+            }
+          }
+        }
       }
     }
   }
