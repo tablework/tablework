@@ -20,14 +20,10 @@
       </section>
       <section class="eleven wide column">
         <section class="form-inputs">
-          <form>
-            <input type="text" placeholder="Name">
-            <select>
-              <option value="">Theatre</option>
-              <option value="1">Movie</option>
-              <option value="0">TV Series</option>
-            </select>
-          </form>
+          <%= simple_form_for current_user.spaces.build do |f| %>
+            <%= f.input :name, placeholder: 'Name' %>
+            <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
+          <% end %>
         </section>
       </section>
     </section>
@@ -40,6 +36,9 @@
 </section>
 
 <script>
+  $('#js-create-space-modal .modal.footer .button').click(function() {
+    $('#new_space').trigger('submit')
+  });
   $(".modal-create-space").click(function(){
     $("#js-create-space-modal").modal("show")
   })
