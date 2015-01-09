@@ -20,11 +20,15 @@
       </section>
 
       <section class="twelve wide column">
-        <section class="form-inputs">
-          <input type="text" placeholder="Name">
-          <input type="text" placeholder="Nationality">
-          <input type="text" placeholder="Date of Birth">
-        </section>
+        <%= simple_form_for current_user.characters.build do |f| %>
+          <section class="form-inputs">
+            <%= f.input :name, placeholder: 'Full Name' %>
+            <%= f.input :nationality, placeholder: 'Nationality' %>
+            <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
+            end_year: Date.today.year, discard_day: false,
+            order: [:day, :month, :year] %>
+          </section>
+        <% end %>
       </section>
     </section>
   </section>
@@ -34,3 +38,9 @@
     </section>
   </footer>
 </section>
+
+<script>
+  $('#js-create-character-modal .modal.footer .button').click(function() {
+    $('#js-create-character-modal form').submit()
+  });
+</script>
