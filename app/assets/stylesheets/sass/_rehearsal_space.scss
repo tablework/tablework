@@ -25,21 +25,21 @@
 	padding-bottom: 40px;
 	margin-top: 208px;
 	display: inline-flex;
-	overflow-y: hidden;
+	overflow: hidden;
 	.ui.card {
 		@include border-box();
 		width: 350px;
-		height: calc(90vh - 208px);
+		max-height: calc(90vh - 200px);
 		margin: 30px 20px 0 0;
-		h3 {
-			@include text-headline();
-			@include base-normal();
-			color: $primary;
-			padding: 10px 20px;
-			margin: 0;
-		}
 		.header {
 			border-bottom: 1px solid $border-light;
+			h3 {
+				@include text-headline();
+				@include base-normal();
+				color: $primary;
+				padding: 10px 20px;
+				margin: 0;
+			}
 		}
 		.content {
 			height: calc(100% - 94px);
@@ -52,8 +52,10 @@
 			margin-bottom: 16px;
 		}
 		.extra.content {
+			overflow: hidden;			
 			a {
 				color: $body-dark;
+				padding: 14px 0;
 				&:hover {
 					color: $headline;
 				}
