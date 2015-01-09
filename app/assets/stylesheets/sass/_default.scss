@@ -2,11 +2,13 @@
 body {
 	@include roboto();
 	@include base-normal();
-	min-width: 1024px;
 	color: $body-dark;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+	&.application.index {
+		min-width: 1024px;
+	}
 }
 
 h1, h2, h3, h4, h5 {
