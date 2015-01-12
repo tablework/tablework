@@ -5,6 +5,11 @@
   -webkit-border-radius: 0;
           border-radius: 0;
   color: $body-light;
+  &.spaces.show {
+    width: 100%;
+    position: fixed;
+    top: 0;
+  }
   .brand {
     background: asset-url('logo-tablework-color.png', image) no-repeat center;
     -webkit-background-size: 135px 25px;
