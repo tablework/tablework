@@ -57,11 +57,19 @@
 	-webkit-border-radius: 0;
 	border-radius: 0;
 }
+@mixin box-sizing($type){
+	-webkit-box-sizing: $type;
+	   -moz-box-sizing: $type;
+	        box-sizing: $type;
+}
 
 // Style
 @mixin shadow() {
 	-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2) !important;
 	        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2) !important;
+}
+@mixin border-box(){
+	@include box-sizing(border-box);
 }
 
 // Buttons

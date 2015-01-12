@@ -16,6 +16,10 @@ class SpacesController < ApplicationController
     end
   end
 
+  def show
+    @space = Space.find(params[:id])
+  end
+
   def set_user
     @user = current_user
   end
