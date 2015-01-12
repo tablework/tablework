@@ -32,8 +32,8 @@
     height: calc(90vh - 200px);
     margin: 30px 20px 0 0;
     .header {
-      border-bottom: 1px solid $border-light;
       height: 50px;
+      line-height: 25px;
       h3 {
         @include text-headline();
         @include base-normal();
@@ -55,6 +55,7 @@
     .extra.content {
       overflow: hidden;
       height: 50px;
+      line-height: 25px;
       a {
         color: $body-dark;
         padding: 14px 0;
