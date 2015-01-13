@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217085148) do
+ActiveRecord::Schema.define(version: 20150113035004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,14 @@ ActiveRecord::Schema.define(version: 20141217085148) do
     t.string   "type_of_play"
     t.integer  "age"
     t.string   "occupation"
-    t.hstore   "fields",       default: ""
+    t.hstore   "fields",       default: {}
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "nationality"
     t.datetime "DOB"
     t.integer  "space_id"
+    t.string   "gender"
   end
 
   add_index "characters", ["space_id"], name: "index_characters_on_space_id", using: :btree
