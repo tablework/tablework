@@ -14,10 +14,13 @@
 #  updated_at   :datetime
 #  nationality  :string(255)
 #  DOB          :datetime
+#  space_id     :integer
+#  gender       :string(255)
 #
 
 class Character < ActiveRecord::Base
   belongs_to :user
   belongs_to :space
+  before_validation { self.gender.downcase! if self.gender }
   # has_many :questions, :as => :questionable
 end

@@ -14,6 +14,8 @@
 #  updated_at   :datetime
 #  nationality  :string(255)
 #  DOB          :datetime
+#  space_id     :integer
+#  gender       :string(255)
 #
 
 require 'rails_helper'
