@@ -22,5 +22,5 @@ class Character < ActiveRecord::Base
   belongs_to :user
   belongs_to :space
   before_validation { self.gender.downcase! if self.gender }
-  # has_many :questions, :as => :questionable
+  has_many :notes, :as => :notable
 end
