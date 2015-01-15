@@ -1,0 +1,22 @@
+<section class="ui card shadow">
+    <header class="header">
+      <h3>Cast</h3>
+    </header>
+    <section class="content">
+      <% @space.characters.each do |character|%>
+        <section class="ui grid">
+          <div class="cast-info three wide column">
+            <%= image_placeholder class: 'ui huge circular image', gender: character.gender %>
+          </div>
+          <div class="thirteen wide column">
+            <p><%= character.name %></p>
+            <small><%= link_to 'Add relationship', '#' %></small>
+          </div>
+        </section>
+
+      <% end %>
+    </section>
+    <footer class="extra content">
+      <a href="#"><i class="plus icon"></i> ADD CAST</a>
+    </footer>
+  </section>
