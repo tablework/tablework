@@ -1,0 +1,21 @@
+$('#js-add-note-modal-character-<%= @character.id %>').modal('close');
+$('#note-start-<%= @character.id %>').after('' +
+  '<section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= @note.id %>">' +
+    '<section class="header">' +
+      '<h3><%= @note.title %></h3>' +
+    '</section>' +
+    '<section class="content">' +
+      '<%= @note.text %>' +
+    '</section>' +
+    '<section class="meta">' +
+      '<section class="link"><%= @note.link %></section>' +
+    '</section>' +
+    '<%= link_to remove_note_path(@note.id), method: :delete, remote: true do %>' +
+      '<section class="ui bottom attached button">' +
+        '<i class="minus icon"></i>' +
+        'Delete' +
+      '</section>' +
+    '<% end %>' +
+  '</section>'
+)
+$('#js-add-note-modal-character-<%= @character.id %> form').find("input[type=text], textarea").val("");

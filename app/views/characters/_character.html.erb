@@ -20,6 +20,7 @@
 <% content_for sym  do %>
   <section id="js-persona-page-<%= character.id %>" style="opacity:0;display:none">
     <%= render 'characters/character_profile', character: character %>
+    <%= render 'characters/add_note_modal_character', character: character %>
   </section>
 <% end  %>
 

@@ -1,0 +1,23 @@
+<section class="ui four columns centered grid">
+  <section class="column sign">
+    <section class="ui one columns grid">
+
+      <section class="column">
+        <h3>Add Note</h3>
+
+        <section class="form-inputs">
+          <%= simple_form_for @character.notes.build, url: create_note_character_path(@character) do |f| %>
+            <%= f.input :title, placeholder: 'Title' %>
+            <%= f.input :text, placeholder: 'Content' %>
+            <%= f.input :image, placeholder: 'Image' %>
+            <%= f.input :link, placeholder: 'Link' %>
+        </section>
+        <section class="form-actions">
+          <%= f.button :submit, 'CREATE NOTE', class: 'ui primary' %>
+          <% end %>
+        </section>
+
+      </section>
+    </section>
+  </section>
+</section>
