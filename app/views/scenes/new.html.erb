@@ -6,7 +6,7 @@
         <h3>Create A Scene</h3>
 
         <div class="form-inputs">
-          <%= simple_form_for [:space, @scene] do |f| %>
+          <%= simple_form_for [@scenable, @scene] do |f| %>
             <%= f.input :title, placeholder: 'Title' %>
         </div>
         <div class="form-actions">
