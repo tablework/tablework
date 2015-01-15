@@ -9,23 +9,17 @@
     </header>
     <section class="content">
       <% @space.characters.each do |character|%>
-        <div class="cast-info">
-          <%= image_placeholder class: 'ui huge circular image' %>
-        </div>
+        <section class="ui grid">
+          <div class="cast-info three wide column">
+            <%= image_placeholder class: 'ui huge circular image', gender: character.gender %>
+          </div>
+          <div class="thirteen wide column">
+            <p><%= character.name %></p>
+            <small><%= link_to 'Add relationship', '#' %></small>
+          </div>
+        </section>
+
       <% end %>
-    </section>
-    <footer class="extra content">
-      <a href="#"><i class="plus icon"></i> ADD CAST</a>
-    </footer>
-  </section>
-  <section class="ui card shadow">
-    <header class="header">
-      <h3>Rehearsal</h3>
-    </header>
-    <section class="content">
-      <div class="content-eg"></div>
-      <div class="content-eg"></div>
-      <div class="content-eg"></div>
     </section>
     <footer class="extra content">
       <a href="#"><i class="plus icon"></i> ADD CAST</a>
@@ -36,9 +30,6 @@
       <h3>Scene 1</h3>
     </header>
     <section class="content">
-      <div class="content-eg"></div>
-      <div class="content-eg"></div>
-      <div class="content-eg"></div>
     </section>
     <footer class="extra content">
       <a href="#"><i class="plus icon"></i> ADD CAST</a>
