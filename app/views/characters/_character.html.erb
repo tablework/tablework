@@ -9,7 +9,7 @@
     <% else %>
       No Space
     <% end %>
-    <%= link_to assign_space_character_path(character), class: 'modal-assign-space', remote: true do %>
+    <%= link_to assign_space_character_path(character), id: "js-assign-space-#{character.id}", class: 'modal-assign-space', remote: true do %>
       <i class="large plus square outline icon"></i>
     <% end %>
   </section>
@@ -20,6 +20,7 @@
 <% content_for sym  do %>
   <section id="js-persona-page-<%= character.id %>" style="opacity:0;display:none">
     <%= render 'characters/character_profile', character: character %>
+    <%= render 'characters/assign_space_modal_character', character: character %>
     <%= render 'characters/add_note_modal_character', character: character %>
   </section>
 <% end  %>
