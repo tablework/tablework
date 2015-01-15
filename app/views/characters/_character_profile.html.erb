@@ -42,9 +42,29 @@
   <hr>
   <section class="row notes">
     <h2>Notes</h2>
-    <%= link_to '#', class: 'sixteen wide column ui button' do %>
+    <%= link_to add_note_character_path(character.id), class: 'sixteen wide column ui button', remote: true do %>
       <i class="arrow left circle icon"></i>
       <span>Add note</span>
+    <% end %>
+    <section id="note-start-<%= character.id %>"></section>
+    <% character.notes.order('updated_at DESC').each do |note |%>
+      <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
+        <section class="header">
+          <h3><%= note.title %></h3>
+        </section>
+        <section class="content">
+          <%= note.text %>
+        </section>
+        <section class="meta">
+          <section class="link"><%= note.link %></section>
+        </section>
+        <%= link_to remove_note_path(note.id), method: :delete, remote: true do %>
+          <section class="ui bottom attached button">
+            <i class="minus icon"></i>
+            Delete
+          </section>
+        <% end %>
+      </section>
     <% end %>
   </section>
   <section class="row scenes">
