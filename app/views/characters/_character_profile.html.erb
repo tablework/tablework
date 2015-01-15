@@ -67,18 +67,6 @@
       </section>
     <% end %>
   </section>
-  <section class="row scenes">
-    <h2>Scene</h2>
-    <% if character.space.present? %>
-      <section class="space ui grid" id="character-<%= character.id %>-space-<%= character.space.id %>">
-        <section class="image four wide column">
-          <%= image_placeholder %>
-        </section>
-        <section class="space-name six wide column"><%= character.space.name %></section>
-        <section class="space-name six wide column scene-info">You are not working on any scene.</section>
-      </section>
-    <% end %>
-  </section>
 </section>
 <script type="text/javascript">
   $(document).ready(function(){

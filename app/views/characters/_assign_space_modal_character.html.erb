@@ -1,0 +1,48 @@
+<section id="js-assign-space-modal-character-<%= character.id %>" class="ui small modal">
+  <i class="close icon"></i>
+  <section class="header">
+    <p>Join a Space</p>
+  </section>
+
+  <section class="content">
+    <p>Choose the space you want your character to join.</p>
+    <ul>
+      <%= form_for character do |f| %>
+        <% current_user.spaces.each do |space| %>
+          <li style="list-style:none">
+            <label class="ui grid">
+              <div class="one wide column">
+                <%= f.radio_button :space_id, space.id, id: "js-space-#{ space.id }"  %>
+              </div>
+
+              <div class="three wide column">
+                <%= image_placeholder style:"background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"%>
+              </div>
+
+              <div class="eleven wide column">
+                <p> <%= space.name %> </p>
+                <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+              </div>
+            </label>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+  <footer class="modal footer">
+    <section class="actions">
+      <section class="ui button primary">Join Space</section>
+    </section>
+  </footer>
+</section>
+
+<script>
+  $(document).ready(function(){
+    $("#js-assign-space-<%= character.id %>").click(function(){
+      $("#js-assign-space-modal-character-<%= character.id %>").modal("show");
+    })
+    $('#js-assign-space-modal-character-<%= character.id %> .ui.button.primary').click(function(){
+      $('#js-assign-space-modal-character-<%= character.id %> form').submit();
+    })
+  })
+</script>
