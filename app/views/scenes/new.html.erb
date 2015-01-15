@@ -1,0 +1,20 @@
+<section class="ui four columns centered grid">
+  <section class="column sign">
+    <section class="ui one columns grid">
+
+      <section class="column">
+        <h3>Create A Scene</h3>
+
+        <div class="form-inputs">
+          <%= simple_form_for [:space, @scene] do |f| %>
+            <%= f.input :title, placeholder: 'Title' %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, 'CREATE SCENE', class: 'ui primary' %>
+          <% end %>
+        </div>
+
+      </section>
+    </section>
+  </section>
+</section>
