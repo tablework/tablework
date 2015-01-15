@@ -13,5 +13,6 @@
 
 class Space < ActiveRecord::Base
   has_many :characters
+  has_many :scenes, as: :scenable
   belongs_to :director, class: User
 end
