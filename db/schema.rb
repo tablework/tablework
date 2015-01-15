@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114043748) do
+ActiveRecord::Schema.define(version: 20150115133856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150114043748) do
     t.string   "type_of_play"
     t.integer  "age"
     t.string   "occupation"
-    t.hstore   "fields",       default: ""
+    t.hstore   "fields",       default: {}
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20150114043748) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "scenes", force: true do |t|
+    t.string   "title"
+    t.integer  "scenable_id"
+    t.string   "scenable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scenes", ["scenable_id"], name: "index_scenes_on_scenable_id", using: :btree
 
   create_table "spaces", force: true do |t|
     t.string   "name"
