@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   resources :characters do
     member do
       get :assign_space
-    end
-    resources :notes, only: [:create, :destroy]
-    resources :scenes do
-      resources :questions, only: [:create, :destroy]
+      get :add_note
+      post :create_note
     end
   end
 
@@ -14,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
   resources :spaces
+
+  delete 'remove_note/:id', to: 'characters#remove_note', as: :remove_note
 
   root 'application#index'
 

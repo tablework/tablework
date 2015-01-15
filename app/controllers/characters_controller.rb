@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :update, :assign_space]
+  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note]
   before_action  :authenticate_user!
 
   def index
@@ -40,6 +40,41 @@ class CharactersController < ApplicationController
     end
   end
 
+  def add_note
+    @character = @user.characters.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def create_note
+    @character = @user.characters.find(params[:id])
+    @note = @character.notes.build(notes_params)
+    respond_to do |format|
+      if @note.save
+        flash[:notice] = 'Notes saved'
+        format.html { redirect_to :back }
+        format.js
+      else
+        format.html { render :add_note }
+      end
+    end
+  end
+
+  def remove_note
+    @note = Note.find(params[:id])
+    @note_id = @note.id
+    @note.destroy
+    respond_to do |format|
+      format.html do
+        flash[:notice] = 'Notes removed'
+        redirect_to :back
+      end
+      format.js
+    end
+  end
+
   def set_user
     @user = current_user
   end
@@ -50,4 +85,9 @@ class CharactersController < ApplicationController
     )
   end
 
+  def notes_params
+    params.require(:note).permit(
+      :title, :text, :image, :link
+     )
+  end
 end
