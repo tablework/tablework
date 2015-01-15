@@ -1,18 +1,18 @@
 <section class="rehearsal_header">
-  <h3><%= link_to root_path do %><i class="angle left large icon"></i><% end %> <%= @space.name %> <span class="ui button secondary"><%= link_to 'Add New scene', '#' %></span></h3>
+  <h3><%= link_to root_path do %><i class="angle left large icon"></i><% end %> <%= @space.name %> <span class="ui button secondary"><%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %></span></h3>
 </section>
 
 <section class="container-flex">
   <%= render 'spaces/casts' %>
-  <% @space.scenes.each do |scene| %>
+  <% @space.scenes.order('created_at ASC').each do |scene| %>
     <section class="ui card shadow">
       <header class="header">
-        <h3>Scene 1</h3>
+        <h3><%= scene.title %></h3>
       </header>
       <section class="content">
       </section>
       <footer class="extra content">
-        <a href="#"><i class="plus icon"></i> ADD CAST</a>
+        <a href="#"><i class="plus icon"></i> ADD NOTE</a>
       </footer>
     </section>
   <% end %>
