@@ -14,6 +14,9 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'erd'
 gem 'simple_form'
+gem 'carrierwave'
+gem 'carrierwave-aws'
+gem "remotipart"
 
 gem 'rails-assets-semantic-ui'
 

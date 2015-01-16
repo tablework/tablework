@@ -7,18 +7,7 @@
   <section class="content">
 
     <section class="ui grid">
-      <section class="four wide column">
-        <a href="#">
-          <section class="ui card">
-            <section class="content">
-              <i class="photo icon"></i>
-              <h4>Upload Image</h4>
-            </section>
-          </section>
-        </a>
-      </section>
-
-      <section class="twelve wide column">
+      <section class="sixteen wide column">
         <%= simple_form_for [@space, scene, scene.notes.build], remote: true do |f| %>
           <section class="form-inputs">
             <%= f.input :title, placeholder: 'Title' %>

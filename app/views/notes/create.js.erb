@@ -12,9 +12,10 @@ $('#js-note-start-scene-<%= @notable.id %>').after(''+
       '</section>'+
     '</section>'+
     '<section class="extra content">'+
-      '<%= link_to polymorphic_path([@space, scene, note], action: :edit), method: :delete do %>' +
+      '<%= link_to polymorphic_path([@space, @notable, @note], action: :edit), method: :delete do %>' +
         '<i class="arrow left icon"></i>EDIT NOTE</a>' +
       '<% end %>' +
+      '&nbsp;' +
       '<%= link_to polymorphic_path([@space, @notable, @note]), method: :delete do %>'+
         '<i class="minus icon"></i>DELETE NOTE</a>'+
       '<% end %>'+

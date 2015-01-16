@@ -29,7 +29,7 @@
     <section class="two column"></section>
     <section class="backstory nine wide column">
       <h4>Backstory</h4>
-      <%= simple_form_for character, remote: true, html: { style: 'display:none', class: "edit-profile-form" } do |f| %>
+      <%= simple_form_for character, remote: true, html: { style: 'display:none', class: "edit-profile-form", :multipart => true } do |f| %>
         <%= f.input :description, label: false %>
         <%= f.submit 'SAVE' %>
       <% end %>

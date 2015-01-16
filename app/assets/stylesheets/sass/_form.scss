@@ -1,5 +1,5 @@
 .form-inputs {
-  input {
+  input, textarea {
     @include input-field();
     &[type=submit] {
       text-align: center;
