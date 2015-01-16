@@ -1,0 +1,49 @@
+<section id="js-add-note-modal-scene-<%= scene.id %>" class="ui small modal">
+  <i class="close icon"></i>
+  <section class="header">
+    <p>Add Note</p>
+  </section>
+
+  <section class="content">
+
+    <section class="ui grid">
+      <section class="four wide column">
+        <a href="#">
+          <section class="ui card">
+            <section class="content">
+              <i class="photo icon"></i>
+              <h4>Upload Image</h4>
+            </section>
+          </section>
+        </a>
+      </section>
+
+      <section class="twelve wide column">
+        <%= simple_form_for [@space, scene, scene.notes.build], remote: true do |f| %>
+          <section class="form-inputs">
+            <%= f.input :title, placeholder: 'Title' %>
+            <%= f.input :text, placeholder: 'Content' %>
+            <%= f.input :image, placeholder: 'Image' %>
+            <%= f.input :link, placeholder: 'Link' %>
+          </section>
+        <% end %>
+      </section>
+    </section>
+  </section>
+  <footer class="modal footer">
+    <section class="actions">
+      <section class="ui button primary">Create Note</section>
+    </section>
+  </footer>
+</section>
+
+<script>
+  $(document).ready(function(){
+    $('#js-add-scene-note-<%= scene.id %>').click(function() {
+      $('#js-add-note-modal-scene-<%= scene.id %>').modal('show');
+    });
+    $('#js-add-note-modal-scene-<%= scene.id %> .modal.footer .button').click(function() {
+      $('#js-add-note-modal-scene-<%= scene.id %> form').submit()
+    });
+  })
+</script>

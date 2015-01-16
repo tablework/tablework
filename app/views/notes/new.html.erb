@@ -1,0 +1,23 @@
+<section class="ui four columns centered grid">
+  <section class="column sign">
+    <section class="ui one columns grid">
+
+      <section class="column">
+        <h3>Create A Notes</h3>
+
+        <div class="form-inputs">
+          <%= simple_form_for [Space.find(params[:space_id]), @notable, @note] do |f| %>
+            <%= f.input :title, placeholder: 'Title' %>
+            <%= f.input :text, placeholder: 'Text' %>
+            <%= f.input :image, placeholder: 'Image' %>
+            <%= f.input :image, placeholder: 'Link' %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, 'CREATE NOTE', class: 'ui primary' %>
+          <% end %>
+        </div>
+
+      </section>
+    </section>
+  </section>
+</section>

@@ -12,4 +12,5 @@
 
 class Scene < ActiveRecord::Base
   belongs_to :scenable
+  has_many :notes, as: :notable
 end

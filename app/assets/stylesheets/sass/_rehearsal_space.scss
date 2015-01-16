@@ -27,6 +27,7 @@
   display: inline-flex;
   overflow: hidden;
   .ui.card {
+    &.list {
     @include border-box();
     width: 350px;
     height: calc(90vh - 200px);
@@ -65,4 +66,6 @@
       }
     }
   }
+  }
+
 }

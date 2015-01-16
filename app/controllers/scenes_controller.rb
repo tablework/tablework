@@ -1,11 +1,11 @@
 class ScenesController < ApplicationController
   before_action :find_scenable, only: [:new, :create]
-  def index
-
-  end
-
   def new
     @scene = @scenable.scenes.build
+    respond_to do |wants|
+      wants.html
+      wants.js
+    end
   end
 
   def create
