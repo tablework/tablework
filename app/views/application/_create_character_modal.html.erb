@@ -8,19 +8,8 @@
     <p>Fill in the basic details for your persona.</p>
 
     <section class="ui grid">
-      <section class="four wide column">
-        <a href="#">
-          <section class="ui card">
-            <section class="content">
-              <i class="photo icon"></i>
-              <h4>Upload Image</h4>
-            </section>
-          </section>
-        </a>
-      </section>
-
-      <section class="twelve wide column">
-        <%= simple_form_for current_user.characters.build do |f| %>
+      <section class="sixteen wide column">
+        <%= simple_form_for current_user.characters.build, :html => { :multipart => true } do |f| %>
           <section class="form-inputs">
             <%= f.input :name, placeholder: 'Full Name' %>
             <%= f.input :gender, collection: ['Male', 'Female'] %>
