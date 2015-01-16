@@ -10,12 +10,17 @@ $('#note-start-<%= @character.id %>').after('' +
     '<section class="meta">' +
       '<section class="link"><%= @note.link %></section>' +
     '</section>' +
-    '<%= link_to remove_note_path(@note.id), method: :delete, remote: true do %>' +
-      '<section class="ui bottom attached button">' +
-        '<i class="minus icon"></i>' +
-        'Delete' +
-      '</section>' +
-    '<% end %>' +
+    '<section class="extra content">' +
+      '<%= link_to remove_note_path(@note.id), method: :delete, remote: true, data: {confirm: 'Are you sure'} do %>' +
+          '<i class="left arrow icon"></i>' +
+          'Edit' +
+      '<% end %>' +
+      '&nbsp;' +
+      '<%= link_to remove_note_path(@note.id), method: :delete, remote: true, data: {confirm: 'Are you sure'} do %>' +
+          '<i class="minus icon"></i>' +
+          'Delete' +
+      '<% end %>' +
+    '</section>' +
   '</section>'
 )
 $('#js-add-note-modal-character-<%= @character.id %> form').find("input[type=text], textarea").val("");

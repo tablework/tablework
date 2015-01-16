@@ -1,0 +1,24 @@
+$('#js-note-start-scene-<%= @notable.id %>').after(''+
+  '<section class="ui fluid card">'+
+    '<section class="header" style="border-bottom: 2px solid #ececec;line-height:50px;padding: 0 20px;">'+
+      '<%= @note.title %>'+
+    '</section>'+
+    '<section class="content">'+
+      '<%= @note.text %>'+
+    '</section>'+
+    '<section class="meta">'+
+      '<section class="link">'+
+        '<%= @note.link %>'+
+      '</section>'+
+    '</section>'+
+    '<section class="extra content">'+
+      '<%= link_to polymorphic_path([@space, scene, note], action: :edit), method: :delete do %>' +
+        '<i class="arrow left icon"></i>EDIT NOTE</a>' +
+      '<% end %>' +
+      '<%= link_to polymorphic_path([@space, @notable, @note]), method: :delete do %>'+
+        '<i class="minus icon"></i>DELETE NOTE</a>'+
+      '<% end %>'+
+    '</section>'+
+  '</section>'
+)
+$('#js-add-note-modal-scene form').find("input[type=text], textarea").val("");
