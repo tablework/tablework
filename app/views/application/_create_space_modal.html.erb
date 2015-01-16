@@ -20,7 +20,7 @@
       </section>
       <section class="eleven wide column">
         <section class="form-inputs">
-          <%= simple_form_for current_user.spaces.build do |f| %>
+          <%= simple_form_for current_user.spaces.build, :html => { :multipart => true } do |f| %>
             <%= f.input :name, placeholder: 'Name' %>
             <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
           <% end %>

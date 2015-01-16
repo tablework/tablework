@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validate :valid_gender
   before_validation { self.gender.downcase! if self.gender }
-
+  mount_uploader :image, ImageUploader
 
   has_many :characters
   has_many :spaces, foreign_key: 'director_id'

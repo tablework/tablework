@@ -1,7 +1,9 @@
 k,<aside class="four wide column sidebox">
   <section class="ui card shadow">
     <section class="image">
-      <% if @user.profile_photo %>
+      <% if @user.image.present? %>
+        <%= image_tag @user.image.url %>
+      <% elsif @user.profile_photo %>
         <%= image_tag @user.profile_photo %>
       <% else %>
         <%= image_placeholder %>
@@ -56,8 +58,8 @@ k,<aside class="four wide column sidebox">
                 <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
               </div>
             </li>
-            <% end %>          
-            <% end %>          
+            <% end %>
+            <% end %>
           <% else %>
             <li>
               <p>No space added</p>

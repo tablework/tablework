@@ -6,21 +6,9 @@
 
   <section class="content">
     <p>Edit the details for your profile.</p>
-
-    <section class="ui grid">
-      <section class="five wide column">
-        <a href="#">
-          <section class="ui card">
-            <section class="content">
-              <i class="photo icon"></i>
-              <h4>Upload Image</h4>
-            </section>
-          </section>
-        </a>
-      </section>
       <section class="eleven wide column">
         <section class="form-inputs">
-          <%= simple_form_for current_user do |f| %>
+          <%= simple_form_for current_user, :html => { :multipart => true } do |f| %>
             <%= f.input :first_name, placeholder: 'First Name' %>
             <%= f.input :last_name, placeholder: 'Last Name' %>
             <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
@@ -29,23 +17,20 @@
             <%= f.input :gender, as: :select, collection: ['male', 'female'], class: 'ui selection dropdown' %>
             <%= f.input :occupation, placeholder: 'Occupation' %>
             <%= f.input :location, placeholder: 'Location' %>
+            <%= f.input :image, placeholder: 'Image' %>
           <% end %>
         </section>
       </section>
+      <section class="ui button primary">Save</section>
     </section>
   </section>
-  <footer class="modal footer">
-    <section class="actions">
-      <section class="ui button primary">Save</section>
-      <script>
-      $('#js-edit-profile-modal .modal.footer .ui.button.primary').click(function(){
-        $('#edit_user_2').trigger('submit');
-      })
-      </script>
-    </section>
-  </footer>
 </section>
-
+<script>
+$('#js-edit-profile-modal .ui.button.primary').click(function(){
+  $("#js-edit-profile-modal").modal("hide")
+  $('#edit_user_<%= current_user.id %>').trigger('submit');
+})
+</script>
 <script>
   $(".modal-edit-profile").click(function(){
     $("#js-edit-profile-modal").modal("show")

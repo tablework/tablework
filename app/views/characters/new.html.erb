@@ -6,7 +6,7 @@
         <h3>Create A Character</h3>
 
         <div class="form-inputs">
-          <%= simple_form_for @character do |f| %>
+          <%= simple_form_for @character, :html => { :multipart => true } do |f| %>
             <%= f.input :name, placeholder: 'Full Name' %>
             <%= f.input :nationality, placeholder: 'Nationality' %>
             <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
