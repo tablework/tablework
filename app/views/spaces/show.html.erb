@@ -5,15 +5,43 @@
 <section class="container-flex">
   <%= render 'spaces/casts' %>
   <% @space.scenes.order('created_at ASC').each do |scene| %>
-    <section class="ui card shadow">
+    <section class="ui card list shadow">
       <header class="header">
         <h3><%= scene.title %></h3>
       </header>
       <section class="content">
+        <section id="js-note-start-scene-<%= scene.id %>"></section>
+        <% scene.notes.each do |note| %>
+          <section class="ui fluid card">
+            <section class="header" style="border-bottom: 2px solid #ececec;line-height:50px;padding: 0 20px;">
+              <%= note.title %>
+            </section>
+            <section class="content">
+              <%= note.text %>
+            </section>
+            <section class="meta">
+              <section class="link">
+                <%= note.link %>
+              </section>
+            </section>
+            <section class="extra content">
+              <%= link_to polymorphic_path([@space, scene, note], action: :edit) do %>
+                <i class="arrow left icon"></i>EDIT NOTE</a>
+              <% end %>
+              &nbsp;
+              <%= link_to polymorphic_path([@space, scene, note]), method: :delete do %>
+                <i class="minus icon"></i>DELETE NOTE</a>
+              <% end %>
+            </section>
+          </section>
+        <% end %>
       </section>
       <footer class="extra content">
-        <a href="#"><i class="plus icon"></i> ADD NOTE</a>
+        <%= link_to polymorphic_url([@space, scene, scene.notes.build], action: :new), id: "js-add-scene-note-#{scene.id}", remote: true do %>
+          <i class="plus icon"></i> ADD NOTE</a>
+        <% end %>
       </footer>
     </section>
+    <%= render 'spaces/add_note_modal_scene', scene: scene %>
   <% end %>
 </section>
