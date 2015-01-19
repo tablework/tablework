@@ -6,11 +6,35 @@
       <span>Add scene</span>
     <% end %>
   </section>
-  <section class="content row">
+  <section class="content row ui segment">
     <h3>Scene 1</h3>
-    <%= link_to add_note_character_path(character.id), class: 'ui button primary sixteen wide column', remote: true do %>
-      <i class="arrow left circle icon"></i>
-      <span>Add note</span>
-    <% end %>
+    <section class="ui grid">
+      <section class="two column"></section>
+      <% character.notes.order('updated_at DESC').each do |note |%>
+        <section class="fourteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
+          <section class="header">
+            <h3><%= note.title %></h3>
+          </section>
+          <section class="content">
+            <%= note.text %>
+          </section>
+          <section class="meta">
+            <section class="link"><%= note.link %></section>
+          </section>
+          <section class="extra content">
+            <%= link_to polymorphic_path([character, note], action: :edit) do %>
+                <i class="arrow left icon"></i>
+                Edit
+            <% end %>
+            &nbsp;
+            <%= link_to remove_note_path(note.id), method: :delete, remote: true, data: {confirm: 'Are you sure'} do %>
+                <i class="minus icon"></i>
+                Delete
+            <% end %>
+          </section>
+        </section>
+      <% end %>
+    </section>
+    <section class="ui segment"></section>
   </section>
 </section>
