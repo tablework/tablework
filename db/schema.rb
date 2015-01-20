@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150120092610) do
+=======
+ActiveRecord::Schema.define(version: 20150120015950) do
+>>>>>>> a626900a273f19e8a437bcc6d0f4c56c7bb22f06
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150120092610) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "link_html"
   end
 
   add_index "notes", ["notable_id"], name: "index_notes_on_notable_id", using: :btree

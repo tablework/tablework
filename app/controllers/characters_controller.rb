@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note]
+  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show]
   before_action  :authenticate_user!
 
   def index
@@ -11,6 +11,10 @@ class CharactersController < ApplicationController
       format.html { @character = @user.characters.build }
       format.js
     end
+  end
+
+  def show
+    redirect_to root_path(character: Character.find(params[:id]))
   end
 
   def create
