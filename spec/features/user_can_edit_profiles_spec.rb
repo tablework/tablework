@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature "UserCanEditProfiles", :type => :feature do
   before do
+    auth =  create :authorization
     @user = create :user
+    @user.authorizations << auth
   end
   scenario 'can edit' do
     sign_in @user

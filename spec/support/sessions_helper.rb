@@ -6,8 +6,12 @@ module Features
     def mock_oauth user
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
-      {"provider"=> user.provider,
+      {"provider"=> user.authorizations.first.provider,
        "uid"=>user.uid,
+       "credentials"=>
+        {
+          "token"=>user.authorizations.first.token
+        },
        "info"=>
         {
          "email"=>user.email,
