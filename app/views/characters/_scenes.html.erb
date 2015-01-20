@@ -1,0 +1,16 @@
+<section class="row scenes">
+  <section class="header row">
+    <h2>Scenes</h2>
+    <%= link_to add_note_character_path(character.id), class: 'ui button primary', remote: true do %>
+      <i class="arrow left circle icon"></i>
+      <span>Add scene</span>
+    <% end %>
+  </section>
+  <section class="content row">
+    <h3>Scene 1</h3>
+    <%= link_to add_note_character_path(character.id), class: 'ui button primary sixteen wide column', remote: true do %>
+      <i class="arrow left circle icon"></i>
+      <span>Add note</span>
+    <% end %>
+  </section>
+</section>
