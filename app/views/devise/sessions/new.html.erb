@@ -18,7 +18,11 @@
 					<div class="form-actions">
 						<%= f.button :submit, "Sign in", class: 'ui primary' %>
 					</div>
+
 					<% end %>
+
+						<%= button_to 'Sign up', new_user_registration_path, method: :get, class: 'button ui primary bold_text' %>
+					
 				</div>
 
 			</section>
