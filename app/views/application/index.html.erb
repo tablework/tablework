@@ -11,3 +11,10 @@
   <%= render 'application/edit_profile_modal' %>
   <%= render 'application/create_space_modal' %>
 </section>
+
+<script>
+  $(document).ready(function(){
+    var character_id = location.search.split('character=')[1]
+    $('#js-show-character-' + character_id).click()
+  })
+</script>

@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem "remotipart"
+gem "auto_html"
 
 gem 'rails-assets-semantic-ui'
 
