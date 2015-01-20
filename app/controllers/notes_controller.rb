@@ -32,7 +32,7 @@ class NotesController < ApplicationController
     @note.update(note_params)
       if @note.save
         flash[:notice] = 'Note edited'
-        redirect_to @space || root_path
+        redirect_to @notable
       else
         flash.now[:error] = 'Note editing fails'
         render :edit
