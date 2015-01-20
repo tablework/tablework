@@ -1,7 +1,7 @@
 <%= form_for @character do |f| %>
   <% current_user.spaces.each do |space| %>
     <section style="width:200px; height:200px; padding:10px; margin: 20px; background-color: #eee; text-align:center">
-      <%= image_placeholder %>
+      <%= user_portrait %>
     </section>
     <section>
       <%= space.name %>

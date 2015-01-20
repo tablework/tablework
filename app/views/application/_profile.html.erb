@@ -1,13 +1,7 @@
 <aside class="four wide column sidebox">
   <section class="ui card shadow">
     <section class="image">
-      <% if @user.image.present? %>
-        <%= image_tag @user.image.url %>
-      <% elsif @user.profile_photo %>
-        <%= image_tag @user.profile_photo %>
-      <% else %>
-        <%= user_portrait %>
-      <% end %>
+        <%= user_portrait({user: @user, style: 'width:100%; height: 100%'}) %>
       <h2 class="image-text">
         <%= "#{@user.first_name} #{@user.last_name}" %>
       </h2>
