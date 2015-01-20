@@ -115,6 +115,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
+    koala (1.11.0)
+      addressable
+      faraday
+      multi_json
     launchy (2.4.3)
       addressable (~> 2.3)
     mail (2.6.3)
@@ -268,6 +272,7 @@ DEPENDENCIES
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
+  koala
   launchy
   meta_request
   neat
