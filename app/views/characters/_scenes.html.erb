@@ -1,16 +1,45 @@
 <section class="row scenes">
   <section class="header row">
     <h2>Scenes</h2>
-    <%= link_to add_note_character_path(character.id), class: 'ui button primary', remote: true do %>
+    <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button primary', remote: false do %>
       <i class="arrow left circle icon"></i>
       <span>Add scene</span>
     <% end %>
   </section>
-  <section class="content row">
-    <h3>Scene 1</h3>
-    <%= link_to add_note_character_path(character.id), class: 'ui button primary sixteen wide column', remote: true do %>
-      <i class="arrow left circle icon"></i>
-      <span>Add note</span>
-    <% end %>
-  </section>
+  <hr>
+  <% character.scenes.order('created_at ASC').each do |scene| %>
+    <section class="content row">
+      <h3><%= scene.title.titleize %></h3>
+      <span><i class="icon minus"></i></span>
+      <section class="ui grid">
+        <% scene.notes.order('created_at ASC').each do |note |%>
+          <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
+            <section class="header">
+              <h3>
+                <%= link_to note.link do %>
+                  <%= note.title %>
+                <% end %>
+              </h3>
+            </section>
+            <section class="content">
+              <%= simple_format note.text %>
+            </section>
+            <section>
+              <%= note.link_html %>
+            </section>
+            <section class="image center">
+              <%= image_tag note.image.url, style: 'width: 25%; height:25%' if note.image %>
+            </section>
+            <section class="extra content">
+              <%= link_to polymorphic_path([scene, note], action: :edit) do %>
+                  <i class="arrow left icon"></i>
+                  Edit
+              <% end %>
+            </section>
+          </section>
+        <% end %>
+      </section>
+      <section class="ui segment"></section>
+    </section>
+  <% end %>
 </section>
