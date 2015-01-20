@@ -70,6 +70,12 @@ class User < ActiveRecord::Base
         user.last_name = auth.info.last_name
         user.gender = auth.extra.raw_info.gender
         user.profile_photo = auth.info.image
+      else
+        user.email = auth.info.email
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+        user.gender = auth.extra.raw_info.gender
+        user.profile_photo = auth.info.image
       end
       authorization.username = auth.info.nickname
       authorization.user_id = user.id
