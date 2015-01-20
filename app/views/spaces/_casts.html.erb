@@ -6,7 +6,7 @@
       <% @space.characters.each do |character|%>
         <section class="ui grid">
           <div class="cast-info three wide column">
-            <%= image_placeholder class: 'ui huge circular image', gender: character.gender %>
+            <%= user_portrait class: 'ui huge circular image', gender: character.gender %>
           </div>
           <div class="thirteen wide column">
             <p><%= character.name %></p>
