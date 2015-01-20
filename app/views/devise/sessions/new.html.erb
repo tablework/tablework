@@ -14,27 +14,25 @@
               <%= f.input :password, placeholder: 'Password', required: false %>
               <%= f.input :remember_me, label: 'Yes, remember me', as: :boolean if devise_mapping.rememberable? %>
             </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign in", class: 'ui primary' %>
+          </div>
 
-            <div class="form-actions">
-              <%= f.button :submit, "Sign in", class: 'ui primary' %>
-            </div>
           <% end %>
-          <small>No account? <%= link_to 'Sign up', new_user_registration_path %></small>
+
+            <%= button_to 'Sign up', new_user_registration_path, method: :get, class: 'button ui primary bold_text' %>
         </div>
-
       </section>
-
       <!-- Facebook Sign Up -->
       <section class="column">
         <h3>Sign up with Facebook</h3>
         <%- if devise_mapping.omniauthable? %>
-        <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'ui primary button' %><br />
-        <% end -%>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'ui primary button' %><br />
+          <% end -%>
         <% end -%>
       </section>
       <!-- End -->
-
       <!-- <%= render "devise/shared/links" %> -->
     </section>
   </section>
