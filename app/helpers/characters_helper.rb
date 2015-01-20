@@ -20,7 +20,5 @@ module CharactersHelper
 		else
 			image_tag('portrait.jpg', style: options[:style], class: options[:class] )
 		end
-
-		
 	end
 end
