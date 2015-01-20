@@ -8,11 +8,30 @@ class ScenesController < ApplicationController
     end
   end
 
+  def show
+    redirect_to root_path(character: Scene.find(4).scenable_type.constantize.find(Scene.find(4).scenable_id))
+  end
+
   def create
     @scene = @scenable.scenes.build(scene_params)
     if @scene.save
+      if @scenable.instance_of? Character
+        [
+          'Where am i?',
+          'when is it?',
+          'where have i just come from?',
+          'what do i want?',
+          'why do i want it?',
+          'why do i want it now?',
+          "what happens if i don't get it now?",
+          "what do i do to get what i want? by doing what?",
+          "what are my obstacles?"
+        ].each do |title|
+          @scene.notes.create(title: title)
+        end
+      end
       flash[:notice] = 'Scene created'
-      redirect_to @scenable
+      redirect_to @scenable || root_path
     else
       flash.now[:error] = 'Scene creation fails'
       render :new
