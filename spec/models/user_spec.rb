@@ -35,8 +35,7 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  let(:object) { build :user }
-  subject { object }
+  subject(:user) { build :user }
 
   it { is_expected.to respond_to :email }
   it { is_expected.to respond_to :password }
@@ -67,6 +66,42 @@ RSpec.describe User, :type => :model do
           expect(subject).not_to be_valid
         end
       end
+    end
+  end
+
+  describe 'associations' do
+    before do
+      user.save
+    end
+
+    it "has many characters" do
+      character = create :character
+      user.characters << character
+      expect(user.characters.to_a).to eql [character]
+    end
+
+    it "has many authorizations", vcr: {cassette_name: 'facebook', match_requests_on: [:host, :path], record: :once} do
+      authorization = create :authorization
+      user.authorizations << authorization
+      expect(user.authorizations.to_a).to eql [authorization]
+    end
+
+    it "has many owned spaces" do
+      space = create :space
+      user.owned_spaces << space
+      expect(user.owned_spaces.to_a).to eql [space]
+    end
+
+    it "has many space memberships" do
+      space_membership = create :space_membership
+      user.space_memberships << space_membership
+      expect(user.space_memberships.to_a).to eql [space_membership]
+    end
+
+    it "has many spaces through space memberships" do
+      space = create :space
+      space_membership = create :space_membership, space: space, user: user
+      expect(user.spaces.to_a).to eql [space]
     end
   end
 end

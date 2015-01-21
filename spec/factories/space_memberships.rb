@@ -3,5 +3,4 @@ FactoryGirl.define do
     space
     user
   end
-
 end
