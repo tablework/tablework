@@ -48,46 +48,41 @@ class User < ActiveRecord::Base
   has_many :spaces, foreign_key: 'director_id'
   has_many :authorizations, dependent: :destroy
 
-  # def self.from_omniauth(auth)
-  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-  #     user.email = auth.info.email
-  #     user.password = Devise.friendly_token[0,20]
-  #     user.first_name = auth.info.first_name
-  #     user.last_name = auth.info.last_name
-  #     user.gender = auth.extra.raw_info.gender
-  #     user.profile_photo = auth.info.image
-  #   end
-  # end
   #TC Wu's reimplementation
   def self.from_omniauth(auth, current_user)
     authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret).first_or_initialize
     if authorization.user.blank?
-      user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
-      if user.blank?
-        user = User.new
-        user.password = Devise.friendly_token[0,20]
-        user.email = auth.info.email
-        user.first_name = auth.info.first_name
-        user.last_name = auth.info.last_name
-        user.gender = auth.extra.raw_info.gender
-        user.profile_photo = auth.info.image
-      else
-        user.email = auth.info.email
-        user.first_name = auth.info.first_name
-        user.last_name = auth.info.last_name
-        user.gender = auth.extra.raw_info.gender
-        user.profile_photo = auth.info.image
-      end
+      user = sign_in_or_up_user(user, auth, current_user)
       authorization.username = auth.info.nickname
       authorization.user_id = user.id
       authorization.save
     end
-    authorization.user
     user.save
     user
   end
 
   private
+
+  def self.sign_in_or_up_user(user, auth, current_user)
+    user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
+    if user.blank?
+      user = User.new
+      user.password = Devise.friendly_token[0,20]
+      user = assign_user_variables(user, auth)
+    else
+      user = assign_user_variables(user, auth)
+    end
+    user
+  end
+
+  def self.assign_user_variables(user, auth)
+    user.email = auth.info.email
+    user.first_name = auth.info.first_name
+    user.last_name = auth.info.last_name
+    user.gender = auth.extra.raw_info.gender
+    user.profile_photo = auth.info.image
+    user
+  end
 
   def valid_gender
     unless self.gender == 'male' or self.gender == 'female' or self.gender == nil
