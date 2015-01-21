@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :scenes do
       resources :notes
     end
+
+    resources :space_memberships
   end
 
   resources :scenes do
