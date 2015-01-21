@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "user should see sign up page" do
   scenario "see sign up link on root page" do
     go_to_sign_up_page
-    expect(page).to have_selector('h2', text: 'Sign up')
+    expect(page).to have_selector('h3', text: 'Sign up')
   end
 
   scenario "successfully signed up" do
@@ -19,5 +19,5 @@ end
 
 def go_to_sign_up_page
   visit root_path
-  click_link('Sign up')
+  click_button('Sign up')
 end

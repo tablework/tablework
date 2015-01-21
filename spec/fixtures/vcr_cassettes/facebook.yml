@@ -1,0 +1,197 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://graph.facebook.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=380623215438248&client_secret=3d64dd6be8491c5382212e73079d0412&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1568726'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Facebook-Api-Version:
+      - v1.0
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - UUg8KnuYYBmTWcBYEYyXtx13cXBnLyVUG8j27fY9CtS1KTeaHzZtxtHJl/xvgQsfj5PtUKI/Q0mzfUaUjHDvFg==
+      Date:
+      - Wed, 21 Jan 2015 04:24:14 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '56'
+    body:
+      encoding: UTF-8
+      string: access_token=380623215438248|vTmhgdiCOP3hQBjwnSn8xNAerTI
+    http_version: 
+  recorded_at: Wed, 21 Jan 2015 04:24:14 GMT
+- request:
+    method: post
+    uri: https://graph.facebook.com/380623215438248/accounts/test-users
+    body:
+      encoding: UTF-8
+      string: access_token=380623215438248%7CvTmhgdiCOP3hQBjwnSn8xNAerTI&installed=true&permissions=
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1568726'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Facebook-Api-Version:
+      - v2.2
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - ROek9KOBnSAO6E0Yv8wxXpAUdO6l25la5uHB7EvNP2s1lN+S66+4x3DtIsTuX6HYG0XVrvNm0+qXTO6m/fRFRQ==
+      Date:
+      - Wed, 21 Jan 2015 04:24:16 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '426'
+    body:
+      encoding: UTF-8
+      string: '{"id":"1381846718788887","access_token":"CAAFaLLZBMqagBAOEzZAazNrZAVJx1HJbmx0Vfi7uRNm3RlCgvrGL7hHWo0zzNJ2dHuT6fJdC9Xu7XOeg4ZCUIypQFM386DUCgg6Pob6ZBqeU4ZBnkh7jOoyRiXtHWIJStDIryJMuWPv2Vh6At9DVWjny9knS4CBw02MsohX54Iux8vEFkMGZCucHukc8c2662xqwgSsAdnM5gZDZD","login_url":"https:\/\/developers.facebook.com\/checkpoint\/test-user-login\/1381846718788887\/","email":"yfjjzsc_changsen_1421814254\u0040tfbnw.net","password":"299356535"}'
+    http_version: 
+  recorded_at: Wed, 21 Jan 2015 04:24:16 GMT
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=CAAFaLLZBMqagBAOEzZAazNrZAVJx1HJbmx0Vfi7uRNm3RlCgvrGL7hHWo0zzNJ2dHuT6fJdC9Xu7XOeg4ZCUIypQFM386DUCgg6Pob6ZBqeU4ZBnkh7jOoyRiXtHWIJStDIryJMuWPv2Vh6At9DVWjny9knS4CBw02MsohX54Iux8vEFkMGZCucHukc8c2662xqwgSsAdnM5gZDZD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Last-Modified:
+      - '2015-01-21T04:24:16+0000'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1568726'
+      Etag:
+      - '"c01720780b6ec9489d8ae261b6babeeafc597408"'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Facebook-Api-Version:
+      - v2.2
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - LGUAwT2joxUhgwGyKUQFSwjtXlhskuS1YSCRrAp1Ct+Vec3k/vEUjL0Ofm0CiiFVamYZi7hr3cnpwLv1wFQbkg==
+      Date:
+      - Wed, 21 Jan 2015 04:24:16 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '314'
+    body:
+      encoding: UTF-8
+      string: '{"id":"1381846718788887","first_name":"Dick","gender":"male","last_name":"Changsen","link":"https:\/\/www.facebook.com\/app_scoped_user_id\/1381846718788887\/","locale":"en_US","middle_name":"Amhijgafaiea","name":"Dick
+        Amhijgafaiea Changsen","timezone":0,"updated_time":"2015-01-21T04:24:16+0000","verified":false}'
+    http_version: 
+  recorded_at: Wed, 21 Jan 2015 04:24:16 GMT
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=CAAFaLLZBMqagBAOEzZAazNrZAVJx1HJbmx0Vfi7uRNm3RlCgvrGL7hHWo0zzNJ2dHuT6fJdC9Xu7XOeg4ZCUIypQFM386DUCgg6Pob6ZBqeU4ZBnkh7jOoyRiXtHWIJStDIryJMuWPv2Vh6At9DVWjny9knS4CBw02MsohX54Iux8vEFkMGZCucHukc8c2662xqwgSsAdnM5gZDZD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Last-Modified:
+      - '2015-01-21T04:24:16+0000'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fb-Rev:
+      - '1568726'
+      Etag:
+      - '"c01720780b6ec9489d8ae261b6babeeafc597408"'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Facebook-Api-Version:
+      - v2.2
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - oAN14yPVo+jK+J2RWMi64KUboHNBIchy9cb2smxQwXkOjpgzX5neEpgRK9GgZvLgpfF2l99+hOZKxrIq7wDYWQ==
+      Date:
+      - Wed, 21 Jan 2015 04:24:17 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '314'
+    body:
+      encoding: UTF-8
+      string: '{"id":"1381846718788887","first_name":"Dick","gender":"male","last_name":"Changsen","link":"https:\/\/www.facebook.com\/app_scoped_user_id\/1381846718788887\/","locale":"en_US","middle_name":"Amhijgafaiea","name":"Dick
+        Amhijgafaiea Changsen","timezone":0,"updated_time":"2015-01-21T04:24:16+0000","verified":false}'
+    http_version: 
+  recorded_at: Wed, 21 Jan 2015 04:24:17 GMT
+recorded_with: VCR 2.9.3

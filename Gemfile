@@ -19,6 +19,8 @@ gem 'carrierwave-aws'
 gem "remotipart"
 gem 'koala'
 gem "auto_html"
+gem 'vcr', '~> 2.9.3'
+gem 'webmock'
 
 
 gem 'rails-assets-semantic-ui'
