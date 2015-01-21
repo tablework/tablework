@@ -1,26 +1,6 @@
-## Customize the test machine
 machine:
-  # Version of ruby to use
   ruby:
-    version:
-      2.1.3
-
-  # Add some environment variables
+    version: 2.1.3
   environment:
     CIRCLE_ENV: test
     CODECLIMATE_REPO_TOKEN: 71d0e30563b01ad98a654442f629a11e46aeafc5ce0be1c87f4efbb4355612b1
-    
-## Customize checkout
-checkout:
-  post:
-    - git submodule sync
-    - git submodule update --init # use submodules
-
-## Customize dependencies
-dependencies:
-  pre:
-    - npm install coffee-script # install from a different package manager
-
-  override:
-    - bundle install: # note ':' here
-        timeout: 180 # fail if command has no output for 3 minutes

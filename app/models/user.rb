@@ -29,6 +29,7 @@
 #  website                :string(255)
 #  first_name             :string(255)
 #  last_name              :string(255)
+#  image                  :string(255)
 #
 
 class User < ActiveRecord::Base

@@ -9,7 +9,7 @@ class ScenesController < ApplicationController
   end
 
   def show
-    redirect_to root_path(character: Scene.find(4).scenable_type.constantize.find(Scene.find(4).scenable_id))
+    redirect_to root_path(character: Scene.find(params[:id]).scenable_type.constantize.find(Scene.find(params[:id]).scenable_id))
   end
 
   def create
