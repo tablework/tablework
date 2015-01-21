@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-feature "UserCanEditProfiles", :type => :feature do
+feature "UserCanEditProfiles", :type => :feature, vcr: {cassette_name: 'facebook', match_requests_on: [:host, :path], record: :once} do
   before do
-    auth =  create :authorization
+    @test_users = Koala::Facebook::TestUsers.new(:app_id => ENV['FACEBOOK_APP_ID'], :secret => ENV['FACEBOOK_APP_SECRET'])
+    user = @test_users.create(true, [])
     @user = create :user
+    auth = create :authorization, token: user['access_token']
     @user.authorizations << auth
   end
   scenario 'can edit' do

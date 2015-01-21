@@ -45,7 +45,6 @@ module Features
 
     def invalid_sign_in user
       invalid_mock_oauth(user)
-      p page
       visit '/'
       click_link 'Sign in with Facebook'
     end

@@ -19,5 +19,5 @@ end
 
 def go_to_sign_up_page
   visit root_path
-  click_link('Sign up')
+  click_button('Sign up')
 end

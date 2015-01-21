@@ -4,9 +4,20 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require "codeclimate-test-reporter"
+require 'vcr'
+require 'webmock/rspec'
+
 CodeClimate::TestReporter.start
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.allow_http_connections_when_no_cassette = false
+  c.ignore_localhost = true
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
