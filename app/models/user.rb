@@ -45,8 +45,10 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   has_many :characters
-  has_many :spaces, foreign_key: 'director_id'
   has_many :authorizations, dependent: :destroy
+  has_many :owned_spaces, class: Space, foreign_key: 'director_id'
+  has_many :space_memberships
+  has_many :spaces, through: :space_memberships
 
   #TC Wu's reimplementation
   def self.from_omniauth(auth, current_user)

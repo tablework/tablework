@@ -7,7 +7,7 @@ require "codeclimate-test-reporter"
 require 'vcr'
 require 'webmock/rspec'
 
-CodeClimate::TestReporter.start
+WebMock.disable_net_connect!(:allow => "codeclimate.com")
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -17,7 +17,10 @@ VCR.configure do |c|
   c.ignore_localhost = true
   c.hook_into :webmock
   c.configure_rspec_metadata!
+  c.ignore_hosts 'codeclimate.com'
 end
+
+CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
