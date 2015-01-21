@@ -1,0 +1,6 @@
+<section class="invite-email">
+  <%= simple_form_for [:space, @space_membership] do |f| %>
+    <%= f.input :email %>
+    <%= f.submit 'Invite' %>
+  <% end %>
+</section>
