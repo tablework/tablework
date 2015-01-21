@@ -14,9 +14,6 @@ module CharactersHelper
 				image_tag options[:user].image.url
 	    elsif options[:user].profile_photo
 	    	  	image_tag options[:user].profile_photo
-		elsif options[:user].instance_of?(User) && 
-			  options[:gender] == 'male' or options[:gender] == 'female'
-		  		image_tag( options[:gender]+'.jpeg', style: options[:style], class: options[:class] )
 		end
 	end
 end
