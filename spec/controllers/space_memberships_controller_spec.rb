@@ -11,12 +11,12 @@ RSpec.describe SpaceMembershipsController, :type => :controller do
 
   describe 'GET #new' do
     it "should be success" do
-      get :new
+      get :new, space_id: @space.id
       expect(response).to be_success
     end
 
     it "should have correct assigns" do
-      get :new
+      get :new, space_id: @space.id
       expect(assigns[:space_membership]).to be_instance_of(SpaceMembership)
       expect(assigns[:space_membership]).to be_new_record
     end
@@ -32,6 +32,16 @@ RSpec.describe SpaceMembershipsController, :type => :controller do
     it "should send email to space member" do
       post :create, space_id: @space.id, space_membership: { email: 'new@email.com' }
       expect(ActionMailer::Base.deliveries.last.to).to eql ['new@email.com']
+    end
+
+    it "should redirect to space" do
+      post :create, space_id: @space.id, space_membership: { email: 'new@email.com' }
+      expect(response).to redirect_to space_path(@space)
+    end
+
+    it "should have correct flash" do
+      post :create, space_id: @space.id, space_membership: { email: 'new@email.com' }
+      expect(flash[:notice]).to eql 'Invitation sent'
     end
   end
 end

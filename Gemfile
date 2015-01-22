@@ -19,8 +19,6 @@ gem 'carrierwave-aws'
 gem "remotipart"
 gem 'koala'
 gem "auto_html"
-gem 'vcr', '~> 2.9.3'
-gem 'webmock'
 
 
 gem 'rails-assets-semantic-ui'
@@ -38,6 +36,12 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'better_errors'
+  gem 'letter_opener'
+end
+
+group :test do
+  gem 'vcr', '~> 2.9.3'
+  gem 'webmock'
 end
 
 gem "codeclimate-test-reporter", group: :test, require: nil

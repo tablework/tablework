@@ -49,11 +49,9 @@ RSpec.describe Space, :type => :model do
     end
 
     it "has many space_memberships" do
-      space_membership_1 = create :space_membership
-      space_membership_2 = create :space_membership
-      space.space_memberships << space_membership_1
-      space.space_memberships << space_membership_2
-      expect(space.space_memberships.to_a).to eql [space_membership_1, space_membership_2]
+      space_membership = create :space_membership
+      space.space_memberships << space_membership
+      expect(space.space_memberships.to_a).to eql [space_membership]
     end
 
     it "has many users through space space_memberships" do

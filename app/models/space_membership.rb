@@ -4,8 +4,10 @@ class SpaceMembership < ActiveRecord::Base
 
   before_validation :set_token
 
+  validates :email, uniqueness: true
+
   def send_invite
-    SpaceMembershipMailer.send_invite(self.email).deliver
+    SpaceMembershipMailer.send_invite(self).deliver
   end
 
   private

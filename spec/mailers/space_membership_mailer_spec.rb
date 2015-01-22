@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe SpaceMembershipMailer, :type => :mailer do
   describe 'send_invite' do
-    let(:space_membership) { create :space_membership }
-    let(:mail) { SpaceMembershipMailer.send_invite(space_membership) }
+    let!(:space_membership) { create :space_membership }
+    let!(:mail) { SpaceMembershipMailer.send_invite(space_membership) }
 
     it 'renders the subject' do
       expect(mail.subject).to eql('Invitation to join rehearsal space')
@@ -21,8 +21,8 @@ RSpec.describe SpaceMembershipMailer, :type => :mailer do
       expect(mail.body.encoded).to match(space_membership.token)
     end
 
-    it 'assigns @confirmation_path' do
-      expect(mail.body.encoded).to match("/space_memberships/#{space_membership.id}/invitation_confirmation/#{space_membership.token}")
+    it 'assigns @confirmation_url' do
+      expect(mail.body.encoded).to match("space_memberships/#{space_membership.id}/invitation_confirmation/#{space_membership.token}")
     end
   end
 end
