@@ -75,3 +75,19 @@ aside {
     }
   }
 }
+.link{
+  text-transform: uppercase;
+  
+}
+.orange {
+  color: $orange;
+}
+
+.row{
+  clear:both;
+  padding-top:1.5em;
+}
+
+.camelcase{
+  text-transform: capitalize;
+}
