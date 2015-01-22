@@ -7,12 +7,11 @@
   <% end %>
   <%= link_to("Learning Centre", "#" , class: 'item') %>
   <section class="right menu">
-    <a class="item">
-      <img src="images/bell.jpg" />
-    </a>
-    <a class="item">
-      <img src="images/login.jpg" />
-    </a>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item') %>
+    <%= link_to '#', class: 'item' do  %>
+      <%= image_tag 'bell.png', style: 'width: 20px;height:25px;' %>
+    <% end %>
+    <%= link_to destroy_user_session_path, :method => :delete, class: 'item' do %>
+      <%= image_tag 'profile.png', style: 'width: 25px;height:25px;' %>
+    <% end %>
   </section>
 </section>
