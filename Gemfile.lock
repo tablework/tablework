@@ -126,6 +126,8 @@ GEM
       multi_json
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     meta_request (0.3.4)
@@ -287,6 +289,7 @@ DEPENDENCIES
   jquery-rails
   koala
   launchy
+  letter_opener
   meta_request
   neat
   omniauth-facebook

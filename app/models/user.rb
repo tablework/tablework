@@ -39,14 +39,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable,
          :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-  validates :username, uniqueness: true
   validate :valid_gender
   before_validation { self.gender.downcase! if self.gender }
   mount_uploader :image, ImageUploader
 
   has_many :characters
-  has_many :spaces, foreign_key: 'director_id'
   has_many :authorizations, dependent: :destroy
+  has_many :owned_spaces, class: Space, foreign_key: 'director_id'
+  has_many :space_memberships
+  has_many :spaces, through: :space_memberships
 
   #TC Wu's reimplementation
   def self.from_omniauth(auth, current_user)

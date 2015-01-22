@@ -40,9 +40,9 @@
       </section>
       <section class="content">
         <ul>
-          <% if current_user.spaces.present? %>
-            <% current_user.spaces.each do | space | %>
-            <%= link_to space do %>
+          <% if current_user.owned_spaces.present? %>
+            <% current_user.owned_spaces.each do | space | %>
+            <%= link_to space, id: "space-#{space.id}" do %>
             <li class="ui grid">
               <div class="four wide column">
                 <div style="background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"></div>

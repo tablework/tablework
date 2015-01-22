@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120092610) do
+ActiveRecord::Schema.define(version: 20150121104635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150120092610) do
     t.string   "type_of_play"
     t.integer  "age"
     t.string   "occupation"
-    t.hstore   "fields",       default: {}
+    t.hstore   "fields",       default: ""
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -79,6 +79,20 @@ ActiveRecord::Schema.define(version: 20150120092610) do
   end
 
   add_index "scenes", ["scenable_id"], name: "index_scenes_on_scenable_id", using: :btree
+
+  create_table "space_memberships", force: true do |t|
+    t.integer  "space_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+    t.string   "token"
+  end
+
+  add_index "space_memberships", ["email"], name: "index_space_memberships_on_email", using: :btree
+  add_index "space_memberships", ["space_id"], name: "index_space_memberships_on_space_id", using: :btree
+  add_index "space_memberships", ["token"], name: "index_space_memberships_on_token", unique: true, using: :btree
+  add_index "space_memberships", ["user_id"], name: "index_space_memberships_on_user_id", using: :btree
 
   create_table "spaces", force: true do |t|
     t.string   "name"
