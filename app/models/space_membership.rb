@@ -4,7 +4,7 @@ class SpaceMembership < ActiveRecord::Base
 
   before_validation :set_token
 
-  validates :email, uniqueness: true
+  validate :uniqueness_in_emails_for_space
 
   def send_invite
     SpaceMembershipMailer.send_invite(self).deliver
@@ -16,6 +16,12 @@ class SpaceMembership < ActiveRecord::Base
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64
       break random_token unless SpaceMembership.find_by(token: random_token).present?
+    end
+  end
+
+  def uniqueness_in_emails_for_space
+    if SpaceMembership.find_by(email: self.email, space_id: self.space_id).present?
+      errors.add(:email, "User already invited") if self.new_record?
     end
   end
 end
