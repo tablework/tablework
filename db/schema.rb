@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150121104635) do
     t.string   "type_of_play"
     t.integer  "age"
     t.string   "occupation"
-    t.hstore   "fields",       default: ""
+    t.hstore   "fields",       default: {}
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

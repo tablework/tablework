@@ -14,28 +14,33 @@
       <section class="ui grid">
         <% scene.notes.order('created_at ASC').each do |note |%>
           <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
-            <section class="header">
-              <h3>
+            <div class="row right floated left aligned">
+              <%= link_to polymorphic_path([scene, note], action: :edit) do %>
+                <i class="arrow left icon"></i>
+                <span class="link">Edit</span>
+              <% end %>
+              <%= link_to polymorphic_path([scene, note], action: :edit) do %>
+                <i class="arrow left icon"></i>
+                <span class="link orange">Delete</span>
+              <% end %>
+            </div>
+            <div class="row">
+              <h3 class="camelcase">
                 <%= link_to note.link do %>
                   <%= note.title %>
                 <% end %>
               </h3>
-            </section>
-            <section class="content">
+            </div>
+            <div class="row">
               <%= simple_format note.text %>
-            </section>
+            </div>
             <section>
               <%= note.link_html %>
             </section>
             <section class="image center">
               <%= image_tag note.image.url, style: 'width: 25%; height:25%' if note.image %>
             </section>
-            <section class="extra content">
-              <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                  <i class="arrow left icon"></i>
-                  Edit
-              <% end %>
-            </section>
+            
           </section>
         <% end %>
       </section>
