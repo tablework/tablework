@@ -79,15 +79,63 @@ aside {
   text-transform: uppercase;
   
 }
-.orange {
-  color: $orange;
-}
 
 .row{
   clear:both;
   padding-top:1.5em;
 }
 
-.camelcase{
+.capitalize{
   text-transform: capitalize;
+}
+
+.grey{
+  color: $grey-4;
+}
+
+.page-header{
+  font-size: 1.5em;
+}
+
+.section-header{
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 2.5em;
+}
+
+.content .description p{
+  border-bottom: 1px solid $grey-3;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+
+}
+
+.edit-link{
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  color: $orange;
+}
+
+.image-portrait { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+h2 { 
+   position: absolute; 
+   color: $grey-1;
+   top: 130px; 
+   left: 0; 
+   padding-left: 14px;
+   width: 100%; 
+}
+
+.border-bottom{
+  border-bottom: 1px solid $grey-3;
+  padding:25px 0px;
+}
+
+.orange{
+  color: $orange;
 }
