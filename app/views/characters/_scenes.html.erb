@@ -17,15 +17,15 @@
             <div class="row right floated left aligned">
               <%= link_to polymorphic_path([scene, note], action: :edit) do %>
                 <i class="arrow left icon"></i>
-                <span class="link">Edit</span>
+                <span class="link edit-link">Edit</span>
               <% end %>
               <%= link_to polymorphic_path([scene, note], action: :edit) do %>
                 <i class="arrow left icon"></i>
-                <span class="link orange">Delete</span>
+                <span class="link">Delete</span>
               <% end %>
             </div>
             <div class="row">
-              <h3 class="camelcase">
+              <h3 class="capitalize">
                 <%= link_to note.link do %>
                   <%= note.title %>
                 <% end %>
@@ -34,7 +34,7 @@
             <div class="row">
               <%= simple_format note.text %>
             </div>
-            <section>
+            <section class="scenes-note">
               <%= note.link_html %>
             </section>
             <section class="image center">

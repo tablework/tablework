@@ -10,3 +10,42 @@
 .ui.card {
   border: 1px solid #ececec !important;
 }
+
+
+.scenes-note {
+	display: inline-flex;
+	flex-wrap: wrap;
+	margin-top:10px;
+	p {
+		margin: 0;
+		padding: 0;
+	}
+	br {
+		display: none;
+	}
+	a {
+		margin-right:10px;
+		display: inline-block;
+		height: 150px;
+		width: 200px;
+		background: $bg-light;
+		overflow: hidden;
+		float: left;
+		margin-top:10px;
+	}
+	img {
+		margin-top:10px;
+		@include shadow();
+		margin-right:10px;
+		width: 200px;
+		height: 150px;
+	}
+
+	.video.youtube{
+		margin-top:10px;
+		@include shadow();
+		margin-right:10px;
+		width:200px;
+		height: 150px;
+	}
+}
