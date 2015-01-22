@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       resources :notes
     end
 
-    resources :space_memberships
+    resources :space_memberships do
+      collection do
+        get '/confirm/:token', to: 'space_memberships#confirm', as: 'confirm_invite'
+      end
+    end
   end
 
   resources :scenes do

@@ -44,4 +44,21 @@ RSpec.describe SpaceMembershipsController, :type => :controller do
       expect(flash[:notice]).to eql 'Invitation sent'
     end
   end
+
+  describe 'GET #confirm' do
+    before do
+      @user = create :user, email: 'new_user@email.com'
+      @space_membership = create :space_membership, email: @user.email, space: @space
+    end
+
+    it "should add user to space membership" do
+      get :confirm, space_id: @space.id, token: @space_membership.token
+      expect(@space_membership.reload.user).to eql User.find_by(email: @user.email)
+    end
+
+    it "should redirect to space" do
+      get :confirm, space_id: @space.id, token: @space_membership.token
+      expect(response).to redirect_to space_path(@space)
+    end
+  end
 end
