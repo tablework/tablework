@@ -39,7 +39,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable,
          :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-  # validates :username, uniqueness: true
   validate :valid_gender
   before_validation { self.gender.downcase! if self.gender }
   mount_uploader :image, ImageUploader

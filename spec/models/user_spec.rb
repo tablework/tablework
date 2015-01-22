@@ -54,12 +54,6 @@ RSpec.describe User, :type => :model do
 
   describe 'validations' do
     context 'invalid' do
-      it "username not unique" do
-        new_user = create :user, username: 'Name'
-        subject.username = 'Name'
-        expect(subject).not_to be_valid
-      end
-
       it "using invalid gender" do
         ['invalid', 'Gender'].each do |invalid|
           subject.gender = invalid
