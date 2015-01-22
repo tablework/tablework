@@ -17,6 +17,8 @@
       <% end %>
     </section>
     <footer class="extra content">
-      <a href="#"><i class="plus icon"></i> ADD CAST</a>
+      <%= link_to new_space_space_membership_path(@space), id: 'add-cast' do %>
+        <i class="plus icon"></i> ADD CAST
+      <% end %>
     </footer>
   </section>
