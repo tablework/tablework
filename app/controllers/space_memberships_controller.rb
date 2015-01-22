@@ -17,7 +17,8 @@ class SpaceMembershipsController < ApplicationController
 
   def confirm
     @space_membership = SpaceMembership.find_by(token: params[:token])
-    @space_membership.user = User.find_by(email: @space_membership.email)
+    @space_membership.user = current_user
+    @space_membership.email = current_user.email
     if @space_membership.save
       redirect_to @space_membership.space
     else
