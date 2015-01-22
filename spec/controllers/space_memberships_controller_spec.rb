@@ -52,8 +52,10 @@ RSpec.describe SpaceMembershipsController, :type => :controller do
     end
 
     it "should add user to space membership" do
+      user = create :user
+      sign_in :user, user
       get :confirm, space_id: @space.id, token: @space_membership.token
-      expect(@space_membership.reload.user).to eql User.find_by(email: @user.email)
+      expect(@space_membership.reload.user).to eql User.find_by(email: user.email)
     end
 
     it "should redirect to space" do
