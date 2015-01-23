@@ -3,39 +3,82 @@
 </section>
 
 <section class="container-flex">
-<section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
-            <div class="row right floated left aligned">
-              
-                <i class="arrow left icon"></i>
-                <span class="link edit-link">Edit</span>
-                <i class="arrow left icon"></i>
-                <span class="link">Delete</span>
-              
-            </div>
-            <div class="row">
-              <h3 class="capitalize">
-                <%= link_to note.link do %>
-                  <%= note.title %>
-                <% end %>
-              </h3>
-            </div>
-            <div class="row">
-              <%= simple_format note.text %>
-            </div>
-            <section class="scenes-note">
-              <%= note.link_html %>
-            </section>
-            <section class="image center">
-              <%= image_tag note.image.url, style: 'width: 25%; height:25%' if note.image %>
-            </section>
-            
-          </section>
+
   <%= render 'spaces/casts' %>
+
   <% @space.scenes.order('created_at ASC').each do |scene| %>
-    <section class="ui card list shadow">
+    <section class="ui card list shadow ">
       <header class="header">
         <h3><%= scene.title %></h3>
       </header>
+      <div class="offset-research">
+        <section class="sixteen wide column ui shadow card " >
+        <div class="ui right aligned segment clear-borders">
+            <i class="arrow left icon"></i>
+            <span class="link edit-link">Edit</span>
+            <i class="arrow left icon"></i>
+            <span class="link">Delete</span>
+        </div>
+        <div class="row">
+          <h3 class="capitalize offset-research">
+              Politics
+          </h3>
+        </div>
+        <section class="content description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        </section>
+        <section>
+          <p class="offset-research subheader">
+            Media
+          </p>
+        </section>
+        <section class="meta">
+          <div class="offset-research">
+            <div class="ui feed">
+              <div class="event">
+                <div >
+                  <%=
+                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
+                  %>
+                </div>
+                <div class="content">
+                  You added Elliot Fu to the group <a>Coworkers</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="offset-research">
+            <div class="ui feed">
+              <div class="event">
+                <div >
+                  <%=
+                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
+                  %>
+                </div>
+                <div class="content">
+                  You added Elliot Fu to the group <a>Coworkers</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="offset-research">
+            <div class="ui feed">
+              <div class="event">
+                <div >
+                  <%=
+                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
+                  %>
+                </div>
+                <div class="content">
+                  You added Elliot Fu to the group <a>Coworkers</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </section>
+      </div>
       <section class="content scene-content">
         <section id="js-note-start-scene-<%= scene.id %>"></section>
         <div class="column">
