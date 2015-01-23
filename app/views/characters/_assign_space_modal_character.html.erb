@@ -4,11 +4,11 @@
     <p>Join a Space</p>
     <small>Choose the space you want your character to join.</small>
   </section>
-  <% if current_user.spaces.present?  %>
+  <% if current_user.owned_spaces.present?  %>
     <section class="content">
       <ul>
         <%= form_for character do |f| %>
-          <% current_user.spaces.each do |space| %>
+          <% current_user.owned_spaces.each do |space| %>
             <li style="list-style:none">
               <label class="ui grid">
                 <div class="one wide column">
