@@ -11,18 +11,16 @@
         </h3>
       </section>
       <section class="content">
-        <section class="ui grid">
-          <% scene.notes.order('created_at ASC').each do |note |%>
-            <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
-              <section class="row">
-                <section class="left floated right aligned">
-                  <h3 class="capitalize">
-                    <%= link_to note.link do %>
-                      <%= note.title %>
-                    <% end %>
-                  </h3>
+        <% scene.notes.order('created_at ASC').each do |note |%>
+          <section class="ui fluid accordion" id="note-<%= note.id %>">
+            <section class="title" style="line-height:2">
+              <section class="row" style="height:30px;">
+                <section class="capitalize" style="float:left;">
+                  <%= link_to note.link do %>
+                    <%= note.title %>
+                  <% end %>
                 </section>
-                <div class="right floated left aligned">
+                <section style="float:right;">
                   <%= link_to polymorphic_path([scene, note], action: :edit) do %>
                     <i class="arrow left icon"></i>
                     <span class="link edit-link">Edit</span>
@@ -31,22 +29,20 @@
                     <i class="arrow left icon"></i>
                     <span class="link">Delete</span>
                   <% end %>
-                </div>
-              </section>
-              <div class="row">
-                <%= simple_format note.text %>
-              </div>
-              <section class="scenes-note centered">
-                <%= image_tag note.image.url if note.image.url.present? %>
-                <% '' %>
-                <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
-              </section>
-              <section class="image center">
+                </section>
               </section>
             </section>
-          <% end %>
-        </section>
-        <section class="ui segment"></section>
+            <section class="content ui card fluid">
+              <section class="row">
+                <%= simple_format note.text %>
+              </section>
+              <section class="scenes-note row">
+                <%= image_tag note.image.url if note.image.url.present? %>
+                <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
+              </section>
+            </section>
+          </section>
+        <% end %>
       </section>
     <% end %>
     <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button attached bottom', remote: false do %>

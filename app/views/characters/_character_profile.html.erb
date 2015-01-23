@@ -1,6 +1,6 @@
-<section id="character-<%= character.id %>" class="profile ui grid">
+<section id="character-<%= character.id %>" class="character-profile ui grid">
   <%= render 'characters/header', character: character %>
   <%= render 'characters/profile', character: character %>
-  <%= render 'characters/notes', character: character %>
-  <%= render 'characters/scenes', character: character %>
 </section>
+<%= render 'characters/notes', character: character %>
+<%= render 'characters/scenes', character: character %>

@@ -24,25 +24,41 @@
     display: none;
   }
   a {
+    @include shadow();
     display: inline-block;
-    height: 150px;
-    width: 180px;
+    height: 180px;
+    width: 235px;
     background: $bg-light;
     overflow: hidden;
     float: left;
-    margin: 5.666667px 5.666667px;
+    margin: 5px 5px;
+    word-wrap: break-word;
+    text-align: center;
+    padding: 55px;
   }
   img {
     @include shadow();
-    width: 180px;
-    height: 150px;
-    margin: 5.666667px 5.666667px;
+    width: 235px;
+    height: 180px;
+    margin: 5px 5px;
   }
 
   .video.youtube{
     @include shadow();
-    width:180px;
-    height: 150px;
-    margin: 5.666667px 5.666667px;
+    width:235px;
+    height: 180px;
+    margin: 5px 5px;
+  }
+}
+
+.character-profile {
+  .ui.card {
+    .image-text {
+      position: absolute;
+      top: 130px;
+      margin-left: 16px;
+      color: $body-light;
+      text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.8);
+    }
   }
 }
