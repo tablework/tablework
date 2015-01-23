@@ -1,5 +1,5 @@
 <div>
   Hello
   <%= @token %>
-  <%= link_to 'Join Space', @confirmation_url %>
+  <%= link_to 'Join Space', confirm_invite_space_space_memberships_url(@space_membership.space.id, @space_membership.token) %>
 </div>
