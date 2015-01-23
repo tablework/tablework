@@ -19,7 +19,7 @@ gem 'carrierwave-aws'
 gem "remotipart"
 gem 'koala'
 gem "auto_html"
-
+gem 'jquery-ui-rails'
 
 gem 'rails-assets-semantic-ui'
 
