@@ -3,8 +3,34 @@
 </section>
 
 <section class="container-flex">
+<section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
+            <div class="row right floated left aligned">
+              
+                <i class="arrow left icon"></i>
+                <span class="link edit-link">Edit</span>
+                <i class="arrow left icon"></i>
+                <span class="link">Delete</span>
+              
+            </div>
+            <div class="row">
+              <h3 class="capitalize">
+                <%= link_to note.link do %>
+                  <%= note.title %>
+                <% end %>
+              </h3>
+            </div>
+            <div class="row">
+              <%= simple_format note.text %>
+            </div>
+            <section class="scenes-note">
+              <%= note.link_html %>
+            </section>
+            <section class="image center">
+              <%= image_tag note.image.url, style: 'width: 25%; height:25%' if note.image %>
+            </section>
+            
+          </section>
   <%= render 'spaces/casts' %>
-  <div>aaa</div>
   <% @space.scenes.order('created_at ASC').each do |scene| %>
     <section class="ui card list shadow">
       <header class="header">
