@@ -3,6 +3,7 @@ class SpaceMembershipMailer < ActionMailer::Base
 
   def send_invite space_membership
     @confirmation_url = confirm_invite_space_space_memberships_url(space_membership.space.id, space_membership.token)
+    @space_membership = space_membership
     mail to: space_membership.email, subject: 'Invitation to join rehearsal space'
   end
 end
