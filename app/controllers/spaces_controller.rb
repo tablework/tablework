@@ -6,7 +6,7 @@ class SpacesController < ApplicationController
   end
 
   def create
-    @space = @user.spaces.build(space_params)
+    @space = @user.owned_spaces.build(space_params)
     if @space.save
       flash[:notice] = "Successfully added a new space."
       redirect_to root_path

@@ -131,6 +131,14 @@ h2 {
    width: 100%; 
 }
 
+.scene-content-add{
+  background-color: #e8e8e8;
+  display: block;
+  height: 50px;
+  padding: 30px 40px;
+
+}
+
 .border-bottom{
   border-bottom: 1px solid $grey-3;
   padding:25px 0px;
@@ -138,4 +146,20 @@ h2 {
 
 .orange{
   color: $orange;
+}
+
+.background{
+  display: inline-block;
+  width:50%;
+  text-align:center;
+
+}
+
+.centered {
+  display: block;
+  width: 100%;
+  vertical-align: middle;
+  text-align: center;
+  background-color:#e8e8e8 !important;
+  border-radius:0px !important;
 }
