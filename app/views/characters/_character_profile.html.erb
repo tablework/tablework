@@ -4,11 +4,3 @@
   <%= render 'characters/notes', character: character %>
   <%= render 'characters/scenes', character: character %>
 </section>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#character-<%= character.id %> .backstory .js-edit-description').click(function() {
-      $(this).parent().toggle();
-      $('#character-<%= character.id %> .backstory .edit-profile-form').toggle();
-    });
-  })
-</script>
