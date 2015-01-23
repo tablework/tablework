@@ -56,7 +56,27 @@
             <% end %>
           <% else %>
             <li>
-              <p>No space added</p>
+              <p>No owned space added</p>
+            </li>
+          <% end %>
+          <li><hr></li>
+          <% if current_user.spaces.present? %>
+            <% current_user.spaces.each do | space | %>
+            <%= link_to space, id: "space-#{space.id}" do %>
+            <li class="ui grid">
+              <div class="four wide column">
+                <div style="background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"></div>
+              </div>
+              <div class="twelve wide column">
+                <p> <%= space.name %> </p>
+                <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+              </div>
+            </li>
+            <% end %>
+            <% end %>
+          <% else %>
+            <li>
+              <p>No owned space added</p>
             </li>
           <% end %>
         </ul>

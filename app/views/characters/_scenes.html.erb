@@ -1,50 +1,53 @@
 <section class="row scenes">
   <section class="header row">
     <h2>Scenes</h2>
-    <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button primary', remote: false do %>
-      <i class="arrow left circle icon"></i>
-      <span>Add scene</span>
-    <% end %>
   </section>
-  <hr>
-  <% character.scenes.order('created_at ASC').each do |scene| %>
-    <section class="content row">
-      <h3><%= scene.title.titleize %></h3>
-      <span><i class="icon minus"></i></span>
-      <section class="ui grid">aaa
+  <section class="ui styled accordion">
+    <% character.scenes.order('created_at ASC').each do |scene| %>
+      <section class="title">
+        <h3>
+          <i class="dropdown icon"></i>
+          <%= scene.title.titleize %>
+        </h3>
+      </section>
+      <section class="content">
         <% scene.notes.order('created_at ASC').each do |note |%>
-          <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
-            <div class="row right floated left aligned">
-              <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                <i class="arrow left icon"></i>
-                <span class="link edit-link">Edit</span>
-              <% end %>
-              <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                <i class="arrow left icon"></i>
-                <span class="link">Delete</span>
-              <% end %>
-            </div>
-            <div class="row">
-              <h3 class="capitalize">
-                <%= link_to note.link do %>
-                  <%= note.title %>
-                <% end %>
-              </h3>
-            </div>
-            <div class="row">
-              <%= simple_format note.text %>
-            </div>
-            <section class="scenes-note">
-              <%= note.link_html %>
+          <section class="ui fluid accordion" id="note-<%= note.id %>">
+            <section class="title" style="line-height:2">
+              <section class="row" style="height:30px;">
+                <section class="capitalize" style="float:left;">
+                  <%= link_to note.link do %>
+                    <%= note.title %>
+                  <% end %>
+                </section>
+                <section style="float:right;">
+                  <%= link_to polymorphic_path([scene, note], action: :edit) do %>
+                    <i class="arrow left icon"></i>
+                    <span class="link edit-link">Edit</span>
+                  <% end %>
+                  <%= link_to polymorphic_path([scene, note], action: :edit) do %>
+                    <i class="arrow left icon"></i>
+                    <span class="link">Delete</span>
+                  <% end %>
+                </section>
+              </section>
             </section>
-            <section class="image center">
-              <%= image_tag note.image.url, style: 'width: 25%; height:25%' if note.image %>
+            <section class="content ui card fluid">
+              <section class="row">
+                <%= simple_format note.text %>
+              </section>
+              <section class="scenes-note row">
+                <%= image_tag note.image.url if note.image.url.present? %>
+                <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
+              </section>
             </section>
-            
           </section>
         <% end %>
       </section>
-      <section class="ui segment"></section>
-    </section>
-  <% end %>
+    <% end %>
+    <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button attached bottom', remote: false do %>
+      <i class="plus circle icon"></i>
+      <span>Add scene</span>
+    <% end %>
+  </section>
 </section>

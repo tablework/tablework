@@ -21,7 +21,7 @@ class Note < ActiveRecord::Base
   auto_html_for :link do
     html_escape
     image
-    youtube(:width => 200, :height => 150, :autoplay => false)
+    youtube(:width => 235, :height => 180, :autoplay => false)
     link :target => "_blank", :rel => "nofollow"
     simple_format
   end

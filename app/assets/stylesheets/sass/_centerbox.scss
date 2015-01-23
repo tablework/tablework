@@ -7,8 +7,7 @@
     @include base-normal();
     @include text-headline();
     color: $primary;
-    margin-top: 0;
-    margin-bottom: 36px;
+    margin: 0;
   }
   .ui.button {
     -webkit-border-radius: $small-rad;
@@ -22,5 +21,8 @@
   }
   &.hidden {
     display:none !important;
+  }
+  a {
+    color: $grey-4;
   }
 }

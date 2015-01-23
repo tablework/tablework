@@ -1,11 +1,11 @@
 <section class="row">
-    <section class="five wide column left aligned">
+    <section class="six wide column left aligned">
       <section class="ui card">
         <div class="image-portrait">
           <%= user_portrait style: 'width:100%;height:100%', gender: character.gender %>
-          <h2 class="image-text">
+          <h4 class="image-text">
             <%= character.name %>
-          </h2>
+          </h4>
         </div>
         <div class="extra content">
           <p>
@@ -20,17 +20,29 @@
         </div>
       </section>
     </section>
-    
-    <section class="backstory eleven wide column">
+
+    <section id="character-backstory-<%= character.id  %>" class="backstory ten wide column">
       <div class="section-header">Backstory</div>
       <%= simple_form_for character, remote: true, html: { style: 'display:none', class: "edit-profile-form", :multipart => true } do |f| %>
-        <%= f.input :description, label: false %>
-        <%= f.submit 'SAVE' %>
+        <div class="form-inputs">
+          <%= f.input :description, label: false, :input_html => {:rows => 11} %>
+          <%= f.submit 'SAVE' %>
+        </div>
       <% end %>
       <section class="content">
-        <section class="description"><%= simple_format character.description %></section>
-        <button class="edit-link">Edit</button>
+        <div class="form-inputs">
+          <section class="description"><%= simple_format(character.description).gsub("\n", "<br />").html_safe %></section>
+          <button id="js-edit-backstory-<%= character.id %>" class="edit-link button", style='background: #F8F8F8;width: 100%;padding: 10px 12px;margin: 5px 0;border: 1px solid #ECECEC;'>Edit</button>
+        </div>
       </section>
     </section>
-    <div class="border-bottom"></div>
 </section>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#js-edit-backstory-<%= character.id  %>').click(function() {
+      $(this).parent().toggle();
+      $('#character-<%= character.id %> .backstory .edit-profile-form').toggle();
+    });
+  })
+</script>
