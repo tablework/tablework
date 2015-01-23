@@ -13,39 +13,52 @@
 
 
 .scenes-note {
-	display: inline-flex;
-	flex-wrap: wrap;
-	margin-top:10px;
-	p {
-		margin: 0;
-		padding: 0;
-	}
-	br {
-		display: none;
-	}
-	a {
-		margin-right:10px;
-		display: inline-block;
-		height: 150px;
-		width: 200px;
-		background: $bg-light;
-		overflow: hidden;
-		float: left;
-		margin-top:10px;
-	}
-	img {
-		margin-top:10px;
-		@include shadow();
-		margin-right:10px;
-		width: 200px;
-		height: 150px;
-	}
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top:10px;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  br {
+    display: none;
+  }
+  a {
+    @include shadow();
+    display: inline-block;
+    height: 180px;
+    width: 235px;
+    background: $bg-light;
+    overflow: hidden;
+    float: left;
+    margin: 5px 5px;
+    word-wrap: break-word;
+    text-align: center;
+    padding: 55px;
+  }
+  img {
+    @include shadow();
+    width: 235px;
+    height: 180px;
+    margin: 5px 5px;
+  }
 
-	.video.youtube{
-		margin-top:10px;
-		@include shadow();
-		margin-right:10px;
-		width:200px;
-		height: 150px;
-	}
+  .video.youtube{
+    @include shadow();
+    width:235px;
+    height: 180px;
+    margin: 5px 5px;
+  }
+}
+
+.character-profile {
+  .ui.card {
+    .image-text {
+      position: absolute;
+      top: 130px;
+      margin-left: 16px;
+      color: $body-light;
+      text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.8);
+    }
+  }
 }

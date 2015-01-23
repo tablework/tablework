@@ -1,32 +1,39 @@
 <section class="row notes">
   <h2>Notes</h2>
-  <%= link_to add_note_character_path(character.id), class: 'sixteen wide column ui button', remote: true do %>
-    <i class="arrow left circle icon"></i>
-    <span>Add note</span>
-  <% end %>
-  <section id="note-start-<%= character.id %>"></section>
-  <% character.notes.order('updated_at DESC').each do |note |%>
-    <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
-      <section class="header">
-        <h3><%= note.title %></h3>
+  <section class="ui styled fluid accordion">
+    <% character.notes.order('updated_at DESC').each do |note |%>
+      <section class="title" style="line-height:2">
+        <section class="row" style="height:30px;">
+          <section class="capitalize" style="float:left;">
+            <%= link_to note.link do %>
+              <%= note.title %>
+            <% end %>
+          </section>
+          <section style="float:right;">
+            <%= link_to polymorphic_path([character, note], action: :edit) do %>
+              <i class="arrow left icon"></i>
+              <span class="link edit-link">Edit</span>
+            <% end %>
+            <%= link_to polymorphic_path([character, note], action: :edit) do %>
+              <i class="arrow left icon"></i>
+              <span class="link">Delete</span>
+            <% end %>
+          </section>
+        </section>
       </section>
       <section class="content">
-        <%= note.text %>
+        <section class="row">
+          <%= simple_format note.text %>
+        </section>
+        <section class="scenes-note row">
+          <%= image_tag note.image.url if note.image.url.present? %>
+          <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
+        </section>
       </section>
-      <section class="meta">
-        <section class="link"><%= note.link %></section>
-      </section>
-      <section class="extra content">
-        <%= link_to polymorphic_path([character, note], action: :edit) do %>
-            <i class="arrow left icon"></i>
-            Edit
-        <% end %>
-        &nbsp;
-        <%= link_to remove_note_path(note.id), method: :delete, remote: true, data: {confirm: 'Are you sure'} do %>
-            <i class="minus icon"></i>
-            Delete
-        <% end %>
-      </section>
-    </section>
-  <% end %>
+    <% end %>
+    <%= link_to add_note_character_path(character.id), class: 'ui button attached bottom', remote: true do %>
+      <i class="arrow left circle icon"></i>
+      <span>Add note</span>
+    <% end %>
+  </section>
 </section>
