@@ -1,52 +1,57 @@
 <section class="row scenes">
   <section class="header row">
     <h2>Scenes</h2>
-    <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button primary', remote: false do %>
-      <i class="arrow left circle icon"></i>
+  </section>
+  <section class="ui styled accordion">
+    <% character.scenes.order('created_at ASC').each do |scene| %>
+      <section class="title">
+        <h3>
+          <i class="dropdown icon"></i>
+          <%= scene.title.titleize %>
+        </h3>
+      </section>
+      <section class="content">
+        <section class="ui grid">
+          <% scene.notes.order('created_at ASC').each do |note |%>
+            <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
+              <section class="row">
+                <section class="left floated right aligned">
+                  <h3 class="capitalize">
+                    <%= link_to note.link do %>
+                      <%= note.title %>
+                    <% end %>
+                  </h3>
+                </section>
+                <div class="right floated left aligned">
+                  <%= link_to polymorphic_path([scene, note], action: :edit) do %>
+                    <i class="arrow left icon"></i>
+                    <span class="link edit-link">Edit</span>
+                  <% end %>
+                  <%= link_to polymorphic_path([scene, note], action: :edit) do %>
+                    <i class="arrow left icon"></i>
+                    <span class="link">Delete</span>
+                  <% end %>
+                </div>
+              </section>
+              <div class="row">
+                <%= simple_format note.text %>
+              </div>
+              <section class="scenes-note centered">
+                <%= image_tag note.image.url if note.image.url.present? %>
+                <% '' %>
+                <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
+              </section>
+              <section class="image center">
+              </section>
+            </section>
+          <% end %>
+        </section>
+        <section class="ui segment"></section>
+      </section>
+    <% end %>
+    <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button attached bottom', remote: false do %>
+      <i class="plus circle icon"></i>
       <span>Add scene</span>
     <% end %>
   </section>
-  <hr>
-  <% character.scenes.order('created_at ASC').each do |scene| %>
-    <section class="content row">
-      <h3><%= scene.title.titleize %></h3>
-      <span><i class="icon minus"></i></span>
-      <section class="ui grid">aaa
-        <% scene.notes.order('created_at ASC').each do |note |%>
-          <section class="sixteen wide column ui shadow card" style="margin: 20px 0" id="note-<%= note.id %>">
-            <section class="row">
-              <section class="left floated right aligned">
-                <h3 class="capitalize">
-                  <%= link_to note.link do %>
-                    <%= note.title %>
-                  <% end %>
-                </h3>
-              </section>
-              <div class="right floated left aligned">
-                <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                  <i class="arrow left icon"></i>
-                  <span class="link edit-link">Edit</span>
-                <% end %>
-                <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                  <i class="arrow left icon"></i>
-                  <span class="link">Delete</span>
-                <% end %>
-              </div>
-            </section>
-            <div class="row">
-              <%= simple_format note.text %>
-            </div>
-            <section class="scenes-note centered">
-              <%= image_tag note.image.url if note.image.url.present? %>
-              <% '' %>
-              <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
-            </section>
-            <section class="image center">
-            </section>
-          </section>
-        <% end %>
-      </section>
-      <section class="ui segment"></section>
-    </section>
-  <% end %>
 </section>

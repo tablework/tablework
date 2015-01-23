@@ -20,8 +20,8 @@
         </div>
       </section>
     </section>
-    
-    <section class="backstory eleven wide column">
+
+    <section id="character-backstory-<%= character.id  %>" class="backstory eleven wide column">
       <div class="section-header">Backstory</div>
       <%= simple_form_for character, remote: true, html: { style: 'display:none', class: "edit-profile-form", :multipart => true } do |f| %>
         <%= f.input :description, label: false %>
@@ -29,8 +29,16 @@
       <% end %>
       <section class="content">
         <section class="description"><%= simple_format character.description %></section>
-        <button class="edit-link">Edit</button>
+        <button id="js-edit-backstory-<%= character.id %>" class="edit-link">Edit</button>
       </section>
     </section>
-    <div class="border-bottom"></div>
 </section>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#js-edit-backstory-<%= character.id  %>').click(function() {
+      $(this).parent().toggle();
+      $('#character-<%= character.id %> .backstory .edit-profile-form').toggle();
+    });
+  })
+</script>
