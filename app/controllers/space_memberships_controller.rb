@@ -20,7 +20,8 @@ class SpaceMembershipsController < ApplicationController
     @space_membership.user = current_user
     @space_membership.email = current_user.email
     if @space_membership.save
-      redirect_to @space_membership.space
+      flash[:notice] = "You are invited to #{@space_membership.space.name}. Please create a character and assigned it to the space."
+      redirect_to root_path
     else
       flash[:error] = @space_membership.errors.messages
       redirect_to root_path

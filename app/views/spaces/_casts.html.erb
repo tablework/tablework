@@ -1,5 +1,18 @@
 <section class="ui card list shadow">
     <header class="header">
+      <h3>Director</h3>
+    </header>
+    <section class="content" style="height:65px;">
+      <section class="ui grid">
+        <div class="cast-info three wide column">
+          <%= user_portrait class: 'ui huge circular image', gender: @space.director.gender %>
+        </div>
+        <div class="thirteen wide column">
+          <p><%= @space.director.email %></p>
+        </div>
+      </section>
+    </section>
+    <header class="header">
       <h3>Cast</h3>
     </header>
     <section class="content">
@@ -13,7 +26,6 @@
             <small><%= link_to 'Add relationship', '#' %></small>
           </div>
         </section>
-
       <% end %>
     </section>
     <footer class="extra content">
