@@ -4,27 +4,51 @@
     <p>Join a Space</p>
     <small>Choose the space you want your character to join.</small>
   </section>
-  <% if current_user.owned_spaces.present?  %>
+  <% if current_user.owned_spaces.present? or current_user.spaces.present? %>
     <section class="content">
       <ul>
         <%= form_for character do |f| %>
-          <% current_user.owned_spaces.each do |space| %>
-            <li style="list-style:none">
-              <label class="ui grid">
-                <div class="one wide column">
-                  <%= f.radio_button :space_id, space.id, id: "js-space-#{ space.id }"  %>
-                </div>
+          <caption>Owned Spaces</caption>
+          <% if current_user.owned_spaces.present? %>
+            <% current_user.owned_spaces.each do |space| %>
+              <li style="list-style:none">
+                <label class="ui grid">
+                  <div class="one wide column">
+                    <%= f.radio_button :space_id, space.id, id: "js-space-#{ space.id }"  %>
+                  </div>
 
-                <div class="three wide column">
-                  <%= user_portrait style:"background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"%>
-                </div>
+                  <div class="three wide column">
+                    <%= user_portrait style:"background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"%>
+                  </div>
 
-                <div class="eleven wide column">
-                  <p> <%= space.name %> </p>
-                  <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
-                </div>
-              </label>
-            </li>
+                  <div class="eleven wide column">
+                    <p> <%= space.name %> </p>
+                    <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+                  </div>
+                </label>
+              </li>
+            <% end %>
+          <% end %>
+          <% if current_user.spaces.present? %>
+            <caption>Invited Spaces</caption>
+            <% current_user.spaces.each do |space| %>
+              <li style="list-style:none">
+                <label class="ui grid">
+                  <div class="one wide column">
+                    <%= f.radio_button :space_id, space.id, id: "js-space-#{ space.id }"  %>
+                  </div>
+
+                  <div class="three wide column">
+                    <%= user_portrait style:"background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"%>
+                  </div>
+
+                  <div class="eleven wide column">
+                    <p> <%= space.name %> </p>
+                    <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+                  </div>
+                </label>
+              </li>
+            <% end %>
           <% end %>
         <% end %>
       </ul>
