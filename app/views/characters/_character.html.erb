@@ -5,7 +5,7 @@
   </section>
   <section class="extra content">
     <% if character.space %>
-      <%= character.space.name %>
+    <%= link_to character.space.name, character.space, style: 'float:none;color:#0c0c0c'  %>
     <% else %>
       No Space
     <% end %>
