@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.1.3'
+ruby '2.2.0'
 
-gem 'rails', '4.1.7'
+gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -16,10 +16,11 @@ gem 'erd'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'carrierwave-aws'
-gem "remotipart"
+gem 'remotipart'
 gem 'koala'
-gem "auto_html"
+gem 'auto_html'
 gem 'jquery-ui-rails'
+gem 'wysiwyg-rails'
 
 gem 'rails-assets-semantic-ui'
 
@@ -44,7 +45,7 @@ group :test do
   gem 'webmock'
 end
 
-gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'codeclimate-test-reporter', group: :test, require: nil
 
 group :production do
   gem 'rails_12factor'
