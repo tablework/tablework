@@ -1,55 +1,44 @@
 <% if scene.notes.present? %>
   <% scene.notes.order(:created_at).each_with_index do |note, index| %>
-    <% if note.link_html.present? %>
-      <button class="ui button fluid" id="space-note-<%= note.id %>"><%= note.title %></button>
-      <section id="modal-note-<%= note.id %>" class="ui modal">
-        <i class="close icon"></i>
-        <section class="header">
-          <%= note.title %>
+    <div id="note-<%= note.id %>">
+      <% if note.link_html.present? %>
+        <button class="ui positive button fluid view"><%= note.title %></button>
+        <section class="ui modal fullscreen note">
+          <i class="close icon"></i>
+          <section class="header">
+            <i class="<%= icon_helper(note.title) %> icon"></i>
+            <%= note.title %>
+          </section>
+          <section class="content froala-view">
+            <%= note.link_html.html_safe %>
+          </section>
+          <section class="actions">
+            <%= link_to polymorphic_path([@space, scene, note], action: :edit), class:"ui secondary button edit-note-#{note.id}", remote: true do %>
+              <i class="configure icon"></i>
+              <span>Edit</span>
+            <% end %>
+            <% if scene.scenable.scenes.first == scene %>
+              <%= link_to polymorphic_path([@space, scene, note]), class:"ui secondary button", method: :delete, data: { confirm: 'Are you sure? '} do %>
+                <i class="minus icon"></i>
+                <span>Delete</span>
+              <% end %>
+            <% end %>
+          </section>
         </section>
-        <section class="content froala-view">
-          <%= note.link_html.html_safe %>
-        </section>
-        <section class="actions">
-          <%= link_to polymorphic_path([@space, scene, note], action: :edit), class:"ui button", id: "space-editor-#{note.id}", remote: true do %>
-            <i class="plus icon"></i>
-            <span>Edit</span>
-          <% end %>
-          <section class="ui button">Close</section>
-        </section>
-      </section>
-    <% else %>
-      <%= link_to polymorphic_path([@space, scene, note], action: :edit), id: "space-editor-#{note.id}", class:"ui button fluid", remote: true do %>
-        <i class="plus icon"></i>
-        <span>Add <%= note.title %></span>
-      <% end %>
-    <% end %>
-    <section id="modal-editor-<%= note.id %>" class="ui modal fullscreen">
-      <section class="content form-inputs">
-        <%= simple_form_for [@space, scene, note] do |f| %>
-          <%= f.input :title, placeholder: 'Title' %>
-          <%= f.text_area :link_html, class: 'editable' %>
+      <% else %>
+        <%= link_to polymorphic_path([@space, scene, note], action: :edit), class:"ui negative button fluid edit-note-#{note.id}", remote: true do %>
+          <i class="<%= icon_helper(note.title) %> icon"></i>
+          <span><%= note.title %></span>
         <% end %>
-      </section>
-      <section class="actions">
-        <button class="ui button primary" id="submit-form-<%= note.id %>">Submit</button>
-        <button class="ui button">Close</button>
-      </section>
-    </section>
-    <script>
-      $(document).ready(function(){
-        $('#space-note-<%= note.id %>').click(function(){
-          $('#modal-note-<%= note.id %>').modal('show');
+      <% end %>
+      <%= render 'spaces/editor_modal', space: @space, scene: scene, note: note %>
+      <script>
+        $(document).ready(function(){
+          $('#scene-<%= scene.id %> #note-<%= note.id %> .view').click(function(){
+            $('#scene-<%= scene.id %> #note-<%= note.id %> .note').modal('show');
+          });
         });
-        $('.editable').editable({inlineMode: false});
-        $('.froala-box > div:not(.f-basic)').hide();
-        $('#space-editor-<%= note.id %>').click(function(){
-          $('#modal-editor-<%= note.id %>').modal('show');
-        });
-        $('#submit-form-<%= note.id %>').click(function() {
-          $('#modal-editor-<%= note.id %> form').submit();
-        });
-      });
-    </script>
+      </script>
+    </div>
   <% end %>
 <% end %>

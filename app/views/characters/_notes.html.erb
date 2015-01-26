@@ -11,11 +11,11 @@
           </section>
           <section style="float:right;">
             <%= link_to polymorphic_path([character, note], action: :edit) do %>
-              <i class="arrow left icon"></i>
+              <i class="configure left icon"></i>
               <span class="link edit-link">Edit</span>
             <% end %>
-            <%= link_to polymorphic_path([character, note], action: :edit) do %>
-              <i class="arrow left icon"></i>
+            <%= link_to polymorphic_path([character, note]), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="minus icon"></i>
               <span class="link">Delete</span>
             <% end %>
           </section>
@@ -25,8 +25,9 @@
         <section class="row">
           <%= simple_format note.text %>
         </section>
-        <section class="froala-view">
-          <%= note.link_html.html_safe if note.link_html %>
+        <section class="scenes-note row">
+          <%= image_tag note.image.url if note.image.url.present? %>
+          <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
         </section>
       </section>
     <% end %>
