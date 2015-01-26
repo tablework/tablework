@@ -12,5 +12,5 @@
 
 class Scene < ActiveRecord::Base
   belongs_to :scenable
-  has_many :notes, as: :notable
+  has_many :notes, as: :notable, dependent: :destroy
 end
