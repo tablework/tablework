@@ -60,7 +60,7 @@ RSpec.describe SpaceMembershipsController, :type => :controller do
 
     it "should redirect to space" do
       get :confirm, space_id: @space.id, token: @space_membership.token
-      expect(response).to redirect_to space_path(@space)
+      expect(response).to redirect_to root_path
     end
   end
 end

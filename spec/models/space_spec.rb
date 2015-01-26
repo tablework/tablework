@@ -35,10 +35,8 @@ RSpec.describe Space, :type => :model do
 
     it "has many scenes" do
       scene_1 = create :scene
-      scene_2 = create :scene
       space.scenes << scene_1
-      space.scenes << scene_2
-      expect(space.scenes.to_a).to eql [scene_2, scene_1]
+      expect(space.scenes.to_a).to include scene_1
     end
 
     it "has one director" do
