@@ -14,8 +14,14 @@
           </section>
           <section class="actions">
             <%= link_to polymorphic_path([@space, scene, note], action: :edit), class:"ui secondary button edit-note-#{note.id}", remote: true do %>
-              <i class="plus icon"></i>
+              <i class="configure icon"></i>
               <span>Edit</span>
+            <% end %>
+            <% if scene.scenable.scenes.first == scene %>
+              <%= link_to polymorphic_path([@space, scene, note]), class:"ui secondary button", method: :delete, data: { confirm: 'Are you sure? '} do %>
+                <i class="minus icon"></i>
+                <span>Delete</span>
+              <% end %>
             <% end %>
           </section>
         </section>
