@@ -3,88 +3,14 @@
 </section>
 
 <section class="container-flex">
-
   <%= render 'spaces/casts' %>
-
   <% @space.scenes.order('created_at ASC').each do |scene| %>
     <section class="ui card list shadow ">
       <header class="header">
         <h3><%= scene.title %></h3>
       </header>
-      <div class="offset-research">
-        <section class="sixteen wide column ui shadow card " >
-        <div class="ui right aligned segment clear-borders">
-            <i class="arrow left icon"></i>
-            <span class="link edit-link">Edit</span>
-            <i class="arrow left icon"></i>
-            <span class="link">Delete</span>
-        </div>
-        <div class="row">
-          <h3 class="capitalize offset-research">
-              Politics
-          </h3>
-        </div>
-        <section class="content description">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-        </section>
-        <section>
-          <p class="offset-research subheader">
-            Media
-          </p>
-        </section>
-        <section class="meta">
-          <div class="offset-research">
-            <div class="ui feed">
-              <div class="event">
-                <div >
-                  <%=
-                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
-                  %>
-                </div>
-                <div class="content">
-                  You added Elliot Fu to the group <a>Coworkers</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="offset-research">
-            <div class="ui feed">
-              <div class="event">
-                <div >
-                  <%=
-                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
-                  %>
-                </div>
-                <div class="content">
-                  You added Elliot Fu to the group <a>Coworkers</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="offset-research">
-            <div class="ui feed">
-              <div class="event">
-                <div >
-                  <%=
-                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
-                  %>
-                </div>
-                <div class="content">
-                  You added Elliot Fu to the group <a>Coworkers</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-      </section>
-      </div>
-      <section class="content scene-content">
-        <section id="js-note-start-scene-<%= scene.id %>"></section>
-        <div class="column">
-          <div class="ui segment centered"><i class="mail icon"></i>
-          Add Politics</div>
-        </div>
+      <section class="content">
+        <%= render 'spaces/scene', scene: scene %>
       </section>
       <footer class="extra content">
         <%= link_to polymorphic_url([@space, scene, scene.notes.build], action: :new), id: "js-add-scene-note-#{scene.id}", remote: true do %>

@@ -1,5 +1,6 @@
 class ScenesController < ApplicationController
-  before_action :find_scenable, only: [:new, :create]
+  before_action :find_scene, only: [:show]
+  before_action :find_scenable, only: [:new, :create, :show]
   def new
     @scene = @scenable.scenes.build
     respond_to do |wants|
@@ -9,7 +10,11 @@ class ScenesController < ApplicationController
   end
 
   def show
-    redirect_to root_path(character: Scene.find(params[:id]).scenable_type.constantize.find(Scene.find(params[:id]).scenable_id))
+    if @scenable.instance_of? Space
+      redirect_to @scenable
+    else
+      redirect_to root_path(character: @scenable)
+    end
   end
 
   def create
@@ -46,10 +51,18 @@ class ScenesController < ApplicationController
     )
   end
 
+  def find_scene
+    @scene = Scene.find(params[:id]) || Scene.new
+  end
+
   def find_scenable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        @scenable = $1.classify.constantize.find(value)
+    if @scene
+      @scenable = @scene.scenable_type.constantize.find(@scene.scenable_id)
+    else
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          @scenable = $1.classify.constantize.find(value)
+        end
       end
     end
   end

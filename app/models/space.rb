@@ -17,4 +17,15 @@ class Space < ActiveRecord::Base
   belongs_to :director, class: User
   has_many :space_memberships
   has_many :users, through: :space_memberships
+  after_create :setup_research
+
+
+  private
+
+  def setup_research
+    research = self.scenes.create(title: 'Research')
+    %w(Politic Economic Culture Fashion Geography).each do |title|
+      research.notes.create(title: title)
+    end
+  end
 end
