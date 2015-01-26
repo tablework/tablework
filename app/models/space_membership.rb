@@ -7,7 +7,7 @@ class SpaceMembership < ActiveRecord::Base
   validate :uniqueness_in_emails_for_space
 
   def send_invite
-    SpaceMembershipMailer.send_invite(self).deliver
+    SpaceMembershipMailer.send_invite(self).deliver_now
   end
 
   private
