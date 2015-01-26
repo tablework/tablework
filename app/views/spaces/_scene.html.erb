@@ -1,0 +1,27 @@
+<% if scene.notes.present? %>
+  <% scene.notes.order(:created_at).each_with_index do |note, index| %>
+    <% if note.text.present? or note.link.present? or note.image.present? %>
+      <section class="ui segment">
+        <header class="header">
+          <%= link_to polymorphic_path([@space, scene, note], action: :edit) do %>
+            <i class="configure icon"></i>
+            <span>Edit</span>
+          <% end %>
+          <p><%= note.title %></p>
+        </header>
+        <section class="content">
+          <%= simple_format note.text %>
+        </section>
+        <footer class="space-scenes-note centered">
+          <%= image_tag note.image.url if note.image.url %>
+          <%= note.link_html %>
+        </footer>
+      </section>
+    <% else %>
+      <%= link_to polymorphic_path([@space, scene, note], action: :edit), class:"ui button fluid" do %>
+        <i class="plus icon"></i>
+        <span>Add <%= note.title %></span>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
