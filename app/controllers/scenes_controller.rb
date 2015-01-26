@@ -1,6 +1,6 @@
 class ScenesController < ApplicationController
-  before_action :find_scene, only: [:show]
-  before_action :find_scenable, only: [:new, :create, :show]
+  before_action :find_scene, only: [:show, :destroy]
+  before_action :find_scenable, only: [:new, :create, :show, :destroy]
   def new
     @scene = @scenable.scenes.build
     respond_to do |wants|
@@ -41,6 +41,11 @@ class ScenesController < ApplicationController
       flash.now[:error] = 'Scene creation fails'
       render :new
     end
+  end
+
+  def destroy
+    @scene.destroy
+    redirect_to @scenable || root_path
   end
 
   private

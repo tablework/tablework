@@ -1,25 +1,31 @@
-<section class="rehearsal_header">
-  <h3><%= link_to root_path do %><i class="angle left large icon"></i><% end %> <%= @space.name %> <span class="ui button secondary"><%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %></span></h3>
-</section>
+<div id="space-<%= @space.id %>">
+  <section class="rehearsal_header">
+    <h3><%= link_to root_path do %><i class="angle left large icon"></i><% end %> <%= @space.name %> <span class="ui button secondary"><%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %></span><span class="ui button secondary"><%= link_to 'Delete space', @space, method: :delete, data: { confirm: 'Are you sure?' } %></span></h3>
+  </section>
 
-<section class="container-flex">
-  <%= render 'spaces/casts' %>
-  <% @space.scenes.order('created_at ASC').each_with_index do |scene, index| %>
-    <section class="ui card list shadow ">
-      <header class="header">
-        <h3><%= scene.title %></h3>
-      </header>
-      <section class="content">
-        <%= render 'spaces/scene', scene: scene %>
-      </section>
-      <footer class="extra content">
-        <% if index != 0 %>
-          <%= link_to polymorphic_url([@space, scene, scene.notes.build], action: :new), id: "js-add-scene-note-#{scene.id}", remote: true do %>
-            <i class="plus icon"></i> ADD NOTE</a>
+  <section class="container-flex">
+    <%= render 'spaces/casts' %>
+    <% @space.scenes.order('created_at ASC').each_with_index do |scene, index| %>
+      <section id="scene-<%= scene.id %>" class="ui card list shadow">
+        <header class="header">
+          <h3><%= scene.title %></h3>
+        </header>
+        <section class="content">
+          <%= render 'spaces/scene', scene: scene %>
+        </section>
+        <footer class="extra content">
+          <% if index != 0 %>
+            <%= link_to "#", class: 'edit-note-', remote: true do %>
+              <i class="plus icon"></i>ADD NOTE</a>
+            <% end %>
+            &nbsp;
+            <%= link_to polymorphic_path([@space, scene]), method: :delete do %>
+              <i class="minus icon"></i>DELETE SCENE</a>
+            <% end %>
           <% end %>
-        <% end %>
-      </footer>
-    </section>
-    <%= render 'spaces/add_note_modal_scene', scene: scene %>
-  <% end %>
-</section>
+        </footer>
+        <%= render 'spaces/editor_modal', space: @space, scene: scene, note: scene.notes.build %>
+      </section>
+    <% end %>
+  </section>
+</div>
