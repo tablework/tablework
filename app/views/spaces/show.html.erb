@@ -4,7 +4,7 @@
 
 <section class="container-flex">
   <%= render 'spaces/casts' %>
-  <% @space.scenes.order('created_at ASC').each do |scene| %>
+  <% @space.scenes.order('created_at ASC').each_with_index do |scene, index| %>
     <section class="ui card list shadow ">
       <header class="header">
         <h3><%= scene.title %></h3>
@@ -13,8 +13,10 @@
         <%= render 'spaces/scene', scene: scene %>
       </section>
       <footer class="extra content">
-        <%= link_to polymorphic_url([@space, scene, scene.notes.build], action: :new), id: "js-add-scene-note-#{scene.id}", remote: true do %>
-          <i class="plus icon"></i> ADD NOTE</a>
+        <% if index != 0 %>
+          <%= link_to polymorphic_url([@space, scene, scene.notes.build], action: :new), id: "js-add-scene-note-#{scene.id}", remote: true do %>
+            <i class="plus icon"></i> ADD NOTE</a>
+          <% end %>
         <% end %>
       </footer>
     </section>
