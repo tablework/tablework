@@ -58,7 +58,7 @@ class CharactersController < ApplicationController
     respond_to do |format|
       if @note.save
         flash[:notice] = 'Notes saved'
-        format.html { redirect_to :back }
+        format.html { redirect_to root_path(character: @character) }
         format.js
       else
         format.html { render :add_note }

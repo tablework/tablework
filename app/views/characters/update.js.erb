@@ -1,3 +1,1 @@
-$('#character-<%= @character.id %> .backstory .content .description').html('<%= simple_format(@character.description).gsub("\n", "<br />").html_safe %>');
-$('#character-<%= @character.id %> .backstory form').toggle();
-$('#character-<%= @character.id %> .backstory .content .form-inputs').toggle();
+window.location.href = '<%= root_path(character: @character) %>'

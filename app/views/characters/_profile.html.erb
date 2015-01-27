@@ -22,7 +22,7 @@
     </section>
 
     <section id="character-backstory-<%= character.id  %>" class="backstory ten wide column">
-      <div class="section-header">Backstory</div>
+      <div class="section-header" style="margin: 0 0 20px 0;"><h4 style="margin: 0">Backstory</h4></div>
       <%= simple_form_for character, remote: true, html: { style: 'display:none', class: "edit-profile-form", :multipart => true } do |f| %>
         <div class="form-inputs">
           <%= f.input :description, label: false, :input_html => {:rows => 11} %>
@@ -31,7 +31,9 @@
       <% end %>
       <section class="content">
         <div class="form-inputs">
-          <section class="description"><%= simple_format(character.description).gsub("\n", "<br />").html_safe %></section>
+          <section class="description" style="max-height: 220px;overflow:auto">
+            <%= simple_format(character.description).gsub("\n", "<br />").html_safe %>
+          </section>
           <button id="js-edit-backstory-<%= character.id %>" class="edit-link button", style='background: #F8F8F8;width: 100%;padding: 10px 12px;margin: 5px 0;border: 1px solid #ECECEC;'>Edit</button>
         </div>
       </section>
