@@ -8,7 +8,7 @@
 
     <section class="ui grid">
       <section class="sixteen wide column">
-        <%= simple_form_for character.notes.build, url: create_note_character_path(character), :html => { :multipart => true }, remote: true do |f| %>
+        <%= simple_form_for character.notes.build, url: create_note_character_path(character), :html => { :multipart => true }   do |f| %>
           <section class="form-inputs">
             <%= f.input :title, placeholder: 'Title' %>
             <%= f.input :text, placeholder: 'Content' %>
