@@ -13,8 +13,19 @@
 
 class Space < ActiveRecord::Base
   has_many :characters
-  has_many :scenes, as: :scenable
+  has_many :scenes, as: :scenable, dependent: :destroy
   belongs_to :director, class: User
-  has_many :space_memberships
+  has_many :space_memberships, dependent: :destroy
   has_many :users, through: :space_memberships
+  after_create :setup_research
+
+
+  private
+
+  def setup_research
+    research = self.scenes.create(title: 'Research')
+    %w(Politic Economic Culture Fashion Geography Law).each do |title|
+      research.notes.create(title: title)
+    end
+  end
 end

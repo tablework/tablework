@@ -11,5 +11,9 @@
  * file per style scope.
  *
  *= require semantic-ui
+ *= require font-awesome
+ *= require froala_editor.min
+ *= require froala_content.min
+ *= require froala_style.min
  *= require sass/main
  */

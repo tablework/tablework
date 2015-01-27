@@ -1,0 +1,13 @@
+<section class="ui card list shadow ">
+  <header class="header">
+    <h3>Research</h3>
+  </header>
+  <section class="content">
+
+  </section>
+  <footer class="extra content">
+    <%= link_to polymorphic_url([@space, scene, scene.notes.build], action: :new), id: "js-add-scene-note-#{scene.id}", remote: true do %>
+      <i class="plus icon"></i> ADD NOTE</a>
+    <% end %>
+  </footer>
+</section>

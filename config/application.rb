@@ -18,5 +18,6 @@ module Tablework
       generate.test_framework :rspec
       generate.view_specs false
     end
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
