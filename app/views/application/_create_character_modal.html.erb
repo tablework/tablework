@@ -15,6 +15,7 @@
             <%= f.input :gender, collection: ['Male', 'Female'], selected: 'Male', input_html: { class: 'selector modal-input' }  %>
             <%= f.input :nationality, placeholder: 'Nationality', input_html: { class: 'modal-input' }  %>
             <%= f.date_field :DOB, label: 'Date Of Birth', class: 'modal-input'  %>
+            <%= f.input :image, label: 'Select character portrait'  %>
           </section>
         <% end %>
       </section>

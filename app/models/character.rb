@@ -24,4 +24,5 @@ class Character < ActiveRecord::Base
   before_validation { self.gender.downcase! if self.gender }
   has_many :scenes, as: :scenable
   has_many :notes, as: :notable
+  mount_uploader :image, ImageUploader
 end
