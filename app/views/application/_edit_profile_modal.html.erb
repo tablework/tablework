@@ -5,19 +5,43 @@
   </section>
 
   <section class="content">
-    <p>Edit the details for your profile.</p>
       <section class="eleven wide column">
-        <section class="form-inputs">
+        <section class="ui form">
           <%= simple_form_for current_user, :html => { :multipart => true } do |f| %>
-            <%= f.input :first_name, placeholder: 'First Name' %>
-            <%= f.input :last_name, placeholder: 'Last Name' %>
-            <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
-            end_year: Date.today.year, discard_day: false,
-            order: [:day, :month, :year], class: 'ui selection dropdown' %>
-            <%= f.input :gender, as: :select, collection: ['male', 'female'], class: 'ui selection dropdown' %>
-            <%= f.input :occupation, placeholder: 'Occupation' %>
-            <%= f.input :location, placeholder: 'Location' %>
-            <%= f.input :image, placeholder: 'Image' %>
+            
+            <div class="three fields">
+              <div class="field">
+                <%= ImagePreviewer(current_user) %>
+              </div>
+              <div class="field">
+                <%= f.input :first_name, placeholder: 'First Name' %>                
+              </div>
+              <div class="field">
+                <%= f.input :last_name, placeholder: 'Last Name' %>    
+              </div>
+            </div>
+            <div class="two fields">
+              <div class="field">
+                <%= f.label :DOB, 'Date of Birth' %>
+                <%= f.date_field :DOB, label: 'Date Of Birth', class: 'modal-input'  %>
+              </div>
+              <div class="field">
+                <%= f.input :gender, as: :select, collection: ['male', 'female'], class: 'ui selection dropdown' %>
+              </div>
+            </div>
+            <div class="two fields">
+              <div class="field">
+                <%= f.input :occupation, placeholder: 'Occupation' %>              
+              </div>
+              <div class="field">
+                <%= f.input :location, placeholder: 'Location' %>   
+              </div>
+            </div>
+            
+              <div class="field">
+                <%= f.input :image, placeholder: 'Image' %>
+              </div>
+            
           <% end %>
         </section>
       </section>
