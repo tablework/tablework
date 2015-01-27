@@ -11,11 +11,11 @@
           </section>
           <section style="float:right;">
             <%= link_to polymorphic_path([character, note], action: :edit) do %>
-              <i class="arrow left icon"></i>
+              <i class="configure left icon"></i>
               <span class="link edit-link">Edit</span>
             <% end %>
-            <%= link_to polymorphic_path([character, note], action: :edit) do %>
-              <i class="arrow left icon"></i>
+            <%= link_to polymorphic_path([character, note]), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="minus icon"></i>
               <span class="link">Delete</span>
             <% end %>
           </section>

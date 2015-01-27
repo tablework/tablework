@@ -1,5 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_user
+  before_action :set_space, only: [:show, :destroy]
 
   def new
     @space = @user.spaces.build
@@ -17,12 +18,21 @@ class SpacesController < ApplicationController
   end
 
   def show
-    @space = Space.find(params[:id])
     @scene = @space.scenes.build
+  end
+
+  def destroy
+    @space.destroy
+    flash[:notice] = 'Space deleted.'
+    redirect_to root_path
   end
 
   def set_user
     @user = current_user
+  end
+
+  def set_space
+    @space = Space.find(params[:id])
   end
 
   def space_params

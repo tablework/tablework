@@ -1,97 +1,31 @@
-<section class="rehearsal_header">
-  <h3><%= link_to root_path do %><i class="angle left large icon"></i><% end %> <%= @space.name %> <span class="ui button secondary"><%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %></span></h3>
-</section>
+<div id="space-<%= @space.id %>">
+  <section class="rehearsal_header">
+    <h3><%= link_to root_path do %><i class="angle left large icon"></i><% end %> <%= @space.name %> <span class="ui button secondary"><%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %></span><span class="ui button secondary"><%= link_to 'Delete space', @space, method: :delete, data: { confirm: 'Are you sure?' } %></span></h3>
+  </section>
 
-<section class="container-flex">
-
-  <%= render 'spaces/casts' %>
-
-  <% @space.scenes.order('created_at ASC').each do |scene| %>
-    <section class="ui card list shadow ">
-      <header class="header">
-        <h3><%= scene.title %></h3>
-      </header>
-      <div class="offset-research">
-        <section class="sixteen wide column ui shadow card " >
-        <div class="ui right aligned segment clear-borders">
-            <i class="arrow left icon"></i>
-            <span class="link edit-link">Edit</span>
-            <i class="arrow left icon"></i>
-            <span class="link">Delete</span>
-        </div>
-        <div class="row">
-          <h3 class="capitalize offset-research">
-              Politics
-          </h3>
-        </div>
-        <section class="content description">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+  <section class="container-flex">
+    <%= render 'spaces/casts' %>
+    <% @space.scenes.order('created_at ASC').each_with_index do |scene, index| %>
+      <section id="scene-<%= scene.id %>" class="ui card list shadow">
+        <header class="header">
+          <h3><%= scene.title %></h3>
+        </header>
+        <section class="content">
+          <%= render 'spaces/scene', scene: scene %>
         </section>
-        <section>
-          <p class="offset-research subheader">
-            Media
-          </p>
-        </section>
-        <section class="meta">
-          <div class="offset-research">
-            <div class="ui feed">
-              <div class="event">
-                <div >
-                  <%=
-                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
-                  %>
-                </div>
-                <div class="content">
-                  You added Elliot Fu to the group <a>Coworkers</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="offset-research">
-            <div class="ui feed">
-              <div class="event">
-                <div >
-                  <%=
-                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
-                  %>
-                </div>
-                <div class="content">
-                  You added Elliot Fu to the group <a>Coworkers</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="offset-research">
-            <div class="ui feed">
-              <div class="event">
-                <div >
-                  <%=
-                    image_tag("http://placehold.it/80x60", alt: "Placeholder")
-                  %>
-                </div>
-                <div class="content">
-                  You added Elliot Fu to the group <a>Coworkers</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
+        <footer class="extra content">
+          <% if index != 0 %>
+            <%= link_to "#", class: 'edit-note-', remote: true do %>
+              <i class="plus icon"></i>ADD NOTE</a>
+            <% end %>
+            &nbsp;
+            <%= link_to polymorphic_path([@space, scene]), method: :delete do %>
+              <i class="minus icon"></i>DELETE SCENE</a>
+            <% end %>
+          <% end %>
+        </footer>
+        <%= render 'spaces/editor_modal', space: @space, scene: scene, note: scene.notes.build %>
       </section>
-      </div>
-      <section class="content scene-content">
-        <section id="js-note-start-scene-<%= scene.id %>"></section>
-        <div class="column">
-          <div class="ui segment centered"><i class="mail icon"></i>
-          Add Politics</div>
-        </div>
-      </section>
-      <footer class="extra content">
-        <%= link_to polymorphic_url([@space, scene, scene.notes.build], action: :new), id: "js-add-scene-note-#{scene.id}", remote: true do %>
-          <i class="plus icon"></i> ADD NOTE</a>
-        <% end %>
-      </footer>
-    </section>
-    <%= render 'spaces/add_note_modal_scene', scene: scene %>
-  <% end %>
-</section>
+    <% end %>
+  </section>
+</div>

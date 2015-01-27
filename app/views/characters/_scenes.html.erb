@@ -4,11 +4,20 @@
   </section>
   <section class="ui styled accordion">
     <% character.scenes.order('created_at ASC').each do |scene| %>
-      <section class="title">
-        <h3>
-          <i class="dropdown icon"></i>
-          <%= scene.title.titleize %>
-        </h3>
+      <section class="title" style="line-height:2">
+        <section class="row" style="height:30px;">
+          <section class="capitalize" style="float:left;">
+            <%= link_to '#' do %>
+              <%= scene.title %>
+            <% end %>
+          </section>
+          <section style="float:right;">
+            <%= link_to polymorphic_path([@space, scene]), method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="minus icon"></i>
+              <span class="link">Delete</span>
+            <% end %>
+          </section>
+        </section>
       </section>
       <section class="content">
         <% scene.notes.order('created_at ASC').each do |note |%>
@@ -22,12 +31,8 @@
                 </section>
                 <section style="float:right;">
                   <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                    <i class="arrow left icon"></i>
+                    <i class="configure icon"></i>
                     <span class="link edit-link">Edit</span>
-                  <% end %>
-                  <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                    <i class="arrow left icon"></i>
-                    <span class="link">Delete</span>
                   <% end %>
                 </section>
               </section>
