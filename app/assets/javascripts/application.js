@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require semantic-ui
-//= require application/characters/index
 //= require froala_editor.min
 //= require plugins/block_styles.min.js
 //= require plugins/colors.min.js
