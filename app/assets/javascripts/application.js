@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require semantic-ui
+//= require application/characters/index

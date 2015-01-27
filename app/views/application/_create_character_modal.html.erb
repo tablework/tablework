@@ -17,6 +17,13 @@
             <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
             end_year: Date.today.year, discard_day: false,
             order: [:day, :month, :year] %>
+            <span class="ui search">
+              <div class="ui icon input yearbox">
+                <input class="prompt" type="text" placeholder="2015">
+                <i class="search icon"></i>
+              </div>
+            <div class="results"></div>
+            </span>
           </section>
         <% end %>
       </section>
