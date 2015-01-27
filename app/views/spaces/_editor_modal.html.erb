@@ -14,7 +14,7 @@
 </section>
 <script>
   $(function(){
-    $('.editable').editable({inlineMode: false});
+    $('.editable').editable({inlineMode: false, height:300});
     $('.froala-box > div:not(.f-basic)').hide();
     $('#scene-<%= scene.id %> .edit-note-<%= note.id %>').click(function(){
       $('#scene-<%= scene.id %> .editor-<%= note.id %>').modal('setting', 'closable', false).modal('show');
