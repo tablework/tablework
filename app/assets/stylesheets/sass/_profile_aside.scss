@@ -155,10 +155,6 @@ aside {
     padding:25px 0px;
   }
 
-  .orange{
-    color: $orange;
-  }
-
   .background{
     display: inline-block;
     width:50%;
@@ -192,6 +188,16 @@ aside {
 }
 
 .profile-editor-preview{
-  max-width: 100px;
-  min-width: 50px;
+  max-width: 200px;
+  min-width: 100px;
+}
+h3{
+  display: inline;
+}
+.orange{
+    color: $orange;
+}
+
+.padding-bottom{
+  padding-bottom:5px;
 }
