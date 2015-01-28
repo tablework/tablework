@@ -8,11 +8,7 @@
       <section class="eleven wide column">
         <section class="ui form">
           <%= simple_form_for current_user, :html => { :multipart => true } do |f| %>
-            
-            <div class="three fields">
-              <div class="field">
-                <%= ImagePreviewer(current_user) %>
-              </div>
+            <div class="two fields">
               <div class="field">
                 <%= f.input :first_name, placeholder: 'First Name' %>                
               </div>
@@ -26,7 +22,16 @@
                 <%= f.date_field :DOB, label: 'Date Of Birth', class: 'modal-input'  %>
               </div>
               <div class="field">
-                <%= f.input :gender, as: :select, collection: ['male', 'female'], class: 'ui selection dropdown' %>
+                <label>Gender</label>
+                <div class="ui selection dropdown">
+                  <%= f.hidden_field :gender %>
+                  <div class="default text">Gender</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <div class="item selected" data-value="male">Male</div>
+                    <div class="item" data-value="female">Female</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="two fields">
@@ -37,10 +42,18 @@
                 <%= f.input :location, placeholder: 'Location' %>   
               </div>
             </div>
-            
+            <div class="six fields">
+              <div class="field">
+                <%= ImagePreviewer(current_user) %>
+              </div>
+              <div class="field">
+                
+              </div>
               <div class="field">
                 <%= f.input :image, placeholder: 'Image' %>
               </div>
+
+            </div>
             
           <% end %>
         </section>
@@ -57,6 +70,7 @@ $('#js-edit-profile-modal .ui.button.primary').click(function(){
 </script>
 <script>
   $(".modal-edit-profile").click(function(){
-    $("#js-edit-profile-modal").modal("show")
+    $("#js-edit-profile-modal")
+    .modal("show")
   })
 </script>

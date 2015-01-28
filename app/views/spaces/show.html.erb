@@ -1,6 +1,19 @@
 <div id="space-<%= @space.id %>">
   <section class="rehearsal_header">
-    <h3><%= link_to root_path do %><i class="angle left large icon"></i><% end %> <%= @space.name %> <span class="ui button secondary"><%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %></span><span class="ui button secondary"><%= link_to 'Delete space', @space, method: :delete, data: { confirm: 'Are you sure?' } %></span></h3>
+    <h3>
+      <%= link_to root_path do %>
+        <i class="angle left large icon"></i>
+      <% end %> 
+      <span class="orange">
+        <%= @space.name %>
+      </span>
+      <span class="ui button secondary">
+        <%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %>
+      </span>
+      <span class="ui button secondary">
+        <%= link_to 'Delete space', @space, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </span>
+    </h3>
   </section>
 
   <section class="container-flex">

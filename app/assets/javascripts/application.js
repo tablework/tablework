@@ -28,3 +28,4 @@
 //= require plugins/fullscreen.min.js
 //= require plugins/urls.min.js
 //= require plugins/inline_styles.min.js
+//= require application/characters/index
