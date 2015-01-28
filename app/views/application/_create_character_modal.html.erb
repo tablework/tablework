@@ -7,18 +7,37 @@
   <section class="content">
     <p>Fill in the basic details for your persona.</p>
 
-    <section class="ui grid">
-      <section class="sixteen wide column">
+    <section class="ui form">
         <%= simple_form_for current_user.characters.build, :html => { :multipart => true } do |f| %>
-          <section class="form-inputs">
-            <%= f.input :name, placeholder: 'Full Name' %>
-            <%= f.input :gender, collection: ['Male', 'Female'], selected: 'Male', input_html: { class: 'selector modal-input' }  %>
-            <%= f.input :nationality, placeholder: 'Nationality', input_html: { class: 'modal-input' }  %>
-            <%= f.date_field :DOB, label: 'Date Of Birth', class: 'modal-input'  %>
-            <%= f.input :image, label: 'Select character portrait'  %>
-          </section>
+            <div class="field">
+              <label>Name</label>
+              <%= f.input :name, placeholder: 'Full Name', label: false %>
+            </div>
+            <div class="field">
+              <label>Gender</label>
+              <div class="ui selection dropdown">
+                <%= f.hidden_field :gender %>
+                <div class="default text">Gender</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="item selected" data-value="male">Male</div>
+                  <div class="item" data-value="female">Female</div>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Nationality</label>
+              <%= f.input :nationality, placeholder: 'Nationality', label: false  %>
+            </div>
+            <div class="field">
+              <label>Date of birth</label>
+              <%= f.date_field :DOB, label: 'Date Of Birth', class: 'modal-input'  %>  
+            </div>
+            <div class="field">
+              <label>Select character portrait</label>
+              <%= f.input :image  %>  
+            </div>
         <% end %>
-      </section>
     </section>
   </section>
   <footer class="modal footer">
