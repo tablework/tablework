@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: space_memberships
+#
+#  id         :integer          not null, primary key
+#  space_id   :integer
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  email      :string
+#  token      :string
+#
+
 require 'rails_helper'
 
 RSpec.describe SpaceMembership, :type => :model do

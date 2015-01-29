@@ -3,14 +3,14 @@
 # Table name: authorizations
 #
 #  id         :integer          not null, primary key
-#  provider   :string(255)
-#  uid        :string(255)
+#  provider   :string
+#  uid        :string
 #  user_id    :integer
-#  token      :string(255)
-#  secret     :string(255)
+#  token      :string
+#  secret     :string
 #  created_at :datetime
 #  updated_at :datetime
-#  username   :string(255)
+#  username   :string
 #
 
 FactoryGirl.define do
