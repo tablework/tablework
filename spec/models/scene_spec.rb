@@ -3,9 +3,9 @@
 # Table name: scenes
 #
 #  id            :integer          not null, primary key
-#  title         :string(255)
+#  title         :string
 #  scenable_id   :integer
-#  scenable_type :string(255)
+#  scenable_type :string
 #  created_at    :datetime
 #  updated_at    :datetime
 #

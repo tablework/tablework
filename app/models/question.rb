@@ -3,10 +3,10 @@
 # Table name: questions
 #
 #  id                :integer          not null, primary key
-#  title             :string(255)
-#  answer            :string(255)
+#  title             :string
+#  answer            :string
 #  questionable_id   :integer
-#  questionable_type :string(255)
+#  questionable_type :string
 #  created_at        :datetime
 #  updated_at        :datetime
 #

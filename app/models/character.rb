@@ -3,19 +3,19 @@
 # Table name: characters
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
+#  name         :string
 #  description  :text
-#  type_of_play :string(255)
+#  type_of_play :string
 #  age          :integer
-#  occupation   :string(255)
-#  fields       :hstore           default({})
+#  occupation   :string
 #  user_id      :integer
 #  created_at   :datetime
 #  updated_at   :datetime
-#  nationality  :string(255)
+#  nationality  :string
 #  DOB          :datetime
 #  space_id     :integer
-#  gender       :string(255)
+#  gender       :string
+#  image        :string
 #
 
 class Character < ActiveRecord::Base
