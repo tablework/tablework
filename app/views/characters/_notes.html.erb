@@ -2,38 +2,14 @@
   <h2>Notes</h2>
   <section class="ui styled fluid accordion">
     <% character.notes.order('updated_at DESC').each do |note |%>
-      <section class="title" style="line-height:2">
-        <section class="row" style="height:30px;">
-          <section class="capitalize" style="float:left;">
-            <%= link_to note.link do %>
-              <%= note.title %>
-            <% end %>
-          </section>
-          <section style="float:right;">
-            <%= link_to polymorphic_path([character, note], action: :edit) do %>
-              <i class="configure left icon"></i>
-              <span class="link edit-link">Edit</span>
-            <% end %>
-            <%= link_to polymorphic_path([character, note]), method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="minus icon"></i>
-              <span class="link">Delete</span>
-            <% end %>
-          </section>
-        </section>
-      </section>
-      <section class="content">
-        <section class="row">
-          <%= simple_format note.text %>
-        </section>
-        <section class="scenes-note row">
-          <%= image_tag note.image.url if note.image.url.present? %>
-          <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
-        </section>
+      <section id="note-<%= note.id %>">
+        <%= render 'shared/note', space: nil, scenable: character, note: note %>
       </section>
     <% end %>
-    <%= link_to add_note_character_path(character.id), class: 'ui button attached bottom', remote: true do %>
-      <i class="arrow left circle icon"></i>
-      <span>Add note</span>
+
+    <%= render 'shared/new_editor_modal', space: nil, scenable: character, note: character.notes.build %>
+    <%= link_to "#", class: "ui attached button new-note-#{character.id}", remote: true do %>
+      <i class="plus icon"></i>ADD NOTE</a>
     <% end %>
   </section>
 </section>

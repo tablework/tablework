@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122104528) do
+ActiveRecord::Schema.define(version: 20150129033107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150122104528) do
     t.datetime "DOB"
     t.integer  "space_id"
     t.string   "gender",       limit: 255
+    t.string   "image"
   end
 
   add_index "characters", ["space_id"], name: "index_characters_on_space_id", using: :btree

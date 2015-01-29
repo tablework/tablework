@@ -1,0 +1,63 @@
+<% if note.link_html.present? %>
+  <button class="ui button fluid view">
+    <i class="<%= icon_helper(note.title) %> icon"></i>
+    <span><%= note.title.titleize if note.title %> </span><span><small style="font-size:0.5em"><%= time_ago_in_words(note.updated_at) %> ago</small></span>
+  </button>
+  <section class="ui modal fullscreen note-<%= note.id %>">
+    <i class="close icon"></i>
+    <section class="header">
+      <i class="<%= icon_helper(note.title) %> icon"></i>
+      <%= note.title %>
+    </section>
+    <section class="content froala-view">
+      <%= note.link_html.html_safe if note.link_html %>
+    </section>
+    <section class="actions">
+      <%= link_to polymorphic_path([space, scenable, note], action: :edit), class:"ui secondary button edit-note-#{note.id}", remote: true do %>
+        <i class="configure icon"></i>
+        <span>Edit</span>
+      <% end %>
+      <% if ((scenable.try(:scenable).try(:scenes).try(:first) == scenable) and !(scenable.try(:scenable).try(:scenes).try(:first).try(:scenable).instance_of?(Character))) or scenable.instance_of?(Character) %>
+        <%= link_to polymorphic_path([space, scenable, note]), class:"ui secondary button", method: :delete, data: { confirm: 'Are you sure? '} do %>
+          <i class="minus icon"></i>
+          <span>Delete</span>
+        <% end %>
+      <% end %>
+    </section>
+  </section>
+<% else %>
+  <%= link_to polymorphic_path([space, scenable, note], action: :edit), class:"ui button fluid edit-note-#{note.id}", remote: true do %>
+    <i class="<%= icon_helper(note.title) %> icon"></i>
+    <span><%= note.title.titleize if note.title %></span>
+  <% end %>
+<% end %>
+
+<section class="ui modal fullscreen editor-<%= note.id %>">
+  <section class="header">
+    Edit Note
+  </section>
+  <section class="content form-inputs">
+    <%= simple_form_for [space, scenable, note] do |f| %>
+      <%= f.input :title, placeholder: 'Title' %>
+      <%= f.text_area :link_html, class: 'editable' %>
+    <% end %>
+  </section>
+  <section class="actions">
+    <button class="ui button primary submit">Submit</button>
+  </section>
+</section>
+<script>
+  $(function(){
+    $('#note-<%= note.id %> .view').click(function(){
+      $('.note-<%= note.id %>').modal('show');
+    });
+    $('.editable').editable({inlineMode: false, height:300});
+    $('.froala-box > div:not(.f-basic)').hide();
+    $('.edit-note-<%= note.id %>').click(function(){
+      $('.editor-<%= note.id %>').modal('setting', 'closable', false).modal('show');
+    });
+    $('.editor-<%= note.id %> .submit').click(function() {
+      $('.editor-<%= note.id %>.active form').submit();
+    });
+  })
+</script>

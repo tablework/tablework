@@ -33,7 +33,7 @@ class CharactersController < ApplicationController
 
   def update
     @character = @user.characters.find(params[:id]) || not_found
-    @character.update(params.require(:character).permit(:space_id, :description))
+    @character.update(character_params)
     if @character.save
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -85,7 +85,7 @@ class CharactersController < ApplicationController
 
   def character_params
     params.require(:character).permit(
-      :name, :nationality, :DOB, :gender
+      :name, :nationality, :DOB, :gender, :image, :description
     )
   end
 
