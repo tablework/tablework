@@ -3,7 +3,7 @@
     <h3>
       <%= link_to root_path do %>
         <i class="angle left large icon"></i>
-      <% end %> 
+      <% end %>
       <span class="orange">
         <%= @space.name %>
       </span>
@@ -28,7 +28,7 @@
         </section>
         <footer class="extra content">
           <% if index != 0 %>
-            <%= link_to "#", class: 'edit-note-', remote: true do %>
+            <%= link_to "#", class: "new-note-#{scene.id}", remote: true do %>
               <i class="plus icon"></i>ADD NOTE</a>
             <% end %>
             &nbsp;
@@ -37,7 +37,7 @@
             <% end %>
           <% end %>
         </footer>
-        <%= render 'spaces/editor_modal', space: @space, scene: scene, note: scene.notes.build %>
+        <%= render 'shared/new_editor_modal', space: @space, scenable: scene, note: nil %>
       </section>
     <% end %>
   </section>

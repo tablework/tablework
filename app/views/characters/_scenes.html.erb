@@ -19,33 +19,10 @@
           </section>
         </section>
       </section>
-      <section class="content">
+      <section id="scene-<%= scene.id %>" class="content">
         <% scene.notes.order('created_at ASC').each do |note |%>
-          <section class="ui fluid accordion" id="note-<%= note.id %>">
-            <section class="title" style="line-height:2">
-              <section class="row" style="height:30px;">
-                <section class="capitalize" style="float:left;">
-                  <%= link_to note.link do %>
-                    <%= note.title %>
-                  <% end %>
-                </section>
-                <section style="float:right;">
-                  <%= link_to polymorphic_path([scene, note], action: :edit) do %>
-                    <i class="configure icon"></i>
-                    <span class="link edit-link">Edit</span>
-                  <% end %>
-                </section>
-              </section>
-            </section>
-            <section class="content ui card fluid">
-              <section class="row">
-                <%= simple_format note.text %>
-              </section>
-              <section class="scenes-note row">
-                <%= image_tag note.image.url if note.image.url.present? %>
-                <%= note.link_html.gsub('<p>', '').gsub('</p>', '').html_safe if note.link_html %>
-              </section>
-            </section>
+          <section id="note-<%= note.id %>" style="margin-bottom:10px;">
+            <%= render 'shared/note', space: nil, scenable: scene, note: note %>
           </section>
         <% end %>
       </section>

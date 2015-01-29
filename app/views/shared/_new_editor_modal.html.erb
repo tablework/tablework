@@ -1,0 +1,25 @@
+<section class="ui modal fullscreen new-editor-<%= scenable.id %>">
+  <i class="close icon"></i>
+  <section class="header">
+    Add Note
+  </section>
+  <section class="content form-inputs">
+    <%= simple_form_for [space, scenable, scenable.notes.build] do |f| %>
+      <%= f.input :title, placeholder: 'Title' %>
+      <%= f.text_area :link_html, class: 'editable' %>
+    <% end %>
+  </section>
+  <section class="actions">
+    <button class="ui button primary submit">Submit</button>
+  </section>
+</section>
+<script>
+  $(function(){
+    $('.new-note-<%= scenable.id %>').click(function(){
+      $('.new-editor-<%= scenable.id %>').modal('setting', 'closable', false).modal('show');
+    });
+    $('.new-editor-<%= scenable.id %> .submit').click(function() {
+      $('.new-editor-<%= scenable.id %>.active form').submit();
+    });
+  })
+</script>

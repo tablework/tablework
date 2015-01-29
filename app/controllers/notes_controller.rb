@@ -5,13 +5,13 @@ class NotesController < ApplicationController
   end
 
   def create
-    @space = Space.find(params[:space_id])
+    @space = Space.find(params[:space_id]) if params[:space_id].present?
     @note = @notable.notes.build(note_params)
 
     respond_to do |wants|
       if @note.save
         flash[:notice] = 'Note created'
-        wants.html { redirect_to :back }
+        wants.html { redirect_to @notable || root_path(character: @notable) }
         wants.js
       else
         flash.now[:error] = 'Note creation fails'
@@ -42,7 +42,7 @@ class NotesController < ApplicationController
   def destroy
     @note = @notable.notes.find(params[:id])
     @note.destroy
-    redirect_to :back
+    redirect_to root_path
   end
 
   private
