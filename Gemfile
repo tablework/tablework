@@ -49,5 +49,6 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 
 group :production do
   gem 'rails_12factor'
+  gem 'raygun4ruby'
 end
 
