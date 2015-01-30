@@ -21,6 +21,7 @@ gem 'koala'
 gem 'auto_html'
 gem 'jquery-ui-rails'
 gem 'wysiwyg-rails'
+gem 'raygun4ruby'
 
 gem 'rails-assets-semantic-ui'
 
@@ -49,6 +50,5 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 
 group :production do
   gem 'rails_12factor'
-  gem 'raygun4ruby'
 end
 
