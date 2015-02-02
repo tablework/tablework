@@ -26,8 +26,14 @@ Rails.application.routes.draw do
   end
 
   resources :scenes do
+    member do
+      get :assign_cast
+    end
     resources :notes
   end
+
+  resources :scene_memberships, only: [:create, :destroy]
+
   delete 'remove_note/:id', to: 'characters#remove_note', as: :remove_note
 
   root 'application#index'

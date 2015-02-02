@@ -24,10 +24,24 @@
           <h3><%= scene.title %></h3>
         </header>
         <section class="content">
+          <% if index != 0 %>
+            <div>
+              <% scene.scene_memberships.each do |member| %>
+                <%= link_to member, class: "ui instant fade masked reveal", data: {confirm: "Unassigning character. Are you sure?"}, method: :delete do %>
+                  <%= user_portrait class: 'ui circular image visible content', gender: member.character.gender, style: 'width: 30px;height:30px' %>
+                  <i class='close icon hidden content center' style="width:30px;height:30px;font-size:20px !important;"></i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
           <%= render 'spaces/scene', scene: scene %>
         </section>
         <footer class="extra content">
           <% if index != 0 %>
+            <%= link_to assign_cast_scene_path(scene), class: "assign-cast-#{scene.id}", remote: false do %>
+              <i class="plus icon"></i>ADD CAST</a>
+            <% end %>
+            &nbsp;
             <%= link_to "#", class: "new-note-#{scene.id}", remote: true do %>
               <i class="plus icon"></i>ADD NOTE</a>
             <% end %>
