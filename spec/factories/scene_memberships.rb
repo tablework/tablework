@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :scene_membership do
     scene
-    user
+    character
     membership_type "MyString"
   end
 
