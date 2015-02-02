@@ -1,0 +1,28 @@
+
+
+<section class="ui four columns centered grid">
+  <section class="column sign">
+    <section class="ui one columns grid">
+
+      <section class="column">
+        <h3>Create A Scene</h3>
+        <div class="ui form">
+          <%= simple_form_for @scene, url: scene_memberships_path, method: :post do |f| %>
+            <div class="inline field">
+                <%= f.collection_check_boxes :characters, @scene.scenable.characters.map{ |character| [character.id, character.name] }, :first, :last %>
+            </div>
+            <script>
+              $(function(){
+                $('.inline.field label').addClass('ui toggle checkbox').css('margin-top', '5px');
+              })
+            </script>
+            <%= f.hidden_field :scene_id, value: @scene.id %>
+            <div class="form-actions">
+              <%= f.button :submit, 'ASSIGN CAST', class: 'ui button fluid primary' %>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    </section>
+  </section>
+</section>

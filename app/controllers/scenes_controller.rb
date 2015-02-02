@@ -1,5 +1,5 @@
 class ScenesController < ApplicationController
-  before_action :find_scene, only: [:show, :destroy]
+  before_action :find_scene, only: [:show, :destroy, :assign_cast]
   before_action :find_scenable, only: [:new, :create, :show, :destroy]
   def new
     @scene = @scenable.scenes.build
@@ -46,6 +46,10 @@ class ScenesController < ApplicationController
   def destroy
     @scene.destroy
     redirect_to @scenable || root_path
+  end
+
+  def assign_cast
+    @scene_membership = @scene.scene_memberships.build
   end
 
   private
