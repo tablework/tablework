@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tablework</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,400italic,700,700italic,500italic' rel='stylesheet' type='text/css'>
+</head>
+<body id="landing" class="<%= controller_name %> <%= action_name %> ">
+  <%= yield %>
+</body>
+</html>
