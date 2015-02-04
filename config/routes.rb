@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'static_pages#index'
+
   resources :characters do
     member do
       get :assign_space
@@ -35,7 +37,5 @@ Rails.application.routes.draw do
   resources :scene_memberships, only: [:create, :destroy]
 
   delete 'remove_note/:id', to: 'characters#remove_note', as: :remove_note
-
-  root 'application#index'
 
 end
