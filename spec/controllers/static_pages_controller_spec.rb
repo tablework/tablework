@@ -6,5 +6,10 @@ RSpec.describe StaticPagesController, :type => :controller do
       get :index
       expect(response).to be_success
     end
+
+    it "should have correct layout" do
+      get :index
+      expect(response).to render_template("layouts/landing")
+    end
   end
 end
