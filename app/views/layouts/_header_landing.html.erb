@@ -1,0 +1,14 @@
+<section class="ui menu topbar">
+  <%= content_tag 'a', href: root_path, class: 'item' do %>
+    <section class="brand"></section>
+  <% end %>
+  <section class="right menu">
+    <%= link_to 'About', '#', class: 'item' %>
+    <%= link_to 'Pricing', '#', class: 'item' %>
+    <%= link_to 'Learn', '#', class: 'item' %>
+    <%= link_to '#', class: 'item' do %>
+      <span>Step In</span>
+      <i class="right arrow icon"></i>
+    <% end %>
+  </section>
+</section>
