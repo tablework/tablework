@@ -23,7 +23,7 @@ class CharactersController < ApplicationController
       flash[:notice] = 'Successfully added new characters'
       redirect_to root_path
     else
-      render :edit
+      render :new
     end
   end
 
@@ -79,19 +79,21 @@ class CharactersController < ApplicationController
     end
   end
 
-  def set_user
-    @user = current_user
-  end
+  private
 
-  def character_params
-    params.require(:character).permit(
-      :name, :nationality, :DOB, :gender, :image, :description, :space_id
-    )
-  end
+    def set_user
+      @user = current_user
+    end
 
-  def notes_params
-    params.require(:note).permit(
-      :title, :text, :image, :link
-     )
-  end
+    def character_params
+      params.require(:character).permit(
+        :name, :nationality, :DOB, :gender, :image, :description, :space_id
+      )
+    end
+
+    def notes_params
+      params.require(:note).permit(
+        :title, :text, :image, :link
+       )
+    end
 end
