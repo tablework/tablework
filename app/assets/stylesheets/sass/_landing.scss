@@ -1,0 +1,25 @@
+#landing {
+
+  .topbar {
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid $grey-3;
+  }
+  .background-image {
+    background: asset-url('background.jpg') center no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+  .menu {
+    margin: 0;
+    a {
+      line-height: 5rem;
+      color: $white !important;
+      &:hover {
+        background: none;
+        color: $yellow !important;
+      }
+    }
+  }
+}
