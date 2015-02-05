@@ -146,3 +146,16 @@
     font-style: bold;
 
 }
+
+@font-face {
+    font-family: 'Baskerville';
+    src: asset-url('Baskerville.eot');
+    src: asset-url('Baskerville.eot?#iefix') format('embedded-opentype'),
+         asset-url('Baskerville.woff2') format('woff2'),
+         asset-url('Baskerville.woff') format('woff'),
+         asset-url('Baskerville.ttc') format('truetype'),
+         asset-url('Baskerville.svg#freightsans_promedium') format('svg');
+    font-weight: 700;
+    font-style: bold;
+
+}
