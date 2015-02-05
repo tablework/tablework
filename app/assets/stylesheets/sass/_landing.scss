@@ -93,3 +93,28 @@
   }
 }
 
+.features {
+  .feature {
+    margin: 150px auto;
+    .image:first-child {
+      margin-bottom:70px;
+    }
+    .heading {
+      font-family: Baskerville, sans-serif;
+      text-align: center;
+      font-weight: bold;
+    }
+    .sub-heading {
+      font-size: 1.5rem;
+      text-align: center;
+      &.justified {
+        text-align: justify;
+      }
+    }
+  }
+  hr {
+    border: none;
+    border-bottom: 1px solid $grey-3;
+  }
+}
+
