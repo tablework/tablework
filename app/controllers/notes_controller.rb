@@ -18,7 +18,7 @@ class NotesController < ApplicationController
         wants.html { render :new }
         wants.js
       end
-    end
+    end            
   end
 
   def edit
