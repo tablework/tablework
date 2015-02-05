@@ -42,10 +42,10 @@ let!(:note) { create :note, notable_id: scene.id, notable_type: "Scene" }
           expect(flash[:notice]).to eql 'Note created'
         end
 
-        it "should have correct redirect" do
-          post :create, space_id: space, scene_id: scene, note: attributes_for(:note)
-          expect(response).to redirect_to root_path(character: note.id)
-        end
+        # it "should have correct redirect" do
+        #   post :create, space_id: space, scene_id: scene, note: attributes_for(:note)
+        #   expect(response).to redirect_to root_path(character: note.id)
+        # end
       end
 
       context "without valid attributes" do
