@@ -18,6 +18,6 @@ feature "user should see sign up page" do
 end
 
 def go_to_sign_up_page
-  visit root_path
+  visit dashboard_path
   click_button('Sign up')
 end
