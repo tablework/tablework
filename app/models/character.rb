@@ -25,4 +25,6 @@ class Character < ActiveRecord::Base
   has_many :scenes, as: :scenable
   has_many :notes, as: :notable
   mount_uploader :image, ImageUploader
+
+  validates :name, presence: true
 end
