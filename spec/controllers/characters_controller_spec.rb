@@ -85,10 +85,6 @@ RSpec.describe CharactersController, :type => :controller do
 
     describe "PATCH #update" do
       context "with valid attributes" do
-        it "locates the requested @character" do
-          patch :update, id: character, character: attributes_for(:character)
-          expect(assigns(:character)).to eq character
-        end
 
         it "changes @character's attributes" do
           patch :update, id: character, character: attributes_for(:character, name: 'Kean Seng', description: 'Ruby Developer')
