@@ -99,18 +99,6 @@
     .image:first-child {
       margin-bottom:70px;
     }
-    .heading {
-      font-family: Baskerville, sans-serif;
-      text-align: center;
-      font-weight: bold;
-    }
-    .sub-heading {
-      font-size: 1.5rem;
-      text-align: center;
-      &.justified {
-        text-align: justify;
-      }
-    }
   }
   hr {
     border: none;
@@ -118,3 +106,43 @@
   }
 }
 
+.call-to-action {
+  header {
+    margin: 100px auto;
+  }
+  .actions {
+    .column {
+      &:first-child {
+        border-right: 1px solid $grey-4;
+      }
+      button {
+        color: $black;
+      }
+    }
+  }
+  .background-dark {
+    background-color: $grey-2;
+  }
+
+  footer {
+    margin: 100px auto 50px auto;
+    padding: 2.5rem 0 !important;
+    p {
+      font-size: 1.1rem;
+      line-height: 3rem;
+    }
+  }
+}
+
+.heading {
+  font-family: Baskerville, sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+.sub-heading {
+  font-size: 1.5rem;
+  text-align: center;
+  &.justified {
+    text-align: justify;
+  }
+}
