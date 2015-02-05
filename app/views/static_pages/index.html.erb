@@ -1,4 +1,4 @@
-<section class="ui inverted vertical segment background-image">
+<header class="ui inverted vertical segment background-image">
   <section class="ui page grid">
     <header class="column row">
       <section class="one wide column"></section>
@@ -10,7 +10,7 @@
       <%= render 'static_pages/jumbo' %>
     </section>
   </section>
-</section>
+</header>
 <section class="ui page grid">
   <section class="three column marketing row">
     <section class="column">
@@ -66,6 +66,38 @@
   </section>
 </section>
 <hr class="linebreak">
-<section class="ui grid call-to-action">
-  <section class="column"></section>
+<section class="ui vertically padded page grid call-to-action">
+  <header class="row">
+    <h2 class="heading">Nam Libero Tempore</h2>
+    <p class="sub-heading justified">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores vel iusto nostrum hic soluta, dolores quia iure veniam! Eveniet, expedita eos tenetur soluta, illum consequuntur itaque ipsa praesentium accusantium! Est!</p>
+  </header>
+  <section class="actions two column row">
+    <section class="column center aligned">
+      <%= image_tag 'icon-price.png', class: 'image' %>
+      <h1 class="heading">Simple and affordable pricing</h1>
+      <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <button class="ui button yellow">
+        See Pricing
+      </button>
+    </section>
+    <section class="column center aligned">
+      <%= image_tag 'icon-price.png', class: 'image' %>
+      <h1 class="heading">Sign up for free now!</h1>
+      <p class="sub-heading">Explicabo aliquid vitae voluptatum ut deleniti ullam rerum, aliquam necessitatibus obcaecati inventore veritatis.</p>
+      <button class="ui button yellow">
+        Free
+      </button>
+    </section>
+  </section>
+  <footer class="two column row background-dark">
+    <section class="column">
+      <p>Enter your email address for updates about interesting things in Tablework.</p>
+    </section>
+    <section class="column">
+      <section class="ui action input right floated right aligned four column fluid">
+        <input type="text" placeholder="Email Address..." class=" three column">
+        <section class="ui button primary one column">Subscribe</section>
+      </section>
+    </section>
+  </footer>
 </section>
