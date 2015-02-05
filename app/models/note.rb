@@ -16,6 +16,8 @@
 
 class Note < ActiveRecord::Base
   mount_uploader :image, ImageUploader
+
+  validates :title, presence: true
   belongs_to :notable, polymorphic: true
 
   before_save :clean_link_html
