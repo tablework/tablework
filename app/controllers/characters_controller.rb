@@ -67,9 +67,11 @@ class CharactersController < ApplicationController
   end
 
   def remove_note
+    p Note.count
     @note = Note.find(params[:id])
     @note_id = @note.id
     @note.destroy
+    p Note.count
     respond_to do |format|
       format.html do
         flash[:notice] = 'Notes removed'
