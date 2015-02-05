@@ -1,10 +1,22 @@
 #landing {
 
-  .topbar {
+  .ui.menu.topbar {
+    padding: 0;
+    height: 80px;
     background: none;
     border: none;
     box-shadow: none;
     border-bottom: 1px solid $grey-3;
+    font-size: 15px;
+    .item:first-child {
+      padding: 10px 0 !important;
+    }
+    .item:last-child {
+      margin-right:0px;
+    }
+    .brand {
+      margin-left: 0;
+    }
   }
   .background-image {
     background: asset-url('background.jpg') center no-repeat;
@@ -22,4 +34,40 @@
       }
     }
   }
+
+  .jumbo {
+    margin-top: 120px;
+    text-align: center;
+    max-width: 430px;
+    h1 {
+      font-family: OpenSans;
+      font-size: 32px;
+      font-weight: 800;
+      font-kerning: 2.6;
+      line-height: 43px;
+      color: $black;
+      margin: 0;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      .highlight {
+        color: $primary;
+      }
+    }
+    hr {
+      margin: 30px 0;
+    }
+    .subtext {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 25px;
+      color: $grey-4;
+    }
+    button {
+      margin-top: 15px;
+      width: 116px;
+      height: 40px;
+      background: $yellow;
+    }
+  }
 }
+

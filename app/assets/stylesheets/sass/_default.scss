@@ -1,6 +1,6 @@
 // Font Family
 body {
-  @include roboto();
+  @include freightsans();
   @include base-normal();
   color: $body-dark;
   -webkit-font-smoothing: antialiased;

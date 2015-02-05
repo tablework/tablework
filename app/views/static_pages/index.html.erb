@@ -1,7 +1,13 @@
 <section class="ui inverted vertical segment background-image">
   <section class="ui page grid">
-    <section class="column">
-      <%= render 'layouts/header_landing' if user_signed_in? %>
+    <header class="column row">
+      <section class="one wide column"></section>
+      <%= render 'layouts/header_landing' %>
+      <section class="one wide column"></section>
+    </header>
+    <section class="sixteen wide column row">
+      <section class="nine wide column"></section>
+      <%= render 'static_pages/jumbo' %>
     </section>
   </section>
 </section>
