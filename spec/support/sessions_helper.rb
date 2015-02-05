@@ -39,7 +39,7 @@ module Features
 
     def sign_in user
       mock_oauth(user)
-      visit '/'
+      visit '/dashboard'
       click_link 'Sign in with Facebook'
     end
 
