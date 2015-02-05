@@ -14,6 +14,9 @@
 @mixin roboto() {
 	@include font-family('Roboto', sans-serif);
 }
+@mixin freightsans() {
+	@include font-family('FreightSans', sans-serif);
+}
 @mixin base-normal() {
 	@include font-style(400, normal);
 }

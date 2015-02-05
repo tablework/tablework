@@ -1,6 +1,6 @@
 // Font Family
 body {
-  font-family: FreightSans;
+  @include freightsans();
   @include base-normal();
   color: $body-dark;
   -webkit-font-smoothing: antialiased;
