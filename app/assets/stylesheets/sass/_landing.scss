@@ -35,6 +35,31 @@
     }
   }
 
+  
+  footer {
+    .menu {
+      a.item {
+       color: $grey-4 !important;
+       font-family: FreightSans, sans-serif;
+       font-weight: bold;
+       font-size: 1.2rem;
+       margin-right: 20px;
+      }
+    }
+    footer {
+      .brand {
+        background: asset-url('logo-tablework.png') no-repeat center;
+        height: 64px;
+      }
+      .item {
+        &:first-child:after {
+          content: '|';
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+
   .jumbo {
     margin-top: 120px;
     text-align: center;
@@ -146,3 +171,4 @@
     text-align: justify;
   }
 }
+
