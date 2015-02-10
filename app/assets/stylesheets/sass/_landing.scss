@@ -199,3 +199,22 @@
     }
   }
 }
+
+.ui.bio {
+  .column {
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin-bottom: 0;
+    }
+    .subheading {
+      color: $primary;
+      margin-bottom: 10px;
+    }
+    .one.column {
+      margin-bottom: 40px;
+    }
+  }
+}
