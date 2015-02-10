@@ -39,5 +39,5 @@ Rails.application.routes.draw do
   delete 'remove_note/:id', to: 'characters#remove_note', as: :remove_note
 
   get 'dashboard', to: 'application#index'
-
+  get 'about', to: 'static_pages#about'
 end

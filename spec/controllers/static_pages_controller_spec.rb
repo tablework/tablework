@@ -12,4 +12,16 @@ RSpec.describe StaticPagesController, :type => :controller do
       expect(response).to render_template("layouts/landing")
     end
   end
+
+  describe "#about" do
+    it  "should be success" do
+      get :about
+      expect(response).to be_success
+    end
+
+    it  "should have correct layout" do
+      get :about
+      expect(response).to render_template("layouts/landing")
+    end
+  end
 end

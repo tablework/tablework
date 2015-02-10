@@ -3,4 +3,8 @@ class StaticPagesController < ApplicationController
   def index
     render layout: 'layouts/landing'
   end
+
+  def about
+    render layout: 'layouts/landing'
+  end
 end
