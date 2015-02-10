@@ -24,4 +24,16 @@ RSpec.describe StaticPagesController, :type => :controller do
       expect(response).to render_template("layouts/landing")
     end
   end
+
+  describe "#pricing" do
+    it "should be be_success" do
+      get :pricing
+      expect(response).to be_success
+    end
+
+    it "should have correct layout" do
+      get :pricing
+      expect(response).to render_template("layouts/landing")
+    end
+  end
 end
