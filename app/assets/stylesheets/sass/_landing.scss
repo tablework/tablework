@@ -18,6 +18,18 @@
       margin-left: 0;
     }
   }
+
+  .brand-bw {
+    background: asset-url('logo-tablework-bw.png') no-repeat center;
+    -webkit-background-size: 135px 64px;
+    -o-background-size: 135px 64px;
+    background-size: 135px 64px;
+    width: 135px;
+    height: 64px;
+    &:hover {
+      border-bottom: none;
+    }
+  }
   .background-image {
     background: asset-url('background.jpg') center no-repeat;
     background-size: cover;
@@ -33,10 +45,17 @@
     .title {
       margin-top: calc(50vh - 250px);
       h1 {
+        font-family: OpenSans;
         text-transform: uppercase;
+        font-weight: 900;
+        font-size: 32px;
         span {
           color: $primary;
         }
+      }
+      p {
+        font-size: 22px;
+        font-weight: lighter;
       }
     }
   }
@@ -190,9 +209,25 @@
 }
 .ui.story {
   margin: 100px auto;
-  .column {
+  .ui.grid {
+    .blockquote-icon {
+      height: 40px;
+    }
     blockquote {
-      text-align: right;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      font-size: 26px;
+      color: $grey-4;
+      font-weight: bold;
+      line-height: 29px;
+      span {
+        font-size: 18px;
+        line-height: 70px;
+      }
+    }
+    section.blockquote-icon {
+      background: asset-url('blockquote.png') center no-repeat;
     }
     p {
       font-size: 18px !important;
@@ -203,18 +238,38 @@
 .ui.bio {
   .column {
     h1 {
+      font-family: OpenSans;
       text-align: center;
       text-transform: uppercase;
+      font-size: 32px;
+      font-weight: 900;
     }
     h2 {
       margin-bottom: 0;
+      font-family: Baskerville;
+      font-size: 21px;
+      font-weight: bold;
     }
     .subheading {
+      font-family: OpenSans;
       color: $primary;
-      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-family: FreightSans;
+      font-size: 16px;
+      color: $grey-4;
+      line-height: 24px;
     }
     .one.column {
       margin-bottom: 40px;
     }
+  }
+}
+footer {
+  .line-centered {
+    line-height: 36px;
   }
 }
