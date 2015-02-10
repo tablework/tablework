@@ -23,14 +23,31 @@
     background-size: cover;
     height: 100vh;
   }
+  #header-about {
+    &.background-about {
+      background: asset-url('background-about.png') center no-repeat;
+      background-size: cover;
+      height: 50vh;
+    }
+
+    .title {
+      margin-top: calc(50vh - 250px);
+      h1 {
+        text-transform: uppercase;
+        span {
+          color: $primary;
+        }
+      }
+    }
+  }
   .menu {
     margin: 0;
     a {
       line-height: 5rem;
       color: $white !important;
-      &:hover {
-        background: none;
+      &:last-child {
         color: $yellow !important;
+        bacground: none;
       }
     }
   }
@@ -171,4 +188,14 @@
     text-align: justify;
   }
 }
-
+.ui.story {
+  margin: 100px auto;
+  .column {
+    blockquote {
+      text-align: right;
+    }
+    p {
+      font-size: 18px !important;
+    }
+  }
+}
