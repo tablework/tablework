@@ -1,15 +1,15 @@
 <footer class="ui page grid">
   <header class="ui sixteen wide column row">
     <section class="eight wide column menu">
-      <%= link_to 'About', '#', class: 'item' %>
-      <%= link_to 'Blog', '#', class: 'item' %>
-      <%= link_to 'Pricing', '#', class: 'item' %>
+      <%= link_to 'About', about_path, class: 'item' %>
+      <%= link_to 'Blog', 'http://tableworkblog.com', target: '_blank', class: 'item' %>
+      <%= link_to 'Pricing', pricing_path, class: 'item' %>
     </section>
     <section class="eight wide column menu right aligned">
-      <%= link_to '#', class: 'item' do  %>
+      <%= link_to 'https://www.facebook.com/tableworking', target: '_blank', class: 'item' do  %>
         <i class="facebook icon"></i>
       <% end %>
-      <%= link_to '#', class: 'item' do  %>
+      <%= link_to 'https://twitter.com/tableworktweets', target: '_blank', class: 'item' do  %>
         <i class="twitter icon"></i>
       <% end %>
       <%= link_to '#', class: 'item' do  %>
@@ -20,13 +20,13 @@
   <hr class="linebreak">
   <footer class="ui sixteen wide column row line-centered">
     <section class="eight wide column menu topbar">
-      <%= link_to '#' do %>
+      <%= link_to root_path do %>
         <section class="brand-bw"></section>
       <% end %>
     </section>
     <section class="ui grid eight wide column row">
       <section class="eleven wide column right aligned">
-        &copy; <%= Date.today.year %> Performance Intelligence, Inc
+        &copy; <%= Date.today.year %> Arara Entertaintment
       </section>
       <section class="five wide column right floated">
         <%= link_to 'Terms', '#', class: 'item' %>
