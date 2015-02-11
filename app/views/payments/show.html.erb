@@ -1,0 +1,19 @@
+<div class="ui two column middle aligned relaxed fitted stackable grid">
+  <div class="center aligned column">
+      <%= form_tag '/payments/pay' do %>
+      	<div><%= submit_tag 'pay', class: 'ui primary button' %></div>
+      <% end %>
+      <%= form_tag '/payments/subscribe' do %>
+        <div><%= submit_tag 'subscribe', class: 'ui primary button' %></div>
+      <% end %>
+  </div>
+  <div class="ui vertical divider">
+    Or
+  </div>
+  <div class="center aligned column">
+    <%= form_tag '/payments/cancel' do %>
+    	<div><%= submit_tag 'cancel', class: 'ui secondary button' %></div>
+    <% end %>
+  </div>
+</div>
+
