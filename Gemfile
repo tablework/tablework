@@ -22,7 +22,7 @@ gem 'auto_html'
 gem 'jquery-ui-rails'
 gem 'wysiwyg-rails'
 gem 'raygun4ruby'
-
+gem 'paypal-sdk-rest'
 gem 'rails-assets-semantic-ui'
 
 group :development, :test do
@@ -39,6 +39,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'better_errors'
   gem 'letter_opener'
+  gem 'pry'
+  gem 'thin'
 end
 
 group :test do

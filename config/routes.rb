@@ -38,6 +38,12 @@ Rails.application.routes.draw do
 
   delete 'remove_note/:id', to: 'characters#remove_note', as: :remove_note
 
+  #testing to be removed later
+  get 'payments', to: 'payments#show'
+  post 'payments/subscribe', to: 'payments#subscribe'
+  post 'payments/pay', to: 'payments#pay'
+  post 'payments/cancel', to: 'payments#cancel'
+  #end testing
   get 'dashboard', to: 'application#index'
   get 'about', to: 'static_pages#about'
   get 'pricing', to: 'static_pages#pricing'
