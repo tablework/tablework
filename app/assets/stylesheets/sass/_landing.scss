@@ -348,3 +348,26 @@ footer {
     }
   }
 }
+
+.ui.mentors {
+  .column {
+    &.title {
+      h1 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-family: Baskerville, sans-serif;
+      }
+    }
+    h2 {
+      font-family: Baskerville, sans-serif;
+      margin-bottom: 0;
+    }
+    .sub-heading {
+      text-align: left;
+      font-size: 16px;
+      color: $primary;
+    }
+  }
+}
