@@ -78,9 +78,7 @@
         Sign up for free now!
       </h1>
       <p class="sub-heading">Explicabo aliquid vitae voluptatum ut deleniti ullam rerum, aliquam necessitatibus obcaecati inventore veritatis.</p>
-      <button class="ui button yellow">
-        Free
-      </button>
+      <%= link_to 'Free', dashboard_path, class: "ui button yellow" %>
     </section>
     <section class="column center aligned">
       <%= image_tag 'icon-price.png', class: 'image' %>
@@ -90,21 +88,8 @@
       <p class="sub-heading">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Intersi camsunitisat onvisrisa anterecibus. Les arems apacicirs.
       </p>
-      <button class="ui button yellow">
-        See Pricing
-      </button>
+      <%= link_to 'See Pricing', pricing_path, class: "ui button yellow" %>
     </section>
   </section>
-  <footer class="two column row background-dark">
-    <section class="column">
-      <p>Enter your email address for updates about interesting things in Tablework.</p>
-    </section>
-    <section class="column">
-      <section class="ui action input right floated right aligned four column fluid">
-        <input type="text" placeholder="Email Address..." class=" three column">
-        <section class="ui button primary one column">Subscribe</section>
-      </section>
-    </section>
-  </footer>
 </section>
 <%= render 'layouts/footer_landing.html.erb' %>
