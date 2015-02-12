@@ -14,28 +14,28 @@
 <section class="ui page grid">
   <section class="three column marketing row">
     <section class="column">
-      <h3>Sign Up</h3>
+      <h3>Craft</h3>
       <p class="subtext">
-        Invite three people to enjoy Tablework Pro account for 1 month.
+        Explore new ways of getting organized. Refresh and learn new skills with our tutorials
       </p>
     </section>
     <section class="column">
-      <h3>Title</h3>
+      <h3>Create</h3>
       <p class="subtext">
-        Voluptatum atque ea, quis aliquam reprehenderit possimus sapiente libero!
+        Research and build your character, explore your scenes. Compile your thought and access them anywhere
       </p>
     </section>
     <section class="column">
-      <h3>Title</h3>
+      <h3>Connect</h3>
       <p class="subtext">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Engage in a virtual rehearsal space with fellow cast members. Join a world community of actors
       </p>
     </section>
   </section>
 </section>
 <hr class="linebreak">
 <section class="ui vertically padded page grid features">
-  <section class="one column feature row">
+  <section class="twelve wide column feature row">
     <%= image_tag 'feature-1.png', class: 'image' %>
     <h2 class="heading">Nam Libero Tempore</h2>
     <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores vel iusto nostrum hic soluta, dolores quia iure veniam! Eveniet, expedita eos tenetur soluta, illum consequuntur itaque ipsa praesentium accusantium! Est!</p>
@@ -74,31 +74,22 @@
   <section class="actions two column row">
     <section class="column center aligned">
       <%= image_tag 'icon-price.png', class: 'image' %>
-      <h1 class="heading">Simple and affordable pricing</h1>
-      <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-      <button class="ui button yellow">
-        See Pricing
-      </button>
+      <h1 class="heading">
+        Sign up for free now!
+      </h1>
+      <p class="sub-heading">Explicabo aliquid vitae voluptatum ut deleniti ullam rerum, aliquam necessitatibus obcaecati inventore veritatis.</p>
+      <%= link_to 'Free', dashboard_path, class: "ui button yellow" %>
     </section>
     <section class="column center aligned">
       <%= image_tag 'icon-price.png', class: 'image' %>
-      <h1 class="heading">Sign up for free now!</h1>
-      <p class="sub-heading">Explicabo aliquid vitae voluptatum ut deleniti ullam rerum, aliquam necessitatibus obcaecati inventore veritatis.</p>
-      <button class="ui button yellow">
-        Free
-      </button>
+      <h1 class="heading">
+        Simple and affordable pricing
+      </h1>
+      <p class="sub-heading">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Intersi camsunitisat onvisrisa anterecibus. Les arems apacicirs.
+      </p>
+      <%= link_to 'See Pricing', pricing_path, class: "ui button yellow" %>
     </section>
   </section>
-  <footer class="two column row background-dark">
-    <section class="column">
-      <p>Enter your email address for updates about interesting things in Tablework.</p>
-    </section>
-    <section class="column">
-      <section class="ui action input right floated right aligned four column fluid">
-        <input type="text" placeholder="Email Address..." class=" three column">
-        <section class="ui button primary one column">Subscribe</section>
-      </section>
-    </section>
-  </footer>
 </section>
 <%= render 'layouts/footer_landing.html.erb' %>
