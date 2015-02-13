@@ -11,9 +11,9 @@ module CharactersHelper
 
   def user_use_uploaded_images(options)
     if options[:user].image.present?
-      image_tag options[:user].image.url
-      elsif options[:user].profile_photo
-        image_tag options[:user].profile_photo
+      image_tag options[:user].image.url, style: options[:style], class: options[:class]
+    elsif options[:user].try(:profile_photo)
+        image_tag options[:user].profile_photo, style: options[:style], class: options[:class]
       else
         image_tag('portrait.jpg', style: options[:style], class: options[:class] )
     end

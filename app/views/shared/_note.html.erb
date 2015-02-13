@@ -17,7 +17,7 @@
         <i class="configure icon"></i>
         <span>Edit</span>
       <% end %>
-      <% if ((scenable.try(:scenable).try(:scenes).try(:first) == scenable) and !(scenable.try(:scenable).try(:scenes).try(:first).try(:scenable).instance_of?(Character))) or scenable.instance_of?(Character) %>
+      <% if note.deletable? %>
         <%= link_to polymorphic_path([space, scenable, note]), class:"ui secondary button", method: :delete, data: { confirm: 'Are you sure? '} do %>
           <i class="minus icon"></i>
           <span>Delete</span>

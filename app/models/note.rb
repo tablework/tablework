@@ -22,12 +22,20 @@ class Note < ActiveRecord::Base
 
   before_save :clean_link_html
 
-  auto_html_for :link do
-    html_escape
-    image
-    youtube(:width => 235, :height => 180, :autoplay => false)
-    link :target => "_blank", :rel => "nofollow"
-    simple_format
+  def deletable?
+    if self.notable.instance_of? Character
+      true
+    elsif self.notable.instance_of? Scene
+      if self.notable.scenable.instance_of? Character
+        return false
+      else
+        if self.notable.scenable.scenes.first ==  self.notable
+          return false
+        else
+          return true
+        end
+      end
+    end
   end
 
   private
