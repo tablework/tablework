@@ -2,8 +2,7 @@
     <section class="six wide column left aligned">
       <section class="ui card">
         <div class="image-portrait">
-          <%= user_portrait style: 'width:100%;height:100%', gender: character.gender %>
-          <h4 class="image-text">
+          <%= user_portrait style: 'width:100%;height:100%', gender: character.gender, user: character %>
             <%= character.name %>
           </h4>
         </div>
@@ -15,7 +14,7 @@
             <i class="small arrow circle left icon"></i><span><%= character.nationality %></span>
           </p>
           <p>
-            <i class="small calendar outline icon"></i><span><%= character.DOB %></span>
+            <i class="small calendar outline icon"></i><span><%= time_ago_in_words character.DOB %> ago</span>
           </p>
         </div>
       </section>
