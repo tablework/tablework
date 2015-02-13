@@ -1,168 +1,83 @@
 class PaymentsController < ApplicationController
   skip_before_action :authenticate_user!
-  include PayPal::SDK::REST
-  include PayPal::SDK::Core::Logging
-
+  
   def show
-
+    @client_token = Braintree::ClientToken.generate
   end
 
-  def pay
-  	#the pay one off example
-	  @payment = Payment.new({
-		  :intent =>  "sale",
-
-		  # ###Payer
-		  # A resource representing a Payer that funds a payment
-		  # Payment Method as 'paypal'
-		  :payer =>  {
-		    :payment_method =>  "paypal" },
-
-		  # ###Redirect URLs
-		  :redirect_urls => {
-		    :return_url => "http://localhost:3000/payments",
-		    :cancel_url => "http://localhost:3000/" },
-
-		  # ###Transaction
-		  # A transaction defines the contract of a
-		  # payment - what is the payment for and who
-		  # is fulfilling it.
-		  :transactions =>  [{
-
-		    # Item List
-		    :item_list => {
-		      :items => [{
-		        :name => "item",
-		        :sku => "item",
-		        :price => "69.99",
-		        :currency => "USD",
-		        :quantity => 1 }]},
-
-		    # ###Amount
-		    # Let's you specify a payment amount.
-		    :amount =>  {
-		      :total =>  "69.99",
-		      :currency =>  "USD" },
-		    :description =>  "This is the payment transaction description." }]})
-
-	  if @payment.create
-	    @redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
-	    logger.info "Payment[#{@payment.id}]"
-	    logger.info "Redirect: #{@redirect_url}"
-	  else
-	    # Display Error message
-	    logger.error "Error while creating payment:"
-	    logger.error @payment.error.inspect
-	  end
-
-	  redirect_to @redirect_url
+  def brain_search
+    search_results = Braintree::Customer.search do |search|
+      search.email.is current_user.email
+    end
+    search_results
   end
 
-  def subscribe
-  	  @planAttributes = {
-  	    "name" => "Tablework Monthly Plan",
-  	    "description" => "Template creation.",
-  	    "type" => "infinite",
-  	    "payment_definitions" => [
-  	        {
-  	            "name" => "Monthly Payments",
-  	            "type" => "REGULAR",
-  	            "frequency" => "MONTH",
-  	            "frequency_interval" => "1",
-  	            "amount" => {
-  	                "value" => "6.99",
-  	                "currency" => "USD"
-  	            },
-  	            "cycles" => "0",
-  	            "charge_models" => [
-  	                {
-  	                    "type" => "SHIPPING",
-  	                    "amount" => {
-  	                        "value" => "6.99",
-  	                        "currency" => "USD"
-  	                    }
-  	                },
-  	                {
-  	                    "type" => "TAX",
-  	                    "amount" => {
-  	                        "value" => "0.69",
-  	                        "currency" => "USD"
-  	                    }
-  	                }
-  	            ]
-  	        }
-  	    ],
-  	    "merchant_preferences" => {
-  	        "setup_fee" => {
-  	            "value" => "1.00",
-  	            "currency" => "USD"
-  	        },
-  	        "return_url" => "http://localhost:3000/payments",
-  	        "cancel_url" => "http://localhost:3000/",
-  	        "auto_bill_amount" => "YES",
-  	        "initial_fail_amount_action" => "CONTINUE",
-  	        "max_fail_attempts" => "0"
-  	    }
-  	  }
-
-  	  @agreementAttributes = {
-  	    "name" => "Tablework Subscription Agreement",
-  	    "description" => "Agreement for T-Shirt of the Month Club Plan",
-  	    "start_date" => "2015-02-19T00:37:04Z",
-  	    "payer" => {
-  	        "payment_method" => "paypal"
-  	    },
-  	    "shipping_address" => {
-  	        "line1" => "111 First Street",
-  	        "city" => "Saratoga",
-  	        "state" => "CA",
-  	        "postal_code" => "95070",
-  	        "country_code" => "US"
-  	    }
-  	}
-
-  	# first, create an active plan to be added to agreement
-    api = API.new
-    # plan = Plan.new(@planAttributes.merge( :token => api.token ))
-    # plan.create
-
-    # construct a patch object that will be used for deletion
-    # patch = Patch.new
-    # patch.op = "replace"
-    # patch.path = "/"
-    # patch.value = { "state" => "ACTIVE" }
-
-    # send delete request
-    # plan.update(patch)
-
-    # first, create an agreement
-    agreement = Agreement.new(@agreementAttributes)
-    agreement.plan = Plan.find('P-90493608698168208O62BMJQ')
-    agreement.create
-  	# agreement.execute
-  	binding.pry
-  	redirect_to payments_path
+  def brain_customer
+    brain_customer = Braintree::Customer.create(
+      :email => current_user.email
+    )
+    brain_customer
   end
 
-  def cancel
-  	puts "CANCEL"
-  	# create a plan to delete
-  	plan = Plan.find(plan_id)
-  	plan_id = plan.id
-
-  	# construct a patch object that will be used for deletion
-  	patch = Patch.new
-  	patch.op = "replace"
-  	patch.path = "/"
-  	patch.value = { "state" => "DELETED" }
-
-  	# send delete request
-  	plan.update(patch)
-
-  	# make sure the plan has been deleted
-  	plan = Plan.find(plan_id)
-  	plan.id.should_not eq plan_id
-  	redirect_to payments_path
+  def brainprocess
+    binding.pry
+    nameoncard = params[:nameoncard]
+    cardnumber = params[:cardnumber]
+    nonce = params[:payment_method_nonce]
+    plan = params[:plan]
+    customer = brain_search.first || brain_customer 
+    if plan == "Yearly"
+      brainsub(customer, nonce)
+    else
+      brainpay(customer, nonce)
+    end
+    redirect_to payments_path
   end
+
+  def brainpay(customer, nonce)
+    # 5105105105105100
+    result = Braintree::Transaction.sale(
+      :amount => "69.99",
+      :payment_method_nonce => nonce,
+      :customer => {
+          :first_name => current_user.first_name,
+          :last_name => current_user.last_name,
+          :email => "test@gmail.com"
+      }
+    )
+    if result.success?
+      puts "success!: #{result.transaction.id}"
+    elsif result.transaction
+      puts "Error processing transaction:"
+      puts "  code: #{result.transaction.processor_response_code}"
+      puts "  text: #{result.transaction.processor_response_text}"
+    else
+      p result.errors
+    end
+  end
+
+  def brainsub(customer, nonce)
+    nameoncard = params[:nameoncard]
+    cardnumber = params[:cardnumber]
+
+    result = Braintree::PaymentMethod.create(
+      :customer_id => customer.id,
+      :payment_method_nonce => params[:payment_method_nonce]
+    )
+    result = Braintree::Subscription.create(
+      :payment_method_token => "the_token",
+      :plan_id => "hs8b"
+    )
+  end
+
+  def brainsuspend
+  
+  end
+
+  def braincancel
+  
+  end
+
+  
 
 end

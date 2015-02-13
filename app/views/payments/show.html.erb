@@ -1,19 +1,38 @@
-<div class="ui two column middle aligned relaxed fitted stackable grid">
-  <div class="center aligned column">
-      <%= form_tag '/payments/pay' do %>
-      	<div><%= submit_tag 'pay', class: 'ui primary button' %></div>
-      <% end %>
-      <%= form_tag '/payments/subscribe' do %>
-        <div><%= submit_tag 'subscribe', class: 'ui primary button' %></div>
-      <% end %>
+<script type="text/javascript">
+  $(function(){
+    braintree.setup(
+      '<%= @client_token %>', 
+      'dropin', {
+        container: 'checkout',
+        form: 'brainsub'
+        
+      });
+  });
+</script>
+<%= form_tag '/payments/process', class: 'ui form', id: 'brainsub'  do %>
+  <div class="field">
+    <label>Name on card</label>
+    <input type="text" name="nameoncard" maxlength="255">
   </div>
-  <div class="ui vertical divider">
-    Or
+  <div id="checkout" class="checkout"></div>
+  <div class="grouped fields">
+    <label for="fruit">Select your plan</label>
+    <div class="field">
+      <div class="ui radio checkbox checked">
+        <input type="radio" name="plan" value="Subscription" checked="">
+        <label>Subcription</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" name="plan" value="Yearly">
+        <label>Yearly</label>
+      </div>
+    </div>
   </div>
-  <div class="center aligned column">
-    <%= form_tag '/payments/cancel' do %>
-    	<div><%= submit_tag 'cancel', class: 'ui secondary button' %></div>
-    <% end %>
-  </div>
-</div>
+
+	<div class="field">
+    <%= submit_tag 'pay', class: 'ui primary button' %>
+    </div>
+<% end %>
 

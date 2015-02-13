@@ -14,7 +14,7 @@
             <i class="small arrow circle left icon"></i><span><%= character.nationality %></span>
           </p>
           <p>
-            <i class="small calendar outline icon"></i><span><%= time_ago_in_words character.DOB %> ago</span>
+            <i class="small calendar outline icon"></i><span><%= time_ago_in_words character.DOB if character.DOB %> ago</span>
           </p>
         </div>
       </section>

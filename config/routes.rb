@@ -40,9 +40,23 @@ Rails.application.routes.draw do
 
   #testing to be removed later
   get 'payments', to: 'payments#show'
-  post 'payments/subscribe', to: 'payments#subscribe'
-  post 'payments/pay', to: 'payments#pay'
-  post 'payments/cancel', to: 'payments#cancel'
+  get 'subscription', to: 'payments#subscription'
+  post 'payments/brainsub', to: 'payments#brainsub'
+  # post 'payments/subscription', to: 'payments#brainsub' do
+  #   result = Braintree::Customer.create(
+  #     :first_name => params[:first_name],
+  #     :last_name => params[:last_name],
+  #     :payment_method_nonce => params[:payment_method_nonce]
+  #   )
+  #   if result.success?
+  #     "Customer created with name: #{result.customer.first_name} #{result.customer.last_name}" +
+  #     "<a href=\"/subscriptions?id=#{result.customer.id}\">Click here to sign this Customer up for a recurring payment</a>"
+  #   else
+  #     "Error: #{result.message}"
+  #   end
+  # end
+  post 'payments/process', to: 'payments#brainprocess'
+  post 'payments/cancel', to: 'payments#braincancel'
   #end testing
   get 'dashboard', to: 'application#index'
   get 'about', to: 'static_pages#about'
