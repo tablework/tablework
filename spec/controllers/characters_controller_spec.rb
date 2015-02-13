@@ -95,7 +95,7 @@ RSpec.describe CharactersController, :type => :controller do
 
         it "redirects to the updated character" do
           patch :update, id: character, character: attributes_for(:character)
-          expect(response).to redirect_to root_path
+          expect(response).to redirect_to root_path(character: character)
         end
       end
 
