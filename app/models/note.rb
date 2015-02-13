@@ -19,6 +19,7 @@ class Note < ActiveRecord::Base
 
   validates :title, presence: true
   belongs_to :notable, polymorphic: true
+  belongs_to :user
 
   before_save :clean_link_html
 
