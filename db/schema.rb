@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202043900) do
+ActiveRecord::Schema.define(version: 20150213043323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,9 +58,11 @@ ActiveRecord::Schema.define(version: 20150202043900) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "link_html"
+    t.integer  "user_id"
   end
 
   add_index "notes", ["notable_id"], name: "index_notes_on_notable_id", using: :btree
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "title",             limit: 255
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(version: 20150202043900) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "notes", "users"
   add_foreign_key "scene_memberships", "characters"
   add_foreign_key "scene_memberships", "scenes"
   add_foreign_key "scene_memberships", "users"

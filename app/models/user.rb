@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   has_many :characters
+  has_many :notes
   has_many :authorizations, dependent: :destroy
   has_many :owned_spaces, class: Space, foreign_key: 'director_id'
   has_many :space_memberships
