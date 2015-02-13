@@ -10,7 +10,7 @@
       <span class="ui button secondary">
         <%= link_to 'Add New scene', polymorphic_path([@space, @scene], action: :new) %>
       </span>
-      <span class="ui button secondary">
+      <span class="ui button red" style="position:fixed;right:10px;top:150px;">
         <%= link_to 'Delete space', @space, method: :delete, data: { confirm: 'Are you sure?' } %>
       </span>
     </h3>
