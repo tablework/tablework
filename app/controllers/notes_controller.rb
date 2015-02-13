@@ -10,6 +10,8 @@ class NotesController < ApplicationController
 
     respond_to do |wants|
       if @note.save
+        @note.user = current_user
+        @note.save
         flash[:notice] = 'Note created'
         wants.html { redirect_to @notable || root_path(character: @notable) }
         wants.js
