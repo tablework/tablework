@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show]
+  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit]
   before_action  :authenticate_user!
 
   def index
@@ -31,12 +31,16 @@ class CharactersController < ApplicationController
     @character = @user.characters.find(params[:id])
   end
 
+  def edit
+    @character = @user.characters.find(params[:id]) || not_found
+  end
+
   def update
     @character = @user.characters.find(params[:id]) || not_found
     @character.update(character_params)
     if @character.save
       respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path(character: @character.id) }
         format.js
       end
     else
