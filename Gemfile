@@ -22,8 +22,9 @@ gem 'auto_html'
 gem 'jquery-ui-rails'
 gem 'wysiwyg-rails'
 gem 'raygun4ruby'
-gem 'paypal-sdk-rest'
+gem 'enumerize'
 gem 'rails-assets-semantic-ui'
+gem "braintree"
 
 group :development, :test do
   gem 'dotenv-rails'
