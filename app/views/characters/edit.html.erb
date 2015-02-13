@@ -1,0 +1,25 @@
+<section class="ui four columns centered grid">
+  <section class="column sign">
+    <section class="ui one columns grid">
+
+      <section class="column">
+        <h3>Edit Character</h3>
+
+        <div class="form-inputs">
+          <%= simple_form_for @character, :html => { :multipart => true } do |f| %>
+            <%= f.input :name, placeholder: 'Full Name' %>
+            <%= f.input :gender, placeholder: 'Gender' %>
+            <%= f.input :nationality, placeholder: 'Nationality' %>
+            <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
+            end_year: Date.today.year, discard_day: false,
+            order: [:day, :month, :year] %>
+            <%= f.input :image, label: 'Image' %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, 'EDIT PERSONA', class: 'ui fluid button  primary' %>
+          <% end %>
+        </div>
+
+      </section>
+    </section>
+  </section>
