@@ -1,5 +1,5 @@
 <% if note.link_html.present? %>
-  <button class="ui button fluid view">
+  <button class="ui button fluid view <%= 'green' if note.user == @space.try(:director) %>">
     <i class="<%= icon_helper(note.title) %> icon"></i>
     <span><%= note.title.titleize if note.title %> </span><span><small style="font-size:0.5em"><%= time_ago_in_words(note.updated_at) %> ago</small></span>
   </button>
