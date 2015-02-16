@@ -23,6 +23,7 @@ class Character < ActiveRecord::Base
   belongs_to :space
   before_validation { self.gender.downcase! if self.gender }
   has_many :scenes, as: :scenable
+  has_many :scene_memberships, dependent: :destroy
   has_many :notes, as: :notable
   mount_uploader :image, ImageUploader
 
