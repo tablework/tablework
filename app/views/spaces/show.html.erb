@@ -18,7 +18,12 @@
     <% @space.scenes.order('created_at ASC').each_with_index do |scene, index| %>
       <section id="scene-<%= scene.id %>" class="ui card list shadow">
         <header class="header">
-          <h3><%= scene.title %></h3>
+          <h3><%= scene.title %></h3>  
+          <span>
+            <%= link_to polymorphic_path([@space, scene], action: :edit) do %> 
+              <i class="configure icon"></i>
+            <% end %>
+          </span>
         </header>
         <section class="content">
           <% if index != 0 %>
