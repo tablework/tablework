@@ -5,25 +5,25 @@
 <table>
   <thead>
     <tr>
-      <th>Reference</th>
-      <th>Plantype</th>
-      <th colspan="3"></th>
+      <th>Payment Type</th>
+      <th>Plan Type</th>
+      <th>Payment Id</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @user_payments.each do |user_payment| %>
       <tr>
-        <td><%= user_payment.reference %></td>
+        <td><%= user_payment.payment_type %></td>
         <td><%= user_payment.plantype %></td>
-        <td><%= link_to 'Show', user_payment %></td>
-        <td><%= link_to 'Edit', edit_user_payment_path(user_payment) %></td>
-        <td><%= link_to 'Destroy', user_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user_payment.payment_id %></td>
+        <td><%= user_payment.status %></td>
+        <td><%= user_payment.created_at %></td>
+        <td><%= link_to "Cancel", payments_cancel_path(user_payment), remote: true, method: :post%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New User payment', new_user_payment_path %>

@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get 'subscription', to: 'payments#subscription'
   get 'payments/thankyou', to: 'payments#thankyou'
   post 'payments/process', to: 'payments#brainprocess'
-  post 'payments/cancel', to: 'payments#braincancel'
+  post 'payments/cancel/:id', to: 'payments#braincancel', as: 'payments_cancel'
   #end testing
   get 'dashboard', to: 'application#index'
   get 'about', to: 'static_pages#about'
