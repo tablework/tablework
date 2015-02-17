@@ -1,6 +1,13 @@
 class PaymentsController < ApplicationController
   skip_before_action :authenticate_user!
-  
+  enumerize :plan, in: [:Yearly, :Subcription]
+  enumerize :payment_type, in: [:CreditCard, :Paypal]
+
+  def create_user_payment(plantype)
+    e = UserPayment.new(user_id: current_user.id, payment_type: :CreditCard, plantype: plantype)
+    e.save
+  end
+
   def show
     @client_token = Braintree::ClientToken.generate
   end
@@ -20,18 +27,17 @@ class PaymentsController < ApplicationController
   end
 
   def brainprocess
-    binding.pry
     nameoncard = params[:nameoncard]
     cardnumber = params[:cardnumber]
     nonce = params[:payment_method_nonce]
     plan = params[:plan]
     customer = brain_search.first || brain_customer 
-    if plan == "Yearly"
+    if plan != :Yearly
       brainsub(customer, nonce)
     else
       brainpay(customer, nonce)
     end
-    redirect_to payments_path
+    create_user_payment(plan)
   end
 
   def brainpay(customer, nonce)
@@ -57,17 +63,24 @@ class PaymentsController < ApplicationController
   end
 
   def brainsub(customer, nonce)
-    nameoncard = params[:nameoncard]
-    cardnumber = params[:cardnumber]
-
+    
     result = Braintree::PaymentMethod.create(
       :customer_id => customer.id,
-      :payment_method_nonce => params[:payment_method_nonce]
+      :payment_method_nonce => nonce
     )
     result = Braintree::Subscription.create(
-      :payment_method_token => "the_token",
+      :payment_method_token => result.payment_method.token,
       :plan_id => "hs8b"
     )
+    if result.success?
+      puts "success!: #{result.subscription.id}"
+    elsif result.transaction
+      puts "Error processing transaction:"
+      puts "  code: #{result.subscription.processor_response_code}"
+      puts "  text: #{result.subscription.processor_response_text}"
+    else
+      p result.errors
+    end
   end
 
   def brainsuspend

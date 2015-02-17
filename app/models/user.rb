@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
   has_many :owned_spaces, class: Space, foreign_key: 'director_id'
   has_many :space_memberships
   has_many :spaces, through: :space_memberships
+  has_many :user_payments
 
   #TC Wu's reimplementation
   def self.from_omniauth(auth, current_user)
