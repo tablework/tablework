@@ -1,11 +1,19 @@
 class PaymentsController < ApplicationController
+  extend Enumerize
+
   skip_before_action :authenticate_user!
   enumerize :plan, in: [:Yearly, :Subcription]
   enumerize :payment_type, in: [:CreditCard, :Paypal]
 
-  def create_user_payment(plantype)
-    e = UserPayment.new(user_id: current_user.id, payment_type: :CreditCard, plantype: plantype)
+  def create_user_payment(plantype, id)
+    e = UserPayment.new(user_id: current_user.id, payment_type: :CreditCard, plantype: plantype, payment_id: id)
     e.save
+  end
+
+
+
+  def thankyou
+
   end
 
   def show
@@ -32,12 +40,14 @@ class PaymentsController < ApplicationController
     nonce = params[:payment_method_nonce]
     plan = params[:plan]
     customer = brain_search.first || brain_customer 
+    id = "NOID"
     if plan != :Yearly
-      brainsub(customer, nonce)
+      id = brainsub(customer, nonce)
     else
-      brainpay(customer, nonce)
+      id = brainpay(customer, nonce)
     end
-    create_user_payment(plan)
+    create_user_payment(plan, id)
+    redirect_to payments_thankyou_path
   end
 
   def brainpay(customer, nonce)
@@ -51,19 +61,10 @@ class PaymentsController < ApplicationController
           :email => "test@gmail.com"
       }
     )
-    if result.success?
-      puts "success!: #{result.transaction.id}"
-    elsif result.transaction
-      puts "Error processing transaction:"
-      puts "  code: #{result.transaction.processor_response_code}"
-      puts "  text: #{result.transaction.processor_response_text}"
-    else
-      p result.errors
-    end
+    result.transaction.id
   end
 
   def brainsub(customer, nonce)
-    
     result = Braintree::PaymentMethod.create(
       :customer_id => customer.id,
       :payment_method_nonce => nonce
@@ -72,15 +73,8 @@ class PaymentsController < ApplicationController
       :payment_method_token => result.payment_method.token,
       :plan_id => "hs8b"
     )
-    if result.success?
-      puts "success!: #{result.subscription.id}"
-    elsif result.transaction
-      puts "Error processing transaction:"
-      puts "  code: #{result.subscription.processor_response_code}"
-      puts "  text: #{result.subscription.processor_response_text}"
-    else
-      p result.errors
-    end
+    binding.pry
+    result.subscription.id
   end
 
   def brainsuspend

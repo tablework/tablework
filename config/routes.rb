@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   #testing to be removed later
   get 'payments', to: 'payments#show'
   get 'subscription', to: 'payments#subscription'
+  get 'payments/thankyou', to: 'payments#thankyou'
   post 'payments/process', to: 'payments#brainprocess'
   post 'payments/cancel', to: 'payments#braincancel'
   #end testing
