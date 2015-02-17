@@ -2,15 +2,14 @@ class PaymentsController < ApplicationController
   extend Enumerize
 
   skip_before_action :authenticate_user!
-  enumerize :plan, in: [:Yearly, :Subcription]
+  enumerize :plan, in: [:Yearly, :Subscription]
   enumerize :payment_type, in: [:CreditCard, :Paypal]
+  enumerize :payment_status, in: [:Live, :Canceled]
 
   def create_user_payment(plantype, id)
-    e = UserPayment.new(user_id: current_user.id, payment_type: :CreditCard, plantype: plantype, payment_id: id)
+    e = UserPayment.new(user_id: current_user.id, payment_type: :CreditCard, plantype: plantype, payment_id: id, status: :Live)
     e.save
   end
-
-
 
   def thankyou
 
@@ -73,7 +72,6 @@ class PaymentsController < ApplicationController
       :payment_method_token => result.payment_method.token,
       :plan_id => "hs8b"
     )
-    binding.pry
     result.subscription.id
   end
 
@@ -82,7 +80,10 @@ class PaymentsController < ApplicationController
   end
 
   def braincancel
-  
+    e = UserPayment.find(params[:id])
+    result = Braintree::Subscription.cancel(e.payment_id)
+    e.status = :Canceled
+    e.save
   end
 
   
