@@ -19,6 +19,11 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe UserPaymentsController, :type => :controller do
+	let(:user) { create :user }
+
+	before do
+    sign_in :user, user
+  end
 
   describe "GET index" do
     it {

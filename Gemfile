@@ -47,6 +47,7 @@ end
 group :test do
   gem 'vcr', '~> 2.9.3'
   gem 'webmock'
+  gem 'shoulda-matchers'
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
