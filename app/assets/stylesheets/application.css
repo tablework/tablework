@@ -15,5 +15,6 @@
  *= require froala_editor.min
  *= require froala_content.min
  *= require froala_style.min
+ *= require introjs
  *= require sass/main
  */
