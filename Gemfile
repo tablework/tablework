@@ -25,6 +25,7 @@ gem 'raygun4ruby'
 gem 'enumerize'
 gem 'rails-assets-semantic-ui'
 gem "braintree"
+gem "introjs-rails"
 
 group :development, :test do
   gem 'dotenv-rails'

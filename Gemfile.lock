@@ -134,6 +134,9 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    introjs-rails (1.0.0)
+      sass-rails (>= 3.2)
+      thor (~> 0.14)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -342,6 +345,7 @@ DEPENDENCIES
   enumerize
   erd
   factory_girl_rails
+  introjs-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
