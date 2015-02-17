@@ -18,11 +18,12 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe UserPaymentsController, :type => :controller do
-
-  describe "GET index" do
+RSpec.describe PaymentsController, :type => :controller do
+	let!(:user) { create(:user) }
+	before { allow(controller).to receive(:current_user) { user } }
+  describe "GET subscription" do
     it {
-      get :index
+    	controller.create_user_payment("Subscription", "12345")
       expect(response).to be_success
     }
   end
