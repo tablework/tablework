@@ -18,7 +18,7 @@ class Space < ActiveRecord::Base
   has_many :space_memberships, dependent: :destroy
   has_many :users, through: :space_memberships
   after_create :setup_research
-
+  validates :name, presence: true
 
   private
 

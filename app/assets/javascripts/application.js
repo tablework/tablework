@@ -30,3 +30,4 @@
 //= require plugins/inline_styles.min.js
 //= require application/characters/index
 //= require application/payment/braintree
+//= require introjs

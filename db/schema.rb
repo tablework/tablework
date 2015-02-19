@@ -11,37 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217070440) do
+ActiveRecord::Schema.define(version: 20150218030648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "authorizations", force: :cascade do |t|
-    t.string   "provider",   limit: 255
-    t.string   "uid",        limit: 255
+    t.string   "provider"
+    t.string   "uid"
     t.integer  "user_id"
-    t.string   "token",      limit: 255
-    t.string   "secret",     limit: 255
+    t.string   "token"
+    t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",   limit: 255
+    t.string   "username"
   end
 
   create_table "characters", force: :cascade do |t|
-    t.string   "name",         limit: 255
+    t.string   "name"
     t.text     "description"
-    t.string   "type_of_play", limit: 255
+    t.string   "type_of_play"
     t.integer  "age"
-    t.string   "occupation",   limit: 255
-    t.hstore   "fields",                   default: {}
+    t.string   "occupation"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "nationality",  limit: 255
+    t.string   "nationality"
     t.datetime "DOB"
     t.integer  "space_id"
-    t.string   "gender",       limit: 255
+    t.string   "gender"
     t.string   "image"
   end
 
@@ -49,11 +48,11 @@ ActiveRecord::Schema.define(version: 20150217070440) do
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "notes", force: :cascade do |t|
-    t.string   "title",        limit: 255
+    t.string   "title"
     t.integer  "notable_id"
-    t.string   "notable_type", limit: 255
+    t.string   "notable_type"
     t.text     "text"
-    t.string   "image",        limit: 255
+    t.string   "image"
     t.text     "link"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -65,10 +64,10 @@ ActiveRecord::Schema.define(version: 20150217070440) do
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",             limit: 255
-    t.string   "answer",            limit: 255
+    t.string   "title"
+    t.string   "answer"
     t.integer  "questionable_id"
-    t.string   "questionable_type", limit: 255
+    t.string   "questionable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,9 +86,9 @@ ActiveRecord::Schema.define(version: 20150217070440) do
   add_index "scene_memberships", ["user_id"], name: "index_scene_memberships_on_user_id", using: :btree
 
   create_table "scenes", force: :cascade do |t|
-    t.string   "title",         limit: 255
+    t.string   "title"
     t.integer  "scenable_id"
-    t.string   "scenable_type", limit: 255
+    t.string   "scenable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -101,8 +100,8 @@ ActiveRecord::Schema.define(version: 20150217070440) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",      limit: 255
-    t.string   "token",      limit: 255
+    t.string   "email"
+    t.string   "token"
   end
 
   add_index "space_memberships", ["email"], name: "index_space_memberships_on_email", using: :btree
@@ -111,9 +110,9 @@ ActiveRecord::Schema.define(version: 20150217070440) do
   add_index "space_memberships", ["user_id"], name: "index_space_memberships_on_user_id", using: :btree
 
   create_table "spaces", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "type_of_play", limit: 255
-    t.string   "description",  limit: 255
+    t.string   "name"
+    t.string   "type_of_play"
+    t.string   "description"
     t.integer  "director_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -132,33 +131,36 @@ ActiveRecord::Schema.define(version: 20150217070440) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",               limit: 255
-    t.string   "profile_photo",          limit: 255
-    t.string   "location",               limit: 255
-    t.string   "gender",                 limit: 255
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-    t.string   "occupation",             limit: 255
-    t.string   "skillset",               limit: 255
-    t.string   "eyecolor",               limit: 255
+    t.string   "username"
+    t.string   "profile_photo"
+    t.string   "location"
+    t.string   "gender"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "occupation"
+    t.string   "skillset"
+    t.string   "eyecolor"
     t.date     "DOB"
-    t.string   "mobile_phone",           limit: 255
-    t.string   "website",                limit: 255
-    t.string   "first_name",             limit: 255
-    t.string   "last_name",              limit: 255
-    t.string   "image",                  limit: 255
+    t.string   "mobile_phone"
+    t.string   "website"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "image"
+    t.boolean  "show_intro_1",           default: true
+    t.boolean  "show_intro_2",           default: false
+    t.boolean  "show_intro_3",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
