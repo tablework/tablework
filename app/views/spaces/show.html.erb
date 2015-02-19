@@ -7,8 +7,8 @@
       <span class="orange">
         <%= @space.name %>
       </span>
-      <span class="ui button red" style="position:fixed;right:10px;top:150px;">
-        <%= link_to 'Delete space', @space, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <span style="position:fixed;right:10px;top:150px;" id="step4">
+        <%= link_to 'Edit space', edit_space_path(@space), class: 'ui black button' %>
       </span>
     </h3>
   </section>
@@ -16,12 +16,13 @@
   <section class="container-flex">
     <%= render 'spaces/casts' %>
     <% @space.scenes.order('created_at ASC').each_with_index do |scene, index| %>
-      <section id="scene-<%= scene.id %>" class="ui card list shadow">
+      <section id="scene-<%= scene.id %>" class="ui card list shadow" id="<%= 'step2' if index == 0 %>">
         <header class="header">
           <h3><%= scene.title %></h3>  
           <span>
-            <%= link_to polymorphic_path([@space, scene], action: :edit) do %> 
+            <%= link_to polymorphic_path([@space, scene], action: :edit), style: 'float:right; color:black; position:relative; top: 10px; right: 15px;' do %> 
               <i class="configure icon"></i>
+              Edit
             <% end %>
           </span>
         </header>
@@ -56,7 +57,7 @@
         <%= render 'shared/new_editor_modal', space: @space, scenable: scene, note: nil %>
       </section>
     <% end %>
-    <section class="ui card list shadow" style="height: 7vh">
+    <section class="ui card list shadow" style="height: 7vh" id="step3">
       <footer class="extra content">
         <%= link_to polymorphic_path([@space, @scene], action: :new) do %>
           <i class="plus icon"></i>Add new scene</a>
@@ -65,3 +66,27 @@
     </section>
   </section>
 </div>
+<script>
+  <% if current_user.show_intro_3? %>
+    $(function(){
+      var intro = introJs();
+      intro.setOptions({
+        steps: [
+          {
+            element: '#step1',
+            intro: 'Welcome to your Rehearsal Space. Add all your cast members so you can begin interacting with them.'
+          },
+          {
+            element: '#step2',
+            intro: 'This is where you build the world of your story together to achieve a shared reality. You may compile your research by copying and pasting URLs, upload images/videos to your research.'
+          },
+          {
+            element: '#step3',
+            intro: 'Assign cast members involved in a scene to work together. You may upload scripts, rehearsal/director’s notes to record the progress of rehearsals.'
+          }
+        ]
+        }).setOptions({ 'tooltipPosition': 'right' }).start();
+    });
+    <% current_user.toggle! :show_intro_3 %>
+  <% end %>
+</script>

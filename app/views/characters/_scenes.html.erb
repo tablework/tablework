@@ -27,7 +27,7 @@
         <% end %>
       </section>
     <% end %>
-    <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button attached bottom', remote: false do %>
+    <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button attached bottom', remote: false, id: 'step10' do %>
       <i class="plus circle icon"></i>
       <span>Add scene</span>
     <% end %>

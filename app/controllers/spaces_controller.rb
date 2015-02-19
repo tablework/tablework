@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_user
-  before_action :set_space, only: [:show, :destroy]
+  before_action :set_space, only: [:edit, :update, :show, :destroy]
 
   def new
     @space = @user.spaces.build
@@ -14,6 +14,20 @@ class SpacesController < ApplicationController
     else
       flash.now[:error] = "Fails to add a new space. Please try again."
       render :new
+    end
+  end
+
+  def edit
+  end
+  
+  def update
+    @space.update(space_params)
+    if @space.save
+      flash[:notice] = "Successfully edited space."
+      redirect_to @space
+    else
+      flash.now[:error] = "Fails to edit space. Please try again."
+      render :edit
     end
   end
 

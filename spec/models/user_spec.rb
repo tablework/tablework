@@ -71,7 +71,7 @@ RSpec.describe User, :type => :model do
     it "has many characters" do
       character = create :character
       user.characters << character
-      expect(user.characters.to_a).to eql [character]
+      expect(user.characters.to_a.first).to eql character
     end
 
     it "has many authorizations", vcr: {cassette_name: 'facebook', match_requests_on: [:host, :path], record: :once} do
@@ -83,7 +83,7 @@ RSpec.describe User, :type => :model do
     it "has many owned spaces" do
       space = create :space
       user.owned_spaces << space
-      expect(user.owned_spaces.to_a).to eql [space]
+      expect(user.owned_spaces.to_a.last).to eql space
     end
 
     it "has many space memberships" do

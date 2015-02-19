@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.describe SpaceMembershipMailer, :type => :mailer do
   describe 'send_invite' do
-    let!(:space_membership) { create :space_membership, space: create(:space) }
+    let(:space) { create :space }
+    let!(:space_membership) { create :space_membership, space: space }
     let!(:mail) { SpaceMembershipMailer.send_invite(space_membership) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eql('Invitation to join rehearsal space')
+      expect(mail.subject).to eql("Invitation to rehearse at #{space.name}")
     end
 
     it 'renders the receiver email' do
