@@ -8,7 +8,7 @@
     <% end %>
 
     <%= render 'shared/new_editor_modal', space: nil, scenable: character, note: character.notes.build %>
-    <%= link_to "#", class: "ui attached button new-note-#{character.id}", remote: true do %>
+    <%= link_to "#", class: "ui attached button new-note-#{character.id}", remote: true, id: 'step9' do %>
       <i class="plus icon"></i>ADD NOTE</a>
     <% end %>
   </section>

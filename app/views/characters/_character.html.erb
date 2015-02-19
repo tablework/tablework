@@ -1,4 +1,4 @@
-<section class="ui card shadow">
+<section class="ui card shadow" data-step="5" data-intro="This is Sample Sam. Click here to explore your role.">
   <section id="js-show-character-<%= character.id %>" class="image">
     <%= user_portrait style:"width: 100%;min-height:259px", gender: character.gender, user: character %>
     <h4 class="image-text"><%= character.name %></h4>
@@ -9,7 +9,7 @@
     <% else %>
       No Space
     <% end %>
-    <%= link_to assign_space_character_path(character), id: "js-assign-space-#{character.id}", class: 'modal-assign-space', remote: true do %>
+    <%= link_to assign_space_character_path(character), id: "js-assign-space-#{character.id}", class: 'modal-assign-space', remote: true, data: { step: '6', intro: 'To assign your character to a rehearsal space, click here!' } do %>
       <i class="large plus square outline icon"></i>
     <% end %>
   </section>
