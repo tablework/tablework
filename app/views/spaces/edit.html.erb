@@ -1,0 +1,21 @@
+<section class="ui four columns centered grid">
+  <section class="column sign">
+    <section class="ui one columns grid">
+
+      <section class="column">
+        <h3>Edit Space</h3>
+
+        <div class="form-inputs">
+          <%= simple_form_for @space, :html => { :multipart => true } do |f| %>
+            <%= f.input :name, placeholder: 'Name' %>
+            <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
+        </div>
+        <div class="form-actions">
+            <%= f.button :submit, 'EDIT SPACE', class: 'ui fluid button primary' %>
+          <% end %>
+          <%= link_to 'DELETE SPACE', @space, class: 'ui fluid button red', method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+
+      </section>
+    </section>
+  </section>

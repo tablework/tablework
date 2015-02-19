@@ -43,13 +43,16 @@ class User < ActiveRecord::Base
   before_validation { self.gender.downcase! if self.gender }
   mount_uploader :image, ImageUploader
 
-  has_many :characters
-  has_many :notes
+  has_many :characters, dependent: :destroy
+  has_many :notes, dependent: :destroy
   has_many :authorizations, dependent: :destroy
-  has_many :owned_spaces, class: Space, foreign_key: 'director_id'
-  has_many :space_memberships
+  has_many :owned_spaces, class: Space, foreign_key: 'director_id', dependent: :destroy
+  has_many :space_memberships, dependent: :destroy
   has_many :spaces, through: :space_memberships
   has_many :user_payments
+
+  after_create :set_sample_character
+  after_create :set_sample_space
 
   #TC Wu's reimplementation
   def self.from_omniauth(auth, current_user)
@@ -76,6 +79,14 @@ class User < ActiveRecord::Base
       user = assign_user_variables(user, auth)
     end
     user
+  end
+
+  def set_sample_character
+    self.characters.create(name: 'Sample Sam', description: 'This is a sample character. You can edit this description', type_of_play: 'movie', DOB: 30.years.ago, nationality: 'Malaysia', gender: 'Male')
+  end
+
+  def set_sample_space
+    self.owned_spaces.create(name: 'Sample Space', type_of_play: 'movie')
   end
 
   def self.assign_user_variables(user, auth)

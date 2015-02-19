@@ -19,7 +19,7 @@
             <i class="small calendar outline icon"></i><span><%= time_ago_in_words character.DOB if character.DOB %> ago</span>
           </p>
         </div>
-        <%= link_to 'Edit', edit_character_path(character), class: 'ui bottom attached button' %>
+        <%= link_to 'Edit', edit_character_path(character), class: 'ui bottom attached button', id: 'step7' %>
       </section>
     </section>
 
@@ -36,7 +36,9 @@
           <section class="description" style="max-height: 220px;overflow:auto">
             <%= simple_format(character.description).gsub("\n", "<br />").html_safe %>
           </section>
-          <button id="js-edit-backstory-<%= character.id %>" class="edit-link button", style='background: #F8F8F8;width: 100%;padding: 10px 12px;margin: 5px 0;border: 1px solid #ECECEC;'>Edit</button>
+          <section id="step8">
+            <button id="js-edit-backstory-<%= character.id %>" class="edit-link button", style='background: #F8F8F8;width: 100%;padding: 10px 12px;margin: 5px 0;border: 1px solid #ECECEC;'>Edit</button>
+          </section>
         </div>
       </section>
     </section>
