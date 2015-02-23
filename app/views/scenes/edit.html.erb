@@ -12,6 +12,7 @@
         <div class="form-actions">
           <%= f.button :submit, 'EDIT SCENE', class: 'ui button fluid primary' %>
           <% end %>
+          <%=  link_to 'DELETE SCENE', polymorphic_path([@scenable, @scene]), method: :delete, class: 'ui button fluid red' %>
         </div>
 
       </section>

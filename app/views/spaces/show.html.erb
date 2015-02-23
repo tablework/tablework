@@ -48,10 +48,6 @@
             <%= link_to "#", class: "new-note-#{scene.id}", remote: true do %>
               <i class="plus icon"></i>ADD NOTE</a>
             <% end %>
-            &nbsp;
-            <%= link_to polymorphic_path([@space, scene]), method: :delete do %>
-              <i class="minus icon"></i>DELETE SCENE</a>
-            <% end %>
           <% end %>
         </footer>
         <%= render 'shared/new_editor_modal', space: @space, scenable: scene, note: nil %>
