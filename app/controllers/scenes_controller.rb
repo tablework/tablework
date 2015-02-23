@@ -1,12 +1,15 @@
 class ScenesController < ApplicationController
-  before_action :find_scene, only: [:show, :destroy, :assign_cast, :edit, :update]
-  before_action :find_scenable, only: [:new, :create, :show, :destroy, :edit, :update]
+  before_action :find_scene, only: [:show, :destroy, :assign_cast, :edit, :update, :view_all]
+  before_action :find_scenable, only: [:new, :create, :show, :destroy, :edit, :update, :view_all]
   def new
     @scene = @scenable.scenes.build
     respond_to do |wants|
       wants.html
       wants.js
     end
+  end
+
+  def view_all
   end
 
   def show

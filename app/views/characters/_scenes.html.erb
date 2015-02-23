@@ -12,6 +12,11 @@
             <% end %>
           </section>
           <section style="float:right;">
+            <%= link_to polymorphic_path([@space, scene], action: :view_all) do %>
+              <i class="archive icon"></i>
+              <span class="link">View All</span>
+            <% end %>
+            &nbsp;
             <%= link_to polymorphic_path([@space, scene]), method: :delete, data: { confirm: 'Are you sure?' } do %>
               <i class="minus icon"></i>
               <span class="link">Delete</span>
