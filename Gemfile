@@ -41,7 +41,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'better_errors'
   gem 'letter_opener'
-  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'thin'
 end
 
