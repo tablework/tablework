@@ -14,10 +14,8 @@ feature "UserCanInviteOtherToOwnedSpaces", :type => :feature, vcr: {cassette_nam
     sign_in @user
     visit space_path(@owned_space)
     find('#add-cast').click
-    within('.invite-email') do
-      fill_in 'Email', with: 'new@email.com'
-      click_button 'Invite'
-    end
-    expect(ActionMailer::Base.deliveries.last.to).to eql ['new@email.com']
+    find('.form-inputs').fill_in('Email', with: 'new@email.com')
+    find('.form-actions').click_button('INVITE')
+    expect(ActionMailer::Base.deliveries.first.to).to eql ['new@email.com']
   end
 end

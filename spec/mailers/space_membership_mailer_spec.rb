@@ -21,5 +21,9 @@ RSpec.describe SpaceMembershipMailer, :type => :mailer do
     it 'assigns @confirmation_url' do
       expect(mail.body.encoded).to match("spaces/#{space_membership.space.id}/space_memberships/confirm/#{space_membership.token}")
     end
+
+    it 'should change #count by 1' do
+      expect{mail.deliver_now}.to change(ActionMailer::Base.deliveries, :count).by(1) 
+    end
   end
 end
