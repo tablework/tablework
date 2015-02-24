@@ -5,9 +5,19 @@
   <%= content_tag 'a', href: root_path, class: 'item' do %>
   Dashboard
   <% end %>
-  <section class="right menu">
-    <%= link_to destroy_user_session_path, :method => :delete, class: 'item' do %>
-      <%= image_tag 'profile.png', style: 'width: 25px;height:25px;' %>
-    <% end %>
+  <section class="ui dropdown right item" style="margin-top: 20px;">
+    <%= image_tag 'profile.png', style: 'width: 25px;height:25px;' %>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item">
+        <%= link_to 'Edit Profile', edit_user_path(current_user) %>        
+      </div>
+      <div class="item">
+        <%= link_to 'Edit Account', destroy_user_session_path %>        
+      </div>
+      <div class="item">
+        <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>        
+      </div>
+    </div>
   </section>
 </section>

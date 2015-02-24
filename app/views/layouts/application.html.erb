@@ -12,7 +12,10 @@
   <section class="flash">
     <% if flash.present? %>
         <% flash.each do |key,value| %>
-          <p><%= flash[key] %></p>
+          <div class="ui floating message">
+            <i class="close icon"></i>
+            <p><%= flash[key] %></p>
+          </div>
       <% end %>
     <% end %>
   </section>
@@ -22,5 +25,12 @@
   <section>
     <%= yield %>
   </section>
+  <script>
+    $(function(){
+      $('.message .close').on('click', function() {
+        $(this).closest('.message').fadeOut();
+      });
+    })
+  </script>
 </body>
 </html>
