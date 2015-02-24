@@ -11,15 +11,46 @@
   </section>
 
   <section style="margin: 0 50px;">
-    <% @scene.notes.each do |note| %>
+    <% @scene.notes.order(:created_at).each do |note| %>
       <section class="ui card fluid note-<%= note.id %>">
-        <section class="header">
-          <%= note.title %>
-        </section>
         <section class="content froala-view">
+          <section class="header">
+            <%= note.title %>
+            &nbsp;
+            <%= link_to 'Edit', 'javascript:void(0)', class: "edit-note-#{note.id}" %>
+          </section>
           <%= note.link_html.html_safe if note.link_html %>
         </section>
       </section>
+      <section class="ui modal fullscreen editor-<%= note.id %>">
+        <section class="header">
+          Edit Note
+        </section>
+        <section class="content form-inputs">
+          <%= simple_form_for [@scene, note] do |f| %>
+            <%= f.input :title, placeholder: 'Title' %>
+            <%= f.text_area :link_html, class: 'editable' %>
+          <% end %>
+        </section>
+        <section class="actions">
+          <button class="ui button primary submit">Submit</button>
+        </section>
+      </section>
+      <script>
+        $(function(){
+          $('#note-<%= note.id %> .view').click(function(){
+            $('.note-<%= note.id %>').modal('show');
+          });
+          $('.editable').editable({inlineMode: false, height:300});
+          $('.froala-box > div:not(.f-basic)').hide();
+          $('.edit-note-<%= note.id %>').click(function(){
+            $('.editor-<%= note.id %>').modal('setting', 'closable', false).modal('show');
+          });
+          $('.editor-<%= note.id %> .submit').click(function() {
+            $('.editor-<%= note.id %>.active form').submit();
+          });
+        })
+      </script>
     <% end %>
   </section>
 </section>

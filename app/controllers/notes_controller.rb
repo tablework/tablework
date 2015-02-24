@@ -34,7 +34,11 @@ class NotesController < ApplicationController
     @note.update(note_params)
       if @note.save
         flash[:notice] = 'Note edited'
-        redirect_to @notable
+        if @notable.try(:scenable).instance_of? Character
+          redirect_to view_all_scene_path(@notable)
+        else
+          redirect_to @notable
+        end
       else
         flash.now[:error] = 'Note editing fails'
         render :edit
