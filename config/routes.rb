@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :scenes do
     member do
       get :assign_cast
+      get :view_all
     end
     resources :notes
   end
