@@ -30,7 +30,7 @@ RSpec.describe Space, :type => :model do
       character_2 = create :character
       space.characters << character_1
       space.characters << character_2
-      expect(space.characters.to_a).to eql [character_2, character_1]
+      expect(space.characters.order(:id).to_a).to eql [character_1, character_2]
     end
 
     it "has many scenes" do
