@@ -8,12 +8,9 @@ class NotesController < ApplicationController
   end
 
   def create
-    #@space = Space.find(params[:space_id]) if params[:space_id].present?
     @note = @notable.notes.build(note_params)
     respond_to do |wants|
       if @note.save
-        #@note.user = current_user
-        #@note.save
         flash[:notice] = 'Note created'
         wants.html { redirect_to @notable || root_path(character: @notable) }
         wants.js
@@ -26,13 +23,9 @@ class NotesController < ApplicationController
   end
 
   def edit
-    #@space = Space.find(params[:space_id]) if params[:space_id]
-    #@note = @notable.notes.find(params[:id])
   end
 
   def update
-    #@space = Space.find(params[:space_id]) if params[:space_id]
-    #@note = @notable.notes.find(params[:id])
     @note.update(note_params)
       if @note.save
         flash[:notice] = 'Note edited'
@@ -44,7 +37,6 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    #@note = @notable.notes.find(params[:id])
     @note.destroy
     redirect_to root_path
   end
