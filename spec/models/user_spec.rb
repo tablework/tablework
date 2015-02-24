@@ -71,7 +71,7 @@ RSpec.describe User, :type => :model do
     it "has many characters" do
       character = create :character
       user.characters << character
-      expect(user.characters.to_a.first).to eql character
+      expect(user.characters.order(:id).to_a.last).to eql character
     end
 
     it "has many authorizations", vcr: {cassette_name: 'facebook', match_requests_on: [:host, :path], record: :once} do
