@@ -23,13 +23,11 @@ class NotesController < ApplicationController
         wants.js
       end
     end            
-    binding.pry
   end
 
   def edit
     #@space = Space.find(params[:space_id]) if params[:space_id]
     #@note = @notable.notes.find(params[:id])
-    binding.pry
   end
 
   def update
