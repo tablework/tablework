@@ -14,7 +14,7 @@
     <% @scene.notes.order(:created_at).each do |note| %>
       <section class="ui card fluid note-<%= note.id %>">
         <section class="content froala-view">
-          <section class="header">
+          <section class="header" style="margin-bottom: 20px;">
             <%= note.title %>
             &nbsp;
             <%= link_to 'Edit', 'javascript:void(0)', class: "edit-note-#{note.id}" %>
