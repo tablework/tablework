@@ -5,7 +5,7 @@
     <section class="content">
       <section class="ui grid">
         <div class="cast-info three wide column">
-          <%= user_portrait class: 'ui huge circular image', gender: @space.director.gender %>
+          <%= user_portrait class: 'ui huge circular image', user: @space.director, gender: @space.director.gender %>
         </div>
         <div class="thirteen wide column">
           <p><%= @space.director.email %></p>
@@ -15,7 +15,7 @@
       <% @space.characters.each do |character|%>
         <section class="ui grid">
           <div class="cast-info three wide column">
-            <%= user_portrait class: 'ui huge circular image', gender: character.gender %>
+            <%= user_portrait class: 'ui huge circular image', user: character, gender: character.gender %>
           </div>
           <div class="thirteen wide column">
             <p><%= character.name %></p>
