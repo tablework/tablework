@@ -30,7 +30,7 @@
           <% if index != 0 %>
             <div>
               <% scene.scene_memberships.each do |member| %>
-                <%= link_to member, class: "ui instant fade masked reveal", data: {confirm: "Unassigning character. Are you sure?"}, method: :delete do %>
+                <%= link_to member, class: "ui instant fade masked reveal", data: {confirm: "Unassigning character. Are you sure?"}, method: :delete, style: 'height: 40px; width: 40px;' do %>
                   <%= user_portrait class: 'ui circular image visible content', user: member.character, gender: member.character.gender, style: 'width: 40px;height:40px' %>
                   <i class='close icon hidden content center' style="width:30px;height:30px;font-size:20px !important;"></i>
                 <% end %>
