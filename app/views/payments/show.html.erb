@@ -9,30 +9,41 @@
       });
   });
 </script>
-<%= form_tag payments_process_path, class: 'ui form', id: 'brainsub'  do %>
-  <div class="field">
-    <label>Name on card</label>
-    <input type="text" name="nameoncard" maxlength="255">
-  </div>
-  <div id="checkout" class="checkout"></div>
-  <div class="grouped fields">
-    <label for="fruit">Select your plan</label>
-    <div class="field">
-      <div class="ui radio checkbox checked">
-        <input type="radio" name="plan" value="Subscription" checked="">
-        <label>Subcription</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="plan" value="Yearly">
-        <label>Yearly</label>
-      </div>
-    </div>
-  </div>
 
-	<div class="field">
-    <%= submit_tag 'pay', class: 'ui primary button' %>
-    </div>
-<% end %>
+<section class="ui four columns centered grid">
+  <section class="column sign">
+    <section class="ui one columns grid">
 
+      <section class="column">
+        <%= form_tag payments_process_path, class: 'ui form', id: 'brainsub'  do %>
+          <div class="form-inputs">
+            <div class="field">
+              <label>Name on card</label>
+              <input type="text" name="nameoncard" maxlength="255">
+            </div>
+            <div id="checkout" class="checkout"></div>
+            <div class="grouped fields">
+              <label for="fruit">Select your plan</label>
+              <div class="field">
+                <div class="ui radio checkbox checked">
+                  <input type="radio" name="plan" value="Subscription" checked="">
+                  <label style="display:block">Subcription</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="plan" value="Yearly">
+                  <label style="display:block">Yearly</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <%= submit_tag 'pay', class: 'ui primary button' %>
+              </div>
+          <% end %>
+        </div>
+      </section>
+    </section>
+  </section>
+</section>
