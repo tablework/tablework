@@ -44,17 +44,14 @@
             </div>
             <div class="six fields">
               <div class="field">
-                <%= ImagePreviewer(current_user) %>
-              </div>
-              <div class="field">
-                
-              </div>
-              <div class="field">
                 <%= f.input :image, placeholder: 'Image' %>
               </div>
-
             </div>
-            
+            <div class="six fields">
+              <div class="field">
+                <%= ImagePreviewer(current_user) %>
+              </div>
+            </div>
           <% end %>
         </section>
       </section>
