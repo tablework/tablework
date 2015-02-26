@@ -35,6 +35,7 @@
       width: 350px;
       height: calc(90vh - 200px);
       margin: 30px 20px 0 0;
+      border: none !important;
       .header {
         height: 50px;
         line-height: 25px;
@@ -110,6 +111,42 @@
           padding: 14px 0;
           &:hover {
             color: $headline;
+          }
+        }
+      }
+      &.discussion {
+        .content {
+          height: calc(100% - 120px);
+          .chat-box {
+            .text {
+              background: $grey-3;
+              padding: 10px;
+              small {
+                display: block;
+                text-align: right;
+                font-size: 8px;
+              }
+            }
+          }
+          &.extra {
+            height: 71px;
+            background: $grey-3;
+            form {
+              textarea {
+                overflow: scroll;
+              }
+              .ui.button {
+                padding: 15px 7px;
+                position: relative;
+                top: -20px;
+                box-shadow: 0px 0px 0px 0px black !important;
+                font-size: 16px;
+                line-height: 1;              
+                &:hover {
+                  background: $grey-3;
+                }
+              }
+            }
           }
         }
       }
