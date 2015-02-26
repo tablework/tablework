@@ -41,6 +41,8 @@ class SpacesController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
   def set_user
     @user = current_user
   end
