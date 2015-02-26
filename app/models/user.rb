@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
   has_many :space_memberships, dependent: :destroy
   has_many :spaces, through: :space_memberships
   has_many :user_payments
+  has_many :messages, dependent: :destroy
 
   after_create :set_sample_character
   after_create :set_sample_space

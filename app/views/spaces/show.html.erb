@@ -15,6 +15,34 @@
 
   <section class="container-flex">
     <%= render 'spaces/casts' %>
+    <section class="ui card list shadow discussion">
+      <header class="header">
+        <h3>Discussion</h3>
+      </header>
+      <section class="content">
+        <% @space.messages.each do |message| %>
+          <section class="table-cell ui grid">
+            <section class="chat-box sixteen wide column row">
+              <section class="three wide column">
+                <%= user_portrait style: 'width: 40px; height: 40px', user: message.user, class: 'ui circular image' %>
+              </section>
+              <section class="twelve wide column text">
+                <%= simple_format message.text %>
+                <small>
+                  <%= time_ago_in_words message.created_at %> ago
+                </small>
+              </section>
+            </section>
+          </section>
+        <% end %>
+      </section>
+      <section class="extra content">
+        <%= form_for [@space, @space.messages.build] do |f| %>
+          <%= f.text_area :text, cols: '40', rows: '1' %>
+          <%= f.submit :send, class: 'ui mini inverted button' %>
+        <% end %>
+      </section>
+    </section>
     <% @space.scenes.order('created_at ASC').each_with_index do |scene, index| %>
       <section id="scene-<%= scene.id %>" class="ui card list shadow" id="<%= 'step2' if index == 0 %>">
         <header class="header">
