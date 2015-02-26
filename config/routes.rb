@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
   resources :spaces do
+    resources :messages
     resources :scenes do
       resources :notes
     end
