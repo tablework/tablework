@@ -3,11 +3,11 @@
 # Table name: notes
 #
 #  id           :integer          not null, primary key
-#  title        :string
+#  title        :string(255)
 #  notable_id   :integer
-#  notable_type :string
+#  notable_type :string(255)
 #  text         :text
-#  image        :string
+#  image        :string(255)
 #  link         :text
 #  created_at   :datetime
 #  updated_at   :datetime
