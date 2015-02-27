@@ -18,6 +18,7 @@ class Space < ActiveRecord::Base
   has_many :space_memberships, dependent: :destroy
   has_many :users, through: :space_memberships
   has_many :messages, dependent: :destroy
+  mount_uploader :image, ImageUploader
 
   after_create :setup_research
   validates :name, presence: true

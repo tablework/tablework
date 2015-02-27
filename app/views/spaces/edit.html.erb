@@ -1,5 +1,6 @@
-<section class="ui four columns centered grid">
-  <section class="column sign">
+<%= render 'shared/edit_header' %>
+<section class="ui eight wide column page centered grid">
+  <section class="eight wide column sign">
     <section class="ui one columns grid">
 
       <section class="column">
@@ -9,6 +10,7 @@
           <%= simple_form_for @space, :html => { :multipart => true } do |f| %>
             <%= f.input :name, placeholder: 'Name' %>
             <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
+            <%= f.input :image %>
         </div>
         <div class="form-actions">
             <%= f.button :submit, 'EDIT SPACE', class: 'ui fluid button primary' %>

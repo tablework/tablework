@@ -47,7 +47,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#js-edit-backstory-<%= character.id  %>').click(function() {
-      $(this).parent().toggle();
+      $(this).parent().parent().toggle();
       $('#character-<%= character.id %> .backstory .edit-profile-form').toggle();
     });
   })

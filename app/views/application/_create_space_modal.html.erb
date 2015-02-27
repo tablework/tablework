@@ -8,21 +8,12 @@
     <p>Fill in the basic details for your space.</p>
 
     <section class="ui grid">
-      <section class="five wide column">
-        <a href="#">
-          <section class="ui card">
-            <section class="content">
-              <i class="photo icon"></i>
-              <h4>Upload Image</h4>
-            </section>
-          </section>
-        </a>
-      </section>
-      <section class="eleven wide column">
+      <section class="sixteen wide column">
         <section class="form-inputs">
           <%= simple_form_for current_user.spaces.build, :html => { :multipart => true } do |f| %>
             <%= f.input :name, placeholder: 'Name' %>
             <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
+            <%= f.input :image %>
           <% end %>
         </section>
       </section>
