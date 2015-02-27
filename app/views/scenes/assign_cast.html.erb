@@ -1,11 +1,11 @@
+<%= render 'shared/edit_header' %>
 
-
-<section class="ui four columns centered grid">
-  <section class="column sign">
+<section class="ui eight wide column centered page grid">
+  <section class="eight wide column sign">
     <section class="ui one columns grid">
 
       <section class="column">
-        <h3>Create A Scene</h3>
+        <h3>Assign Cast</h3>
         <div class="ui form">
           <%= simple_form_for @scene, url: scene_memberships_path, method: :post do |f| %>
             <div class="inline field">
