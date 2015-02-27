@@ -6,6 +6,8 @@ class UserPaymentsController < ApplicationController
 
   def index
     @user_payments = UserPayment.where(plantype: :Subscription)
+    @pro_subscription = current_user.user_payments.last.try(:plantype) == "Subscription" && current_user.user_payments.last.try(:status) == "Live" 
+    @superstar_subscription = current_user.user_payments.last.try(:plantype) == "Yearly" && (Time.now - current_user.user_payments.last.try(:created_at)) < 1.year 
     respond_with(@user_payments)
   end
 
