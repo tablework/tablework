@@ -1,29 +1,55 @@
-<p id="notice"><%= notice %></p>
+<section class="dashboard_header">
+  <section class="ui page grid">    
+  </section>
+</section>
 
-<h1>Listing User Payments</h1>
+<section class="ui page grid">
+  <main id="js-main-centerbox" class="ui sixteen column segment centerbox shadow" style="overflow:hidden;" >
+    <p id="notice"><%= notice %></p>
+    
+  <div class="ui grid">
+    <div class="centered row">
+      <div class="sixteen wide column" style="text-align: center; margin-top: 55px">
+        <h3>Your Current Subscription</h3>
+        <h1 style="text-align: center">PRO PACKAGE</h1>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Payment Type</th>
-      <th>Plan Type</th>
-      <th>Payment Id</th>
-      <th>Status</th>
-      <th>Date</th>
-      <th>Action</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @user_payments.each do |user_payment| %>
-      <tr>
-        <td><%= user_payment.payment_type %></td>
-        <td><%= user_payment.plantype %></td>
-        <td><%= user_payment.payment_id %></td>
-        <td><%= user_payment.status %></td>
-        <td><%= user_payment.created_at %></td>
-        <td><%= link_to "Cancel", payments_cancel_path(user_payment), remote: true, method: :post%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="nine wide column">
+        <div id="user_payments_table">
+          <table class="table-style">
+            <thead>
+              <th colspan="2" style="padding-left: 75px"><h3>Manage your subscription</h3></th>
+            </thead>
+
+            <tbody>
+                <tr>
+                  <td class="data-1">Superstar package</td>
+                  <td class="data-1">
+                    <div class="ui yellow button">Upgrade</div>
+                    <div class="ui button">Cancel</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="data-2">Pro package</td>
+                  <td class="data-2">
+                    <div class="ui yellow button">Upgrade</div>
+                    <div class="ui grey button">Cancel</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="data-3">Basic package</td>
+                  <td class="data-3">
+                    <div class="ui yellow button">Upgrade</div>
+                    <div class="ui button">Cancel</div>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+</section>
