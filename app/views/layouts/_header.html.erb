@@ -9,15 +9,9 @@
     <%= image_tag 'profile.png', style: 'width: 25px;height:25px;' %>
     <i class="dropdown icon"></i>
     <div class="menu">
-      <div class="item">
-        <%= link_to 'Edit Profile', edit_user_path(current_user) %>        
-      </div>
-      <div class="item">
-        <%= link_to 'Edit Account', payments_path %>
-      </div>
-      <div class="item">
-        <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>        
-      </div>
+      <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'item' %>        
+      <%= link_to 'Edit Account', user_payments_path, class: 'item' %>
+      <%= link_to 'Log out', destroy_user_session_path, :method => :delete, class: 'item' %>        
     </div>
   </section>
 </section>
