@@ -36,24 +36,24 @@
   <section class="ui card shadow">
     <section class="extra content">
       <section class="header">
-        <h3>Rehearsal Space</h3>
+        <h3 style="font-size: 22px;">Rehearsal Space</h3>
       </section>
       <section class="content">
         <ul>
           <li>Owned Space</li>
           <% if current_user.owned_spaces.present? %>
             <% current_user.owned_spaces.each do | space | %>
-            <%= link_to space, id: "space-#{space.id}" do %>
-            <li class="ui grid">
-              <div class="four wide column">
-                <div style="background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"></div>
-              </div>
-              <div class="twelve wide column">
-                <p> <%= space.name %> </p>
-                <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
-              </div>
-            </li>
-            <% end %>
+              <%= link_to space, id: "space-#{space.id}" do %>
+                <li class="ui grid">
+                  <div class="four wide column" style="padding: 15px 5px">
+                    <%= user_portrait user: space, style: 'width: 40px; height: 40px;', class: 'ui circular image' %>
+                  </div>
+                  <div class="twelve wide column" style="padding: 15px 5px">
+                    <p> <%= space.name %> </p>
+                    <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+                  </div>
+                </li>
+              <% end %>
             <% end %>
           <% else %>
             <li>
@@ -64,17 +64,17 @@
           <li>Invited Space</li>
           <% if current_user.spaces.present? %>
             <% current_user.spaces.each do | space | %>
-            <%= link_to space, id: "space-#{space.id}" do %>
-            <li class="ui grid">
-              <div class="four wide column">
-                <div style="background: #dcdcdc; width: 40px; height: 40px; border-radius: 20px;"></div>
-              </div>
-              <div class="twelve wide column">
-                <p> <%= space.name %> </p>
-                <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
-              </div>
-            </li>
-            <% end %>
+              <%= link_to space, id: "space-#{space.id}" do %>
+                <li class="ui grid">
+                  <div class="four wide column" style="padding: 15px 5px">
+                    <%= user_portrait user: space, style: 'width: 40px; height: 40px;', class: 'ui circular image' %>
+                  </div>
+                  <div class="twelve wide column" style="padding: 15px 5px">
+                    <p> <%= space.name %> </p>
+                    <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+                  </div>
+                </li>
+              <% end %>
             <% end %>
           <% else %>
             <li>

@@ -53,7 +53,7 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(
-      :name, :type_of_play
+      :name, :type_of_play, :image
     )
   end
 end
