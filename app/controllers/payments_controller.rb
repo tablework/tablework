@@ -45,7 +45,7 @@ class PaymentsController < ApplicationController
       id = brainpay(customer, nonce)
     end
     create_user_payment(plan, id)
-    redirect_to payments_thankyou_path
+    redirect_to user_payments_path, notice: 'Payment completed'
   end
 
   def brainpay(customer, nonce)
@@ -83,6 +83,7 @@ class PaymentsController < ApplicationController
     result = Braintree::Subscription.cancel(e.payment_id)
     e.status = :Canceled
     e.save
+    redirect_to user_payments_path, notice: 'Your subscription has been canceled'
   end
 
   
