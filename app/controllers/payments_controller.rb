@@ -1,7 +1,6 @@
 class PaymentsController < ApplicationController
   extend Enumerize
 
-  skip_before_action :authenticate_user!
   enumerize :plan, in: [:Yearly, :Subscription]
   enumerize :payment_type, in: [:CreditCard, :Paypal]
   enumerize :payment_status, in: [:Live, :Canceled]
