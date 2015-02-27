@@ -9,6 +9,7 @@
 #  director_id  :integer
 #  created_at   :datetime
 #  updated_at   :datetime
+#  image        :string
 #
 
 class Space < ActiveRecord::Base

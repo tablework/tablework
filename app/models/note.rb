@@ -12,6 +12,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  link_html    :text
+#  user_id      :integer
 #
 
 class Note < ActiveRecord::Base

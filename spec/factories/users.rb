@@ -30,6 +30,9 @@
 #  first_name             :string
 #  last_name              :string
 #  image                  :string
+#  show_intro_1           :boolean          default("true")
+#  show_intro_2           :boolean          default("false")
+#  show_intro_3           :boolean          default("false")
 #
 
 FactoryGirl.define do
