@@ -5,13 +5,19 @@
 
 <section class="ui page grid">
   <main id="js-main-centerbox" class="ui sixteen column segment centerbox shadow" style="overflow:hidden;" >
-    <p id="notice"><%= notice %></p>
-    
   <div class="ui grid">
     <div class="centered row">
       <div class="sixteen wide column" style="text-align: center; margin-top: 55px">
         <h3>Your Current Subscription</h3>
-        <h1 style="text-align: center">PRO PACKAGE</h1>
+        <h1 style="text-align: center">
+          <% if @pro_subscription %>
+            PRO PACKAGE
+          <% elsif @superstar_subscription %>
+            SUPERSTAR PACKAGE
+          <% else %>
+            BASIC PACKAGE
+          <% end %> 
+        </h1>
       </div>
 
 
@@ -23,27 +29,20 @@
             </thead>
 
             <tbody>
-                <tr>
-                  <td class="data-1">Superstar package</td>
-                  <td class="data-1">
-                    <%= link_to 'Upgrade', payments_path, class: 'ui yellow button' %>
-                    <div class="ui button">Cancel</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="data-2">Pro package</td>
-                  <td class="data-2">
-                    <%= link_to 'Upgrade', payments_path, class: 'ui yellow button' %>
-                    <div class="ui grey button">Cancel</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="data-3">Basic package</td>
-                  <td class="data-3">
-                    <%= link_to 'Upgrade', payments_path, class: 'ui yellow button' %>
-                    <div class="ui button">Cancel</div>
-                  </td>
-                </tr>
+              <tr>
+                <td class="data-1">Superstar package</td>
+                <td class="data-1">
+                  <%= link_to 'Upgrade', payments_path, class:  "ui yellow button #{'disabled' if @superstar_subscription or @pro_subscription}" %>
+                  <%= link_to 'Cancel', payments_cancel_path(current_user.user_payments.last), class: "ui red button #{'disabled' unless @superstar_subscription }", method: :post %>
+                </td>
+              </tr>
+              <tr>
+                <td class="data-2">Pro package</td>
+                <td class="data-2">
+                  <%= link_to 'Upgrade', payments_path, class: "ui yellow button #{'disabled' if @pro_subscription or @superstar_subscription }" %>
+                  <%= link_to 'Cancel', payments_cancel_path(current_user.user_payments.last), class: "ui red button #{'disabled' unless @pro_subscription }", method: :post %>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
