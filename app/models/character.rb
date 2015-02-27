@@ -3,18 +3,19 @@
 # Table name: characters
 #
 #  id           :integer          not null, primary key
-#  name         :string
+#  name         :string(255)
 #  description  :text
-#  type_of_play :string
+#  type_of_play :string(255)
 #  age          :integer
-#  occupation   :string
+#  occupation   :string(255)
+#  fields       :hstore           default("")
 #  user_id      :integer
 #  created_at   :datetime
 #  updated_at   :datetime
-#  nationality  :string
+#  nationality  :string(255)
 #  DOB          :datetime
 #  space_id     :integer
-#  gender       :string
+#  gender       :string(255)
 #  image        :string
 #
 

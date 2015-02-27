@@ -3,14 +3,14 @@
 # Table name: authorizations
 #
 #  id         :integer          not null, primary key
-#  provider   :string
-#  uid        :string
+#  provider   :string(255)
+#  uid        :string(255)
 #  user_id    :integer
-#  token      :string
-#  secret     :string
+#  token      :string(255)
+#  secret     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  username   :string
+#  username   :string(255)
 #
 
 class Authorization < ActiveRecord::Base

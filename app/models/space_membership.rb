@@ -7,8 +7,8 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  email      :string
-#  token      :string
+#  email      :string(255)
+#  token      :string(255)
 #
 
 class SpaceMembership < ActiveRecord::Base

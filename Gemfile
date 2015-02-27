@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'thin'
+  gem 'annotate', '~> 2.6.5'
 end
 
 group :test do
