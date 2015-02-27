@@ -1,32 +1,38 @@
 <%= simple_form_for @user, html: { method: :put } do |f| %>
 <%= f.error_notification %>
 
-<section class="ui four columns centered grid">
-  <section class="column sign">
-    <section class="ui one columns grid">
-
-      <section class="column">
-        <h3>Edit Profile</h3>
-
-        <div class="form-inputs">
-          <%= f.input :first_name, placeholder: 'First Name' %>
-          <%= f.input :last_name, placeholder: 'Last Name' %>
-          <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
-          end_year: Date.today.year, discard_day: false,
-          order: [:day, :month, :year], class: 'ui selection dropdown' %>
-          <%= f.input :gender, as: :select, collection: ['male', 'female'], class: 'ui selection dropdown' %>
-          <%= f.input :occupation, placeholder: 'Occupation' %>
-          <%= f.input :location, placeholder: 'Location' %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Edit", class: 'ui primary' %>
-        </div>
-        <% end %>
-
-        <%= link_to "Back", :back %>
-      </section>
-
-    </section>
+<section class="dashboard_header">
+  <section class="ui page grid">  
+    <%= link_to "Back", :back, class:"ui button primary", style:"margin-top: 50px" %>
   </section>
 </section>
+
+
+  <section class="ui four columns centered grid">
+    <section class="column sign">
+      <section class="ui one columns grid">
+
+        <section class="column">
+          <h3>Edit Profile</h3>
+
+          <div class="form-inputs">
+            <%= f.input :first_name, placeholder: 'First Name' %>
+            <%= f.input :last_name, placeholder: 'Last Name' %>
+            <%= f.input :DOB, label: 'Date Of Birth', as: :date, start_year: Date.today.year - 50,
+            end_year: Date.today.year, discard_day: false,
+            order: [:day, :month, :year], class: 'ui selection dropdown' %>
+            <%= f.input :gender, as: :select, collection: ['male', 'female'], class: 'ui selection dropdown' %>
+            <%= f.input :occupation, placeholder: 'Occupation' %>
+            <%= f.input :location, placeholder: 'Location' %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Edit", class: 'ui primary' %>
+          </div>
+          <% end %>
+
+        </section>
+
+      </section>
+    </section>
+  </section>
