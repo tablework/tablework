@@ -72,10 +72,10 @@
             <%= link_to assign_cast_scene_path(scene), class: "assign-cast-#{scene.id}", remote: false do %>
               <i class="plus icon"></i>ADD CAST</a>
             <% end %>
-            &nbsp;
-            <%= link_to "#", class: "new-note-#{scene.id}", remote: true do %>
-              <i class="plus icon"></i>ADD NOTE</a>
-            <% end %>
+          <% end %>
+          &nbsp;
+          <%= link_to "#", class: "new-note-#{scene.id}", remote: true do %>
+            <i class="plus icon"></i>ADD NOTE</a>
           <% end %>
         </footer>
         <%= render 'shared/new_editor_modal', space: @space, scenable: scene, note: nil %>
