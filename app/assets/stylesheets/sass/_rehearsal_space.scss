@@ -1,6 +1,6 @@
 .rehearsal_header {
   @include border-box();
-  background: $secondary-rehearsal;
+  background: $primary;
   width: 100%;
   height: 144px;
   padding: 0 60px;
@@ -23,7 +23,7 @@
 .container-flex {
   padding-left: 60px;
   padding-bottom: 40px;
-  margin-top: 208px;
+  margin-top: 190px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -moz-inline-box;

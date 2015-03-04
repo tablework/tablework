@@ -50,7 +50,7 @@
     .title {
       margin-top: calc(50vh - 250px);
       h1 {
-        font-family: OpenSans;
+        font-family: Raleway;
         text-transform: uppercase;
         font-weight: 900;
         font-size: 32px;
@@ -76,7 +76,7 @@
     }
   }
 
-  
+
   footer {
     .menu {
       a.item {
@@ -106,7 +106,7 @@
     text-align: center;
     max-width: 430px;
     h1 {
-      font-family: OpenSans;
+      font-family: Raleway;
       font-size: 32px;
       font-weight: 800;
       font-kerning: 2.6;
@@ -246,7 +246,7 @@
 .ui.bio {
   .column {
     h1 {
-      font-family: OpenSans;
+      font-family: Raleway;
       text-align: center;
       text-transform: uppercase;
       font-size: 32px;
@@ -259,7 +259,7 @@
       font-weight: bold;
     }
     .subheading {
-      font-family: OpenSans;
+      font-family: Raleway;
       color: $primary;
       font-size: 14px;
       line-height: 20px;
@@ -293,7 +293,7 @@ footer {
       border: 5px solid $grey-2;
       text-align: center;
       .title {
-        font-family: OpenSans, sans-serif;
+        font-family: Raleway, sans-serif;
         font-size: 25px;
         font-weight: lighter;
         margin: 20px auto;
@@ -301,7 +301,7 @@ footer {
       }
       .number {
         font-size: 140px;
-        font-family: OpenSans, sans-serif;
+        font-family: Raleway, sans-serif;
         font-weight: bold;
         color: $grey-4;
         line-height: 1;
@@ -341,7 +341,7 @@ footer {
       margin-top: 10px;
       padding: 10px;
       font-size: 16px;
-      font-family: OpenSans, sans-serif;
+      font-family: Raleway, sans-serif;
       color: $grey-4;
     }
     &.inverted {
@@ -350,7 +350,7 @@ footer {
       color: $white;
       .recommended {
         text-transform: uppercase;
-        font-family: OpenSans, sans-serif;
+        font-family: Raleway, sans-serif;
         font-weight: bolder;
         background-color: rgb(50,50,50);
         text-align: center;
@@ -413,7 +413,7 @@ footer {
     &:first-child {
       margin-top: 0;
     }
-    font-family: OpenSans, sans-serif;
+    font-family: Raleway, sans-serif;
   }
 
   .vision-text {
@@ -437,7 +437,7 @@ footer {
 .ui.mentors {
   .column.title {
     h1 {
-      font-family: OpenSans;
+      font-family: Raleway;
       text-align: center;
       text-transform: uppercase;
       font-size: 32px;

@@ -12,10 +12,10 @@
             <div class="form-inputs">
               <%= f.input :email, required: false, placeholder: 'Email address', autofocus: true %>
               <%= f.input :password, placeholder: 'Password', required: false %>
-              <%= f.input :remember_me, label: 'Yes, remember me', as: :boolean if devise_mapping.rememberable? %> Remember me
+              <%= f.input :remember_me, label: 'Yes, remember me', as: :boolean if devise_mapping.rememberable? %>
             </div>
           <div class="form-actions">
-            <%= f.button :submit, "Sign in", class: 'ui primary' %>
+            <%= f.button :submit, "Sign in", class: 'ui button yellow' %>
           </div>
 
           <% end %>

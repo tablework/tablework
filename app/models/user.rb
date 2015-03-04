@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
 
   validate :valid_gender
   before_validation { self.gender.downcase! if self.gender }
+  before_create :set_default_image
   mount_uploader :image, ImageUploader
 
   has_many :characters, dependent: :destroy
@@ -87,6 +88,11 @@ class User < ActiveRecord::Base
 
   def set_sample_character
     self.characters.create(name: 'Sample Sam', description: 'This is a sample character. You can edit this description', type_of_play: 'movie', DOB: 30.years.ago, nationality: 'Malaysia', gender: 'Male')
+  end
+
+  def set_default_image
+    image_path = "tmp/images/default-avatar-#{1 + rand(6)}.png"
+    self.image = File.open(image_path)
   end
 
   def set_sample_space

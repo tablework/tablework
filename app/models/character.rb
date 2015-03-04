@@ -29,4 +29,12 @@ class Character < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true
+
+  after_create :set_default_image
+
+  def set_default_image
+    image_path = "tmp/images/default-avatar-#{1 + rand(5)}.png"
+    self.image = File.open(image_path)
+    self.save
+  end
 end

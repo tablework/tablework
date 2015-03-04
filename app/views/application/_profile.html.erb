@@ -36,11 +36,11 @@
   <section class="ui card shadow">
     <section class="extra content">
       <section class="header">
-        <h3 style="font-size: 22px;">Rehearsal Space</h3>
+        <h3 style="font-size: 15px;">Shared Rehearsal Space</h3>
       </section>
       <section class="content">
         <ul>
-          <li>Owned Space</li>
+          <li>My Space</li>
           <% if current_user.owned_spaces.present? %>
             <% current_user.owned_spaces.each do | space | %>
               <%= link_to space, id: "space-#{space.id}" do %>
