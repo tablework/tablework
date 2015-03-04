@@ -9,10 +9,17 @@
 
     <section class="ui grid">
       <section class="sixteen wide column">
-        <section class="form-inputs">
+        <section class="form-inputs ui form">
           <%= simple_form_for current_user.spaces.build, :html => { :multipart => true } do |f| %>
+            Name
             <%= f.input :name, placeholder: 'Name' %>
-            <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
+            <br />
+            <section class="field">
+              Type of play
+              <%= f.input :type_of_play, as: :select, collection: ['theater', 'movie', 'tv series'] %>
+            </section>
+            <br />
+            Image (Optional)
             <%= f.input :image %>
           <% end %>
         </section>

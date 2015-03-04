@@ -5,7 +5,7 @@ module CharactersHelper
     elsif options[:gender] == 'male' or options[:gender] == 'female'
       image_tag( options[:gender]+'.jpeg', style: options[:style], class: options[:class] )
     else
-      image_tag('portrait.jpg', style: options[:style], class: options[:class] )
+      image_tag("default-avatar-#{1 + rand(5)}.png", style: options[:style], class: options[:class] )
     end
   end
 
@@ -15,7 +15,7 @@ module CharactersHelper
     elsif options[:user].try(:profile_photo)
         image_tag options[:user].profile_photo, style: options[:style], class: options[:class]
       else
-        image_tag('portrait.jpg', style: options[:style], class: options[:class] )
+      image_tag("default-avatar-#{1 + rand(5)}.png", style: options[:style], class: options[:class] )
     end
   end
 end

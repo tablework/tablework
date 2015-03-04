@@ -1,11 +1,11 @@
 <section class="row">
-    <section class="six wide column left aligned">
-      <section class="ui card">
-        <div class="image-portrait">
-          <%= user_portrait style: 'width:100%;height:100%', gender: character.gender, user: character %>
-          </h4>
-        </div>
-        <div class="extra content attached">
+  <section class="sixteen wide column">
+    <section class="">
+      <div class="image-portrait row ui grid">
+        <section class="six wide column">
+          <%= user_portrait style: 'height:160px;width:200px;', gender: character.gender, user: character %>
+        </section>
+        <section class="ten wide column aligned">
           <p>
             <i class="small arrow circle left icon"></i><span><%= character.name %></span>
           </p>
@@ -18,30 +18,11 @@
           <p>
             <i class="small calendar outline icon"></i><span><%= time_ago_in_words character.DOB if character.DOB %> ago</span>
           </p>
-        </div>
-        <%= link_to 'Edit', edit_character_path(character), class: 'ui bottom attached button', id: 'step7' %>
-      </section>
+          <%= link_to 'Edit', edit_character_path(character), class: 'ui bottom attached button', id: 'step7' %>
+        </section>
+      </div>
     </section>
-
-    <section id="character-backstory-<%= character.id  %>" class="backstory ten wide column">
-      <div class="section-header" style="margin: 0 0 20px 0;"><h4 style="margin: 0">Backstory</h4></div>
-      <%= simple_form_for character, remote: true, html: { style: 'display:none', class: "edit-profile-form", :multipart => true } do |f| %>
-        <div class="form-inputs">
-          <%= f.input :description, label: false, :input_html => {:rows => 11} %>
-          <%= f.submit 'SAVE' %>
-        </div>
-      <% end %>
-      <section class="content">
-        <div class="form-inputs">
-          <section class="description" style="max-height: 220px;overflow:auto">
-            <%= simple_format(character.description).gsub("\n", "<br />").html_safe %>
-          </section>
-          <section id="step8">
-            <button id="js-edit-backstory-<%= character.id %>" class="edit-link button", style='background: #F8F8F8;width: 100%;padding: 10px 12px;margin: 5px 0;border: 1px solid #ECECEC;'>Edit</button>
-          </section>
-        </div>
-      </section>
-    </section>
+  </section>
 </section>
 
 <script type="text/javascript">

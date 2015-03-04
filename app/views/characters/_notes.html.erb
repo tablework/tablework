@@ -1,5 +1,6 @@
-<section class="row notes">
-  <h2>Notes</h2>
+<section class="row notes" style="margin-top: 50px;">
+  <h2 style="margin: 0px initial;">My Backstory</h2>
+  <small>Lorem ipsum</small>
   <section class="ui styled fluid accordion">
     <% character.notes.order('updated_at DESC').each do |note |%>
       <section id="note-<%= note.id %>">
@@ -9,7 +10,7 @@
 
     <%= render 'shared/new_editor_modal', space: nil, scenable: character, note: character.notes.build %>
     <%= link_to "#", class: "ui attached button new-note-#{character.id}", remote: true, id: 'step9' do %>
-      <i class="plus icon"></i>ADD NOTE</a>
+      <i class="plus icon"></i>Add subject</a>
     <% end %>
   </section>
 </section>
