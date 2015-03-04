@@ -26,8 +26,8 @@ class Space < ActiveRecord::Base
   private
 
   def setup_research
-    research = self.scenes.create(title: 'Research')
-    %w(Politic Economic Culture Fashion Geography Law).each do |title|
+    research = self.scenes.create(title: 'Shared Research')
+    %w(Politics Economic Culture Fashion Geography Law).each do |title|
       research.notes.create(title: title)
     end
   end

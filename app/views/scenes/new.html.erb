@@ -4,14 +4,14 @@
     <section class="ui one columns grid">
 
       <section class="column">
-        <h3>Create A Scene</h3>
+        <h3>Add A Scene</h3>
 
         <div class="form-inputs">
           <%= simple_form_for [@scenable, @scene] do |f| %>
             <%= f.input :title, placeholder: 'Title' %>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, 'CREATE SCENE', class: 'ui button fluid primary' %>
+          <%= f.button :submit, 'SAVE', class: 'ui button fluid primary' %>
           <% end %>
         </div>
 

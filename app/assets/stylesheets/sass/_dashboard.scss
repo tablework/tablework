@@ -1,11 +1,12 @@
 .dashboard_header {
-	background: $secondary;
+	background: $primary;
 	height: 144px;
 }
 .dashboard_header h3 {
 	position: absolute;
 	padding-top: 90px;
 	margin: 0;
+  color: $white;
 }
 #listCharacters {
 	.action-button {
