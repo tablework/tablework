@@ -1,11 +1,10 @@
 <div id="space-<%= @space.id %>">
   <section class="rehearsal_header">
-    <h3>
+    <h2>Shared Rehearsal Space</h2>
+    <h3 style="padding-top: 30px;">
       <%= link_to root_path do %>
         <i class="angle left large icon"></i>
-        <span class="orange">
-          <%= @space.name %>
-        </span>
+        <%= @space.name %>
       <% end %>
       <span style="position:fixed;right:20px;top:150px;" id="step4">
         <%= link_to 'Edit space', edit_space_path(@space), class: 'ui black button' %>
@@ -35,6 +34,7 @@
             </section>
           </section>
         <% end %>
+        <section id="end"></section>
       </section>
       <section class="extra content">
         <%= form_for [@space, @space.messages.build] do |f| %>
@@ -72,10 +72,10 @@
             <%= link_to assign_cast_scene_path(scene), class: "assign-cast-#{scene.id}", remote: false do %>
               <i class="plus icon"></i>ADD CAST</a>
             <% end %>
-            &nbsp;
-            <%= link_to "#", class: "new-note-#{scene.id}", remote: true do %>
-              <i class="plus icon"></i>ADD NOTE</a>
-            <% end %>
+          <% end %>
+          &nbsp;
+          <%= link_to "#", class: "new-note-#{scene.id}", remote: true do %>
+            <i class="plus icon"></i>ADD NOTE</a>
           <% end %>
         </footer>
         <%= render 'shared/new_editor_modal', space: @space, scenable: scene, note: nil %>
@@ -91,6 +91,8 @@
   </section>
 </div>
 <script>
+  var objDiv = document.getElementById("end");
+  objDiv.scrollIntoView();
   <% if current_user.show_intro_3? %>
     $(function(){
       var intro = introJs();
