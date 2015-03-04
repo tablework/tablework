@@ -2,11 +2,11 @@
   <section class="dashboard_header" style="position:relative;top:-20px">
     <h3>
       <%= link_to root_path(character: @scenable) do %>
-          <i class="angle left large icon"></i>
+        <i class="angle left large icon"></i>
+        <span>
+          <%= @scene.title %>
+        </span>
       <% end %>
-      <span class="orange">
-        <%= @scene.title %>
-      </span>
     </h3>
   </section>
 
