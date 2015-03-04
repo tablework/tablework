@@ -169,6 +169,13 @@
 }
 
 .features {
+  h1 {
+    color: $grey-4;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-family: Baskerville;
+  }
   .feature {
     margin: 150px auto;
     .image:first-child {
