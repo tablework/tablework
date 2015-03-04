@@ -1,6 +1,5 @@
 <section class="row notes" style="margin-top: 50px;">
   <h2 style="margin: 0px initial;">My Backstory</h2>
-  <small>Lorem ipsum</small>
   <section class="ui styled fluid accordion">
     <% character.notes.order('updated_at DESC').each do |note |%>
       <section id="note-<%= note.id %>">

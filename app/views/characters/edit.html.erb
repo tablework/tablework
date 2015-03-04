@@ -15,9 +15,9 @@
             <%= f.input :image, label: 'Image' %>
         </div>
         <div class="form-actions">
-            <%= f.button :submit, 'EDIT PERSONA', class: 'ui fluid button primary' %>
+            <%= f.button :submit, 'SAVE', class: 'ui fluid button primary' %>
           <% end %>
-          <%= link_to 'DELETE PERSONA', @character, class: 'ui fluid button red', method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'DELETE CHARACTER', @character, class: 'ui fluid button red', method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
 
       </section>
