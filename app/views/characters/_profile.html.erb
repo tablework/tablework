@@ -1,27 +1,21 @@
-<section class="row">
-  <section class="sixteen wide column">
-    <section class="">
-      <div class="image-portrait row ui grid">
-        <section class="six wide column">
-          <%= user_portrait style: 'height:160px;width:200px;', gender: character.gender, user: character %>
-        </section>
-        <section class="ten wide column aligned">
-          <p>
-            <i class="small arrow circle left icon"></i><span><%= character.name %></span>
-          </p>
-          <p>
-            <i class="small arrow circle left icon"></i><span><%= character.gender %></span>
-          </p>
-          <p>
-            <i class="small arrow circle left icon"></i><span><%= character.nationality %></span>
-          </p>
-          <p>
-            <i class="small calendar outline icon"></i><span><%= time_ago_in_words character.DOB if character.DOB %> ago</span>
-          </p>
-          <%= link_to 'Edit', edit_character_path(character), class: 'ui bottom attached button', id: 'step7' %>
-        </section>
-      </div>
-    </section>
+<section class="sixteen wide column row">
+  <section class="six wide column">
+    <section style="height:180px; background: url('<%= user_portrait_url character %>') center no-repeat;background-size: cover;"></section>
+  </section>
+  <section class="ten wide column aligned">
+    <p>
+      <i class="small arrow circle left icon"></i><span><%= character.name %></span>
+    </p>
+    <p>
+      <i class="small arrow circle left icon"></i><span><%= character.gender %></span>
+    </p>
+    <p>
+      <i class="small arrow circle left icon"></i><span><%= character.nationality %></span>
+    </p>
+    <p>
+      <i class="small calendar outline icon"></i><span><%= time_ago_in_words character.DOB if character.DOB %> ago</span>
+    </p>
+    <%= link_to 'Edit', edit_character_path(character), class: 'ui bottom attached button', id: 'step7' %>
   </section>
 </section>
 
