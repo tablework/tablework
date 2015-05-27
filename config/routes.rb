@@ -152,7 +152,13 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :users, only: [:edit, :update]
+  resources :users do
+    collection do
+      put :toggle_intro_1
+      put :toggle_intro_2
+      put :toggle_intro_3
+    end
+  end
   resources :spaces do
     resources :messages
     resources :scenes do

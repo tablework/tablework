@@ -20,12 +20,19 @@
       .accordion()
     ;
     <% if current_user.show_intro_1? %>
-      introJs().setOptions({ 'tooltipPosition': 'right' }).oncomplete(function() {
+      var refresh = function(){
         window.location.href = "<%= dashboard_url %>/?character=<%= current_user.characters.first.id %>"
+      };
+      introJs().setOptions({ 'tooltipPosition': 'right' }).oncomplete(function() {
+        $.ajax({
+          url: '/users/toggle_intro_1.json',
+          type: 'PUT',
+          success: refresh,
+          data: undefined,
+          contentType: JSON
+        });
       }).start();
-      <% current_user.toggle!(:show_intro_1) %>
-      <% current_user.toggle!(:show_intro_2) %>
-    <% elsif current_user.show_intro_2? %>
+    <% elsif current_user.show_intro_2? and params[:character].present? %>
       console.log('intro 2');
       setTimeout(function() {
           var intro = introJs();
@@ -50,12 +57,19 @@
             ]
           });
           intro.setOptions({ 'tooltipPosition': 'right' }).oncomplete(function(){
+            var refresh = function(){
               window.location.href = "<%= space_url(current_user.owned_spaces.first) %>"
+            }
+            $.ajax({
+              url: '/users/toggle_intro_2.json',
+              type: 'PUT',
+              success: refresh,
+              data: undefined,
+              contentType: JSON
+            });
           });
           intro.start();
       }, 1000 );
-      <% current_user.toggle!(:show_intro_2) %>
-      <% current_user.toggle!(:show_intro_3) %>
     <% end %>
   })
 </script>
