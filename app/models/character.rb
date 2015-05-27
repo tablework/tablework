@@ -33,6 +33,7 @@ class Character < ActiveRecord::Base
   after_create :set_default_image
 
   def set_default_image
+    return if image.present?
     image_path = "lib/images/default-avatar-#{1 + rand(5)}.png"
     self.image = File.open(image_path)
     self.save
