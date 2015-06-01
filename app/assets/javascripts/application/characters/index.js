@@ -8,3 +8,7 @@ $(function(){
 	  .dropdown()
 	;
 });
+
+$(function(){
+  $('.fr-tag a').attr('target', '_blank');
+});
