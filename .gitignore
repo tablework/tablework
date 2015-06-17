@@ -42,3 +42,5 @@ build/
 .env
 
 /public/tablework
+
+.DS_Store
