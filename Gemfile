@@ -26,6 +26,7 @@ gem 'enumerize'
 gem 'rails-assets-semantic-ui'
 gem "braintree"
 gem "introjs-rails"
+gem "rails_admin"
 
 group :development, :test do
   gem 'dotenv-rails'
