@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.2.1'
+ruby '2.0.0'
 
 gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0.0.beta1'
@@ -27,6 +27,7 @@ gem 'rails-assets-semantic-ui'
 gem "braintree"
 gem "introjs-rails"
 gem "rails_admin"
+gem "autoprefixer-rails"
 
 group :development, :test do
   gem 'dotenv-rails'
