@@ -442,6 +442,64 @@ footer {
     }
   }
 }
+.ui.contacts {
+  margin: 50px auto;
+  width: 50%;
+  height: 250px;
+  .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  .contact {
+    float: left;
+    width: 50%;
+    .image {
+      float: left;
+      width: 50%;
+      height: 150px;
+      background-color: $primary;
+    }
+    .contact-info {
+      font-size: 0.8em;
+      padding: 0 4px;
+      float: left;
+      .name {
+        font-size: 2em;
+        margin-top: 95px;
+      }
+      .job-title {
+        color: $primary;
+      }
+    }
+    &-razif {
+      .image {
+        background: asset-url('razif.jpg') center no-repeat;
+        background-size: cover;
+      }
+    }
+    &-suzuki {
+      .image {
+        background: asset-url('suzuki.jpg') center no-repeat;
+        background-size: cover;
+      }
+    } 
+  } 
+}
+.map {
+  width: 50%;
+  margin: 50px auto;
+  font-size: 1.2em;
+  iframe {
+    float: left;  
+    width: 320px;
+  }
+  .address {
+    width: calc(100% - 320px);
+    float: left;
+    padding: 10px;
+  }
+}
+
 .ui.bio {
   .biography {
     text-align: justify !important;
