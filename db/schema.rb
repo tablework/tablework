@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704054935) do
+ActiveRecord::Schema.define(version: 20150704071021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,14 +132,25 @@ ActiveRecord::Schema.define(version: 20150704054935) do
 
   add_index "spaces", ["director_id"], name: "index_spaces_on_director_id", using: :btree
 
+  create_table "subscription_plans", force: :cascade do |t|
+    t.integer  "character_limit"
+    t.boolean  "owned_space",     default: false
+    t.string   "name"
+    t.string   "state"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "expires_on"
     t.string   "uuid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "subscription_id"
   end
 
+  add_index "subscriptions", ["subscription_id"], name: "index_subscriptions_on_subscription_id", using: :btree
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
   create_table "user_payments", force: :cascade do |t|
@@ -194,6 +205,7 @@ ActiveRecord::Schema.define(version: 20150704054935) do
   add_foreign_key "scene_memberships", "characters"
   add_foreign_key "scene_memberships", "scenes"
   add_foreign_key "scene_memberships", "users"
+  add_foreign_key "subscriptions", "subscriptions"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "user_payments", "users"
 end

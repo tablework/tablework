@@ -100,5 +100,9 @@ RSpec.describe User, :type => :model do
       space_membership = create :space_membership, space: space, user: user
       expect(user.spaces.to_a).to eql [space]
     end
+
+    it "has one subscription" do
+     subscription 
+    end
   end
 end
