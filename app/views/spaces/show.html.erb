@@ -115,4 +115,16 @@
     });
     <% current_user.toggle! :show_intro_3 %>
   <% end %>
+  var resize = function() {
+    $('.container-flex').css('height', '100vh').css('height', '-=200px');
+    $('.list').css('height', '90vh').css('height', '-=200px');
+    $('#step3').css('height', '50px');
+  }
+  $(function(){
+    resize();
+    $(window).resize(function(){
+      resize();
+    })
+
+  });
 </script>
