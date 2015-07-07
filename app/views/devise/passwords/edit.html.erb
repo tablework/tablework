@@ -6,6 +6,9 @@
         <br>
         <div class="ui fluid input form-inputs" style="margin:20px 0px;">
           <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :reset_password_token, as: :hidden %>
+            <%= f.full_error :reset_password_token %>
             <div class="form-inputs">
               <%= f.input :password, label: "New password", required: true, autofocus: true, placeholder: 'Password' %>
               <%= f.input :password_confirmation, label: "Confirm your new password", required: true, placeholder: 'Confirm Password' %>
