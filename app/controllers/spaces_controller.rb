@@ -35,6 +35,14 @@ class SpacesController < ApplicationController
     @scene = @space.scenes.build
   end
 
+  def remove
+    @space = Space.find(params[:space_id])
+    @character = Character.find(params[:character_id])
+    @character.space = nil
+    @character.save
+    redirect_to @space, notice: 'Character removed'
+  end
+
   def destroy
     @space.destroy
     flash[:notice] = 'Space deleted.'

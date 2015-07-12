@@ -195,4 +195,5 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'application#index'
   get 'about', to: 'static_pages#about'
   get 'pricing', to: 'static_pages#pricing'
+  delete 'space_remove/:space_id/:character_id/', to: 'spaces#remove'
 end

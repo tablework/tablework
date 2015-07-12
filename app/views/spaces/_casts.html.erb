@@ -20,6 +20,8 @@
           <div class="thirteen wide column">
             <p><%= character.name %></p>
             <small><%= character.user.first_name %> <%= character.user.last_name %></small>
+            <% @membership = SpaceMembership.find_by(space_id: @space.id, user_id: character.user.id) %>
+            <%= link_to 'Delete Character', "/space_remove/#{@space.id}/#{character.id}", confirm: 'Are you sure?', method: :delete %>
           </div>
         </section>
       <% end %>

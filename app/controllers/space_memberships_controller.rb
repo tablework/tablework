@@ -28,6 +28,13 @@ class SpaceMembershipsController < ApplicationController
     end
   end
 
+  def destroy
+    @membership = SpaceMembership.find(params[:id])
+    @space = @membership.space
+    @membership.destroy
+    redirect_to @space, notice: 'User removed'
+  end
+
   private
 
   def space_membership_params
