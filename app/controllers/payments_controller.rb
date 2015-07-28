@@ -26,10 +26,11 @@ class PaymentsController < ApplicationController
   end
 
   def brain_customer
-    brain_customer = Braintree::Customer.create(
+    return if brain_search.first
+    customer = Braintree::Customer.create(
       :email => current_user.email
     )
-    brain_customer
+    customer
   end
 
   def brainprocess
@@ -37,9 +38,10 @@ class PaymentsController < ApplicationController
     cardnumber = params[:cardnumber]
     nonce = params[:payment_method_nonce]
     plan = params[:plan]
-    customer = brain_search.first || brain_customer 
+    brain_customer
+    customer = brain_search.first
     id = "NOID"
-    if plan != :Yearly
+    if plan.to_sym != :Yearly
       id = brainsub(customer, nonce)
     else
       id = brainpay(customer, nonce)
@@ -49,17 +51,15 @@ class PaymentsController < ApplicationController
   end
 
   def brainpay(customer, nonce)
-    # 5105105105105100
-    result = Braintree::Transaction.sale(
-      :amount => "69.99",
-      :payment_method_nonce => nonce,
-      :customer => {
-          :first_name => current_user.first_name,
-          :last_name => current_user.last_name,
-          :email => current_user.email
-      }
+    result = Braintree::PaymentMethod.create(
+      :customer_id => customer.id,
+      :payment_method_nonce => nonce
     )
-    result.transaction.id
+    result = Braintree::Subscription.create(
+      :payment_method_token => result.payment_method.token,
+      :plan_id => "tablework-yearly"
+    )
+    result.subscription.id
   end
 
   def brainsub(customer, nonce)
@@ -69,7 +69,7 @@ class PaymentsController < ApplicationController
     )
     result = Braintree::Subscription.create(
       :payment_method_token => result.payment_method.token,
-      :plan_id => "hs8b"
+      :plan_id => "tablework-monthly"
     )
     result.subscription.id
   end
@@ -85,7 +85,4 @@ class PaymentsController < ApplicationController
     e.save
     redirect_to user_payments_path, notice: 'Your subscription has been canceled'
   end
-
-  
-
 end
