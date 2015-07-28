@@ -19,57 +19,5 @@
     $('.ui.accordion')
       .accordion()
     ;
-    <% if current_user.show_intro_1? %>
-      var refresh = function(){
-        window.location.href = "<%= dashboard_url %>/?character=<%= current_user.characters.first.id %>"
-      };
-      introJs().setOptions({ 'tooltipPosition': 'right' }).oncomplete(function() {
-        $.ajax({
-          url: '/users/toggle_intro_1.json',
-          type: 'PUT',
-          success: refresh,
-          data: undefined,
-          contentType: JSON
-        });
-      }).start();
-    <% elsif current_user.show_intro_2? and params[:character].present? %>
-      console.log('intro 2');
-      setTimeout(function() {
-          var intro = introJs();
-          intro.setOptions({
-            steps: [
-              {
-                element: '#step7',
-                intro: 'This is your character’s profile. Update your basic info here. If you don’t have the details, you may skip this step and come back to it later.'
-              }, 
-              {
-                element: '#step8',
-                intro: 'Click here to build your character’s backstory. Be as detailed as you want, there is no limit to your imagination.' 
-              },
-              {
-                element: '#step9',
-                intro: 'This is where you develop information on your character’s education, occupation, relationships, etc. You may compile your research by copying and pasting URLs, upload images/videos to your notes.'
-                },
-              {
-                element: '#step10',
-                intro: 'This is where you work on your scenes. Answer the questions to bring your character to life. Be specific as possible. You may also copy and paste URLs, upload images/videos to your scene if needed.'
-              }
-            ]
-          });
-          intro.setOptions({ 'tooltipPosition': 'right' }).oncomplete(function(){
-            var refresh = function(){
-              window.location.href = "<%= space_url(current_user.owned_spaces.first) %>"
-            }
-            $.ajax({
-              url: '/users/toggle_intro_2.json',
-              type: 'PUT',
-              success: refresh,
-              data: undefined,
-              contentType: JSON
-            });
-          });
-          intro.start();
-      }, 1000 );
-    <% end %>
   })
 </script>
