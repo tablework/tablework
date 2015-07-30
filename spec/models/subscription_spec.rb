@@ -2,12 +2,14 @@
 #
 # Table name: subscriptions
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  expires_on :date
-#  uuid       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                   :integer          not null, primary key
+#  user_id              :integer
+#  expires_on           :date
+#  uuid                 :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  subscription_id      :integer
+#  subscription_plan_id :integer
 #
 
 require 'rails_helper'

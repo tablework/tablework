@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
   def create_user_payment(plantype, id)
     e = UserPayment.new(user_id: current_user.id, payment_type: :CreditCard, plantype: plantype, payment_id: id, status: :Live)
     e.save
-    if plantype.to_sym == 'Subscription'
+    if plantype.to_sym == :Subscription
       current_user.subscription.update(subscription_plan_id: 2, expires_on: 1.month.from_now, uuid: id)
     else
       current_user.subscription.update(subscription_plan_id: 2, expires_on: 1.year.from_now, uuid: id)

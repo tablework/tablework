@@ -10,12 +10,14 @@
       <div class="sixteen wide column" style="text-align: center; margin-top: 55px">
         <h3>Your Current Subscription</h3>
         <h1 style="text-align: center">
-          <% if @pro_subscription %>
-            PRO PACKAGE
-          <% elsif @superstar_subscription %>
-            SUPERSTAR PACKAGE
+          <% if @premium %>
+            Premium
+            <br>
+            <small>
+              Expires on: <%= current_user.subscription.expires_on.strftime('%d/%m/%Y') %> (<%= @recurring ? 'Recurring' : 'No recurring' %>)
+            </small>
           <% else %>
-            BASIC PACKAGE
+            Standard
           <% end %> 
         </h1>
       </div>
@@ -32,7 +34,7 @@
               <tr>
                 <td class="data-1">Superstar package</td>
                 <td class="data-1">
-                  <%= link_to 'Upgrade', payments_path, class:  "ui yellow button #{'disabled' if @superstar_subscription or @pro_subscription}" %>
+                  <%= link_to 'Upgrade', payments_path, class:  "ui yellow button #{'disabled' if @premium}" %>
                   <% if current_user.user_payments.last %>
                     <%= link_to 'Cancel', payments_cancel_path(current_user.user_payments.last), class: "ui red button #{'disabled' unless @superstar_subscription }", method: :post %>
                   <% end %>
@@ -41,7 +43,7 @@
               <tr>
                 <td class="data-2">Pro package</td>
                 <td class="data-2">
-                  <%= link_to 'Upgrade', payments_path, class: "ui yellow button #{'disabled' if @pro_subscription or @superstar_subscription }" %>
+                  <%= link_to 'Upgrade', payments_path, class: "ui yellow button #{'disabled' if @premium }" %>
                   <% if current_user.user_payments.last %>
                     <%= link_to 'Cancel', payments_cancel_path(current_user.user_payments.last), class: "ui red button #{'disabled' unless @pro_subscription }", method: :post %>
                   <% end %>

@@ -8,7 +8,8 @@ class UserPaymentsController < ApplicationController
     @user_payments = UserPayment.where(plantype: :Subscription)
     @pro_subscription = current_user.user_payments.last.try(:plantype) == "Subscription" && current_user.user_payments.last.try(:status) == "Live" 
     @superstar_subscription = current_user.user_payments.last.try(:plantype) == "Yearly" && current_user.user_payments.last.try(:status) == "Live" 
-
+    @recurring = true if current_user.user_payments.last.try(:status) == "Live"
+    @premium = current_user.subscription.premium?
     respond_with(@user_payments)
   end
 
