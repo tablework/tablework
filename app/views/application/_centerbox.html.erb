@@ -2,11 +2,19 @@
   <section class="find" style="position:relative;">
     <h3>Your Characters</h3>
     <div id="listCharacters" class="ui four doubling cards">
-      <%= link_to new_character_path, :remote => true, id: 'jsPersonaButton', class: 'ui card action-button shadow' do %>
-        <section class="content" style="min-height:200px;">
-          <i class="large plus icon"></i>
-          <h4>Create Character</h4>
-        </section>
+      <% if !current_user.subscription.premium? and current_user.characters.count > 1 %>
+        <%= link_to user_payments_path, class: 'ui card action-button shadow' do %>
+          <section class="content" style="min-height:200px;">
+            <p>Upgrade your account to get more character slot.</p>
+          </section>
+        <% end %>
+      <% else %>
+        <%= link_to new_character_path, :remote => true, id: 'jsPersonaButton', class: 'ui card action-button shadow' do %>
+          <section class="content" style="min-height:200px;">
+            <i class="large plus icon"></i>
+            <h4>Create Character</h4>
+          </section>
+        <% end %>
       <% end %>
 
       <%= render @characters %>

@@ -33,61 +33,63 @@
     </section>
   </section>
 
-  <section class="ui card shadow">
-    <section class="extra content">
-      <section class="header">
-        <h3 style="font-size: 15px;">Shared Rehearsal Space</h3>
+  <% if current_user.subscription.premium? %>
+    <section class="ui card shadow">
+      <section class="extra content">
+        <section class="header">
+          <h3 style="font-size: 15px;">Shared Rehearsal Space</h3>
+        </section>
+        <section class="content">
+          <ul>
+            <li>My Space</li>
+            <% if current_user.owned_spaces.present? %>
+              <% current_user.owned_spaces.each do | space | %>
+                <%= link_to space, id: "space-#{space.id}" do %>
+                  <li class="ui grid">
+                    <div class="four wide column" style="padding: 15px 5px">
+                      <%= user_portrait user: space, style: 'width: 40px; height: 40px;', class: 'ui circular image' %>
+                    </div>
+                    <div class="twelve wide column" style="padding: 15px 5px">
+                      <p> <%= space.name %> </p>
+                      <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
+            <% else %>
+              <li>
+                <p>No owned space added</p>
+              </li>
+            <% end %>
+            <li><hr></li>
+            <li>Invited Space</li>
+            <% if current_user.spaces.present? %>
+              <% current_user.spaces.each do | space | %>
+                <%= link_to space, id: "space-#{space.id}" do %>
+                  <li class="ui grid">
+                    <div class="four wide column" style="padding: 15px 5px">
+                      <%= user_portrait user: space, style: 'width: 40px; height: 40px;', class: 'ui circular image' %>
+                    </div>
+                    <div class="twelve wide column" style="padding: 15px 5px">
+                      <p> <%= space.name %> </p>
+                      <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
+            <% else %>
+              <li>
+                <p>No invited space</p>
+              </li>
+            <% end %>
+          </ul>
+        </section>
       </section>
-      <section class="content">
-        <ul>
-          <li>My Space</li>
-          <% if current_user.owned_spaces.present? %>
-            <% current_user.owned_spaces.each do | space | %>
-              <%= link_to space, id: "space-#{space.id}" do %>
-                <li class="ui grid">
-                  <div class="four wide column" style="padding: 15px 5px">
-                    <%= user_portrait user: space, style: 'width: 40px; height: 40px;', class: 'ui circular image' %>
-                  </div>
-                  <div class="twelve wide column" style="padding: 15px 5px">
-                    <p> <%= space.name %> </p>
-                    <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
-                  </div>
-                </li>
-              <% end %>
-            <% end %>
-          <% else %>
-            <li>
-              <p>No owned space added</p>
-            </li>
-          <% end %>
-          <li><hr></li>
-          <li>Invited Space</li>
-          <% if current_user.spaces.present? %>
-            <% current_user.spaces.each do | space | %>
-              <%= link_to space, id: "space-#{space.id}" do %>
-                <li class="ui grid">
-                  <div class="four wide column" style="padding: 15px 5px">
-                    <%= user_portrait user: space, style: 'width: 40px; height: 40px;', class: 'ui circular image' %>
-                  </div>
-                  <div class="twelve wide column" style="padding: 15px 5px">
-                    <p> <%= space.name %> </p>
-                    <small> <%= space.type_of_play.present? ? space.type_of_play : 'No type' %> </small>
-                  </div>
-                </li>
-              <% end %>
-            <% end %>
-          <% else %>
-            <li>
-              <p>No invited space</p>
-            </li>
-          <% end %>
-        </ul>
+      <section class="extra content">
+        <%= link_to 'CREATE A SPACE', new_space_path(current_user), remote: true, class: 'modal-create-space', data: { step: '4', intro: 'This is where you create a space to interact with cast members in your production. If you are a director, you can create a space for your actors without creating a character. You can create one space for FREE or upgrade to Superstar Plan for unlimited rehearsal space.' } %>
       </section>
     </section>
-    <section class="extra content">
-      <%= link_to 'CREATE A SPACE', new_space_path(current_user), remote: true, class: 'modal-create-space', data: { step: '4', intro: 'This is where you create a space to interact with cast members in your production. If you are a director, you can create a space for your actors without creating a character. You can create one space for FREE or upgrade to Superstar Plan for unlimited rehearsal space.' } %>
-    </section>
-  </section>
+  <% end %>
 
   <footer>
     <p>&copy; 2014 Tablework Sdn. Bhd All Rights Reserved</p>
