@@ -74,6 +74,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  def set_subscription
+    self.create_subscription(subscription_plan_id: 1, expires_on: 1.month.from_now)
+  end
+
   private
 
   def self.sign_in_or_up_user(user, auth, current_user)
@@ -99,10 +103,6 @@ class User < ActiveRecord::Base
 
   def set_sample_space
     self.owned_spaces.create(name: 'Sample Space', type_of_play: 'movie')
-  end
-  
-  def set_subscription
-    self.create_subscription(subscription_plan_id: 1, expires_on: 1.month.from_now)
   end
 
   def self.assign_user_variables(user, auth)
