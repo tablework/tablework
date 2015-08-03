@@ -2,7 +2,7 @@
   <section class="find" style="position:relative;">
     <h3>Your Characters</h3>
     <div id="listCharacters" class="ui four doubling cards">
-      <% if !current_user.subscription.premium? and current_user.characters.count > 2 %>
+      <% if current_user.characters.count >= current_user.subscription.subscription_plan.character_limit %>
         <%= link_to user_payments_path, class: 'ui card action-button shadow' do %>
           <section class="content" style="min-height:200px;">
             <p>Upgrade your account to get more character slot.</p>
