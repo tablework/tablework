@@ -49,6 +49,18 @@
                   <% end %>
                 </td>
               </tr>
+              <% unless current_user.subscription.premium? %>
+                <tr>
+                  <td class="data-2">Use Promo Code:</td>
+                  <td class="data-2">
+                    <%= form_tag promotion_path, class: 'ui form' do %>
+                      <div class="field">
+                        <%= text_field_tag 'Code','', style: 'width: 100px' %>
+                        <%= submit_tag 'Use', class: 'ui button', style: 'width: 85px' %>
+                      </div>
+                    <% end %>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>

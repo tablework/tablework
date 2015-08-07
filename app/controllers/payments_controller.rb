@@ -23,6 +23,16 @@ class PaymentsController < ApplicationController
     @client_token = Braintree::ClientToken.generate
   end
 
+  def promotion
+    @promotion = Promotion.find_by(code: params['Code'])
+    if @promotion
+      current_user.subscription.update(subscription_plan_id: 2, expires_on: @promotion.duration.days.from_now, uuid: @promotion.code)
+      redirect_to user_payments_path, notice: 'Successfully claimed the code'
+    else
+      redirect_to user_payments_path, notice: 'Code unavailable'
+    end
+  end
+
   def brain_search
     search_results = Braintree::Customer.search do |search|
       search.email.is current_user.email
