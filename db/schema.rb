@@ -154,11 +154,9 @@ ActiveRecord::Schema.define(version: 20150806211516) do
     t.string   "uuid"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.integer  "subscription_id"
     t.integer  "subscription_plan_id"
   end
 
-  add_index "subscriptions", ["subscription_id"], name: "index_subscriptions_on_subscription_id", using: :btree
   add_index "subscriptions", ["subscription_plan_id"], name: "index_subscriptions_on_subscription_plan_id", using: :btree
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
@@ -215,7 +213,6 @@ ActiveRecord::Schema.define(version: 20150806211516) do
   add_foreign_key "scene_memberships", "scenes"
   add_foreign_key "scene_memberships", "users"
   add_foreign_key "subscriptions", "subscription_plans"
-  add_foreign_key "subscriptions", "subscriptions"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "user_payments", "users"
 end

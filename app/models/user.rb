@@ -60,6 +60,11 @@ class User < ActiveRecord::Base
   after_create :set_sample_character
   after_create :set_sample_space
   after_create :set_subscription
+  after_create :send_welcome_note
+
+  def send_welcome_note
+    UserMailer.welcome_note.deliver
+  end
 
   #TC Wu's reimplementation
   def self.from_omniauth(auth, current_user)
