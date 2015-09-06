@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_note
 
   def send_welcome_note
-    UserMailer.welcome_note.deliver
+    UserMailer.welcome_note(self).deliver
   end
 
   #TC Wu's reimplementation

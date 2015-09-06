@@ -58,8 +58,10 @@ class PaymentsController < ApplicationController
     id = "NOID"
     if plan.to_sym != :Yearly
       id = brainsub(customer, nonce)
+      UserMailer.monthly_subscription(current_user).deliver
     else
       id = brainpay(customer, nonce)
+      UserMailer.yearly_subscription(current_user).deliver
     end
     create_user_payment(plan, id)
     redirect_to user_payments_path, notice: 'Payment completed'
