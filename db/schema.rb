@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806211516) do
+ActiveRecord::Schema.define(version: 20150911153631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 20150806211516) do
 
   add_index "notes", ["notable_id"], name: "index_notes_on_notable_id", using: :btree
   add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.boolean  "unread",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "promotions", force: :cascade do |t|
     t.string   "code"
@@ -209,6 +219,7 @@ ActiveRecord::Schema.define(version: 20150806211516) do
   add_foreign_key "messages", "spaces"
   add_foreign_key "messages", "users"
   add_foreign_key "notes", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "scene_memberships", "characters"
   add_foreign_key "scene_memberships", "scenes"
   add_foreign_key "scene_memberships", "users"

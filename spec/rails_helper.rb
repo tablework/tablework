@@ -23,6 +23,9 @@ end
 CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    Rails.application.load_seed
+  end
   config.include FactoryGirl::Syntax::Methods
   config.include Features::SessionHelpers, type: :controller
   config.include Features::SessionHelpers, type: :feature

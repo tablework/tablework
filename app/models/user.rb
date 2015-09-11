@@ -55,6 +55,8 @@ class User < ActiveRecord::Base
   has_many :spaces, through: :space_memberships
   has_many :user_payments
   has_many :messages, dependent: :destroy
+  has_many :notifications
+
   has_one :subscription, dependent: :destroy
 
   after_create :set_sample_character
@@ -63,7 +65,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_note
 
   def send_welcome_note
-    UserMailer.welcome_note(self).deliver
+    UserMailer.welcome_note(self).deliver_now
   end
 
   #TC Wu's reimplementation
