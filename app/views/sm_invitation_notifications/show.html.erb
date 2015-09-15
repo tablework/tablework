@@ -1,0 +1,20 @@
+<%= render 'shared/edit_header' %>
+
+<section class="ui eight wide columns centered page grid">
+  <section class="eight wide column sign">
+    <section class="ui eight wide grid">
+
+      <section class="column">
+        Hi there, you have just been invited by 
+        <%= @space_membership.space.director.email %> 
+        to join the 
+        <%= @space_membership.space.name %>.
+        <section style="text-align:center">
+          <p></p>
+          <%= link_to 'Join Rehearsal Space', confirm_invite_space_space_memberships_url(@space_membership.space.id, @space_membership.token), class: 'ui yellow button' %>
+        </section>
+      </section>
+
+    </section>
+  </section>
+</section>

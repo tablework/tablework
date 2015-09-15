@@ -185,6 +185,8 @@ Rails.application.routes.draw do
   resources :user_payments
   delete 'remove_note/:id', to: 'characters#remove_note', as: :remove_note
 
+  resources :sm_invitation_notifications, only: :show
+
   #testing to be removed later
   get 'payments', to: 'payments#show'
   get 'subscription', to: 'payments#subscription'
