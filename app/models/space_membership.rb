@@ -14,6 +14,7 @@
 class SpaceMembership < ActiveRecord::Base
   belongs_to :space
   belongs_to :user
+  has_one :sm_invitation_notification
 
   before_validation :set_token
 
