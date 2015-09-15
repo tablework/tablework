@@ -6,8 +6,8 @@ class SpaceMembershipsController < ApplicationController
   def create
     @space_membership = SpaceMembership.new(space_membership_params)
     @space_membership.space = Space.find(params[:space_id])
-    if @space_membership.save
-      SpaceMembershipMailer.send_invite(@space_membership).deliver_now
+    @space_membership_creator = SpaceMembershipCreator.new(@space_membership)
+    if @space_membership_creator.call
       flash[:notice] = 'Invitation sent'
       redirect_to @space_membership.space
     else

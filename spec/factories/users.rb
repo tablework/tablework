@@ -41,5 +41,8 @@ FactoryGirl.define do
     password 'password'
     sequence(:username) { |n| "username_#{n}" }
     gender 'Male'
+
+    trait :director do
+    end
   end
 end

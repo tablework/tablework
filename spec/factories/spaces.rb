@@ -15,9 +15,8 @@
 FactoryGirl.define do
   factory :space do
     name "MyString"
-type_of_play "MyString"
-description "MyString"
-director nil
+    type_of_play "MyString"
+    description "MyString"
+    director { create :user, :director }
   end
-
 end

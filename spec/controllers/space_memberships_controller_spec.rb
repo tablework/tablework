@@ -34,6 +34,18 @@ RSpec.describe SpaceMembershipsController, :type => :controller do
       expect(ActionMailer::Base.deliveries.last.to).to eql ['new@email.com']
     end
 
+    it "should create SmInvitationNotification" do
+      expect {
+        post :create, space_id: @space.id, space_membership: { email: 'new@email.com' }
+      }.to change(SmInvitationNotification, :count).by 1
+    end
+
+    it "should create Notification" do
+      expect {
+        post :create, space_id: @space.id, space_membership: { email: 'new@email.com' }
+      }.to change(Notification, :count).by 1
+    end
+
     it "should redirect to space" do
       post :create, space_id: @space.id, space_membership: { email: 'new@email.com' }
       expect(response).to redirect_to space_path(@space)
