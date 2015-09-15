@@ -4,15 +4,11 @@ class SpaceMembershipsController < ApplicationController
   end
 
   def create
-    @space_membership = SpaceMembership.new(space_membership_params)
-    @space_membership.space = Space.find(params[:space_id])
-    @space_membership_creator = SpaceMembershipCreator.new(@space_membership)
-    if @space_membership_creator.call
-      flash[:notice] = 'Invitation sent'
-      redirect_to @space_membership.space
-    else
-      render :new
-    end
+    @space = Space.find(params[:space_id])
+    @space_membership = @space.space_memberships.find_or_initialize_by(space_membership_params)
+    SpaceMembershipCreator.new(@space_membership).call
+    flash[:notice] = 'Invitation sent'
+    redirect_to @space_membership.space
   end
 
   def confirm

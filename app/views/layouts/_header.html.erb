@@ -3,7 +3,6 @@
   <section class="brand"></section>
   <% end %>
   <section class="ui dropdown right item" style="margin-top: 20px;">
-    <%= image_tag 'profile.png', style: 'width: 25px;height:25px;' %>
     <i class="dropdown icon"></i>
     <div class="menu">
       <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'item' %>        
@@ -11,4 +10,16 @@
       <%= link_to 'Log out', destroy_user_session_path, :method => :delete, class: 'item' %>        
     </div>
   </section>
+  <section class="ui dropdown right item" style="margin-top: 20px; margin-right: 10px;">
+    <%= image_tag 'profile.png', style: 'width: 25px;height:25px;' %>
+    <span style="color:red"><%= unread_count %></span>
+    <div class="menu">
+      <span class="item" style="border-bottom: 1px solid black">Notifications</span>
+      <br>
+      <% current_user.notifications.order(id: :desc).each do |notification| %>
+        <%= link_to notification.message, eval("sm_invitation_notification_path(#{notification.notifiable_id})"), class: "item" %>
+      <% end %>
+    </div>
+  </section>
+  
 </section>
