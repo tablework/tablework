@@ -1,0 +1,11 @@
+<span class="item" style="border-bottom: 1px solid black">Notifications</span>
+<br>
+<% if current_user.notifications.empty? %>
+  <p class="item">No notification</p>
+<% end %>
+<% current_user.notifications.order(id: :desc).each do |notification| %>
+  <%= link_to eval("sm_invitation_notification_path(#{notification.notifiable_id})"), class: "item", style: "font-weight: #{ notification.unread ? 'bold' : 'normal' }" do %>
+    <%= notification.message %>
+    <small><%= time_ago_in_words notification.created_at %> ago</small>
+  <% end %>
+<% end %>

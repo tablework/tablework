@@ -12,14 +12,26 @@
   </section>
   <section class="ui dropdown right item" style="margin-top: 20px; margin-right: 10px;">
     <%= image_tag 'profile.png', style: 'width: 25px;height:25px;' %>
-    <span style="color:red"><%= unread_count %></span>
-    <div class="menu">
-      <span class="item" style="border-bottom: 1px solid black">Notifications</span>
-      <br>
-      <% current_user.notifications.order(id: :desc).each do |notification| %>
-        <%= link_to notification.message, eval("sm_invitation_notification_path(#{notification.notifiable_id})"), class: "item" %>
-      <% end %>
+    <span id="unread" style="color:red;font-size:20px;font-weight:bold;" data-url="<%= unread_count_path(id: current_user.id) %>"><%= unread_count %></span>
+    <div class="menu notifications">
+      <%= render "users/notifications" %>
     </div>
   </section>
   
 </section>
+
+
+<script>
+  UnreadCountPoller = {
+    poll: function(){
+      setTimeout(this.request, 5000)
+    },
+    request: function(){
+      $.get($('#unread').data('url'))
+    }
+
+  }
+  $(function(){
+    UnreadCountPoller.poll();
+  })
+</script>

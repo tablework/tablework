@@ -1,0 +1,4 @@
+$('#unread').text('<%= unread_count %>');
+$('.menu.notifications').html("<%= j render 'users/notifications' %>");
+UnreadCountPoller.poll();
+

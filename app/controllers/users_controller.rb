@@ -16,6 +16,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def unread
+    @user = current_user
+    respond_to do |wants|
+      wants.js
+    end
+  end
+
   def toggle_intro_1
     current_user.toggle! :show_intro_1
     current_user.toggle! :show_intro_2
