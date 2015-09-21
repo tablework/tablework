@@ -171,6 +171,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -388,6 +390,7 @@ DEPENDENCIES
   koala
   launchy
   letter_opener
+  meta-tags
   meta_request
   neat
   omniauth-facebook

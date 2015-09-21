@@ -28,6 +28,7 @@ gem "braintree"
 gem "introjs-rails"
 gem "rails_admin"
 gem "autoprefixer-rails"
+gem 'meta-tags'
 
 group :development, :test do
   gem 'dotenv-rails'
