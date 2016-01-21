@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'pg'
+gem "puma"
 gem 'neat'
 gem 'devise'
 gem 'omniauth-facebook'
@@ -49,7 +50,6 @@ group :development, :test do
   gem 'letter_opener'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem "puma"
   gem 'annotate', '~> 2.6.5'
 end
 
