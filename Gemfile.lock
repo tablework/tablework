@@ -207,6 +207,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    pdfcrowd (2.6.0)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -396,6 +397,7 @@ DEPENDENCIES
   meta_request
   neat
   omniauth-facebook
+  pdfcrowd
   pg
   pry-byebug
   pry-rails

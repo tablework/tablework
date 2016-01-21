@@ -1,7 +1,7 @@
 class CharactersController < ApplicationController
 
   before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit, :summary]
-  before_action  :authenticate_user!
+  before_action  :authenticate_user!, except: :summary
 
   def index
   end
@@ -33,10 +33,21 @@ class CharactersController < ApplicationController
     respond_to do |wants|
       wants.html
       wants.pdf do
-      render :pdf    => "character.pdf",
-        :disposition => "inline",
-        :template    => "characters/summary.html.erb",
-        :layout      => "layouts/application.html.erb"
+        begin
+          # create an API client instance
+          client = Pdfcrowd::Client.new("rajahafify", "887e9e96ccc7c99845126bdae228f312")
+
+          # convert a web page and store the generated PDF to a variable
+          pdf = client.convertURI(summary_character_url(@character))
+
+          # send the generated PDF
+          send_data(pdf, 
+                    :filename => "google_com.pdf",
+                    :type => "application/pdf",
+                    :disposition => "attachment")
+        rescue Pdfcrowd::Error => why
+          render :text => why
+        end
       end
     end
   end
