@@ -49,7 +49,7 @@ group :development, :test do
   gem 'letter_opener'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'thin'
+  gem "puma"
   gem 'annotate', '~> 2.6.5'
 end
 

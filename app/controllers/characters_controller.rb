@@ -38,11 +38,12 @@ class CharactersController < ApplicationController
           client = Pdfcrowd::Client.new("rajahafify", "887e9e96ccc7c99845126bdae228f312")
 
           # convert a web page and store the generated PDF to a variable
-          pdf = client.convertURI(summary_character_url(@character))
+          url = "https://tablework.com/characters/#{@character.id}/summary"
+          pdf = client.convertURI(url)
 
           # send the generated PDF
           send_data(pdf, 
-                    :filename => "google_com.pdf",
+                    :filename => "character.pdf",
                     :type => "application/pdf",
                     :disposition => "attachment")
         rescue Pdfcrowd::Error => why
