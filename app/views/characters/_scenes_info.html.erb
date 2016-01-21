@@ -1,0 +1,26 @@
+<section class="row scenes">
+  <section class="header row">
+    <h2 style="text-decoration:underline">My Scenes</h2>
+  </section>
+  <section class="ui fluid">
+    <% character.scenes.order('created_at ASC').each do |scene| %>
+      <section class="title" style="line-height:2">
+        <section class="row" style="height:30px;">
+          <section class="capitalize">
+            <h2>
+              <%= scene.title.titleize %>
+            </h2>
+          </section>
+        </section>
+      </section>
+      <section id="scene-<%= scene.id %>" class="content">
+        <% scene.notes.order('created_at ASC').each do |note |%>
+          <% next unless note.link_html.present? %>
+          <section id="note-<%= note.id %>" style="background-color: #ccc;padding: 10px;">
+            <%= render 'shared/note_info', space: nil, scenable: scene, note: note %>
+          </section>
+        <% end %>
+      </section>
+    <% end %>
+  </section>
+</section>

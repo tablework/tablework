@@ -29,6 +29,8 @@ gem "introjs-rails"
 gem "rails_admin"
 gem "autoprefixer-rails"
 gem 'meta-tags'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'dotenv-rails'

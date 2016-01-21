@@ -1,0 +1,27 @@
+<section class="ui grid">
+  <section class="ten wide centered column">
+    <section class="@character-profile ui grid">
+      <section class="sixteen wide column row">
+        <section class="six wide column">
+          <section style="height:180px; background: url('<%= user_portrait_url @character %>') center no-repeat;background-size: cover;"></section>
+        </section>
+        <section class="ten wide column aligned">
+          <p>
+            <i class="small arrow circle left icon"></i><span><%= @character.name %></span>
+          </p>
+          <p>
+            <i class="small arrow circle left icon"></i><span><%= @character.gender %></span>
+          </p>
+          <p>
+            <i class="small arrow circle left icon"></i><span><%= @character.nationality %></span>
+          </p>
+          <p>
+            <i class="small calendar outline icon"></i><span><%= time_ago_in_words @character.DOB if @character.DOB %> ago</span>
+          </p>
+        </section>
+      </section>
+    </section>
+    <%= render 'characters/notes_info', character: @character %>
+    <%= render 'characters/scenes_info', character: @character %>
+  </section>
+</section>

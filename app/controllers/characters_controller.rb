@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit]
+  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit, :summary]
   before_action  :authenticate_user!
 
   def index
@@ -24,6 +24,20 @@ class CharactersController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def summary
+    @character = @user.characters.find(params[:id]) || not_found
+
+    respond_to do |wants|
+      wants.html
+      wants.pdf do
+      render :pdf    => "character.pdf",
+        :disposition => "inline",
+        :template    => "characters/summary.html.erb",
+        :layout      => "layouts/application.html.erb"
+      end
     end
   end
 

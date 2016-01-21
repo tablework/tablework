@@ -148,6 +148,7 @@ Rails.application.routes.draw do
       get :assign_space
       get :add_note
       post :create_note
+      get :summary
     end
     resources :scenes
     resources :notes

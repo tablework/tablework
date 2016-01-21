@@ -1,0 +1,15 @@
+<section class="row" style="margin-top: 50px;">
+  <h2 style="margin: 0px initial; text-decoration:underline">My Backstory</h2>
+  <% character.notes.order('updated_at DESC').each do |note |%>
+    <div>
+      <h3>
+        <%= note.title.titleize %>
+      </h3>
+    </div>
+    <section class="">
+      <section id="note-<%= note.id %>" style="padding:10px;background-color: #ececec">
+        <div><%= note.link_html.html_safe %></div>
+      </section>
+    </section>
+  <% end %>
+</section>

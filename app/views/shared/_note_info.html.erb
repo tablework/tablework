@@ -1,0 +1,6 @@
+<section class="ui note-<%= note.id %>">
+  <h3><%= note.title.titleize %></h3>
+  <section style="background-color: #ececec;">
+    <%= note.link_html.html_safe if note.link_html %>
+  </section>
+</section>
