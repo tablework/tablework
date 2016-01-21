@@ -28,7 +28,7 @@ class CharactersController < ApplicationController
   end
 
   def summary
-    @character = @user.characters.find(params[:id]) || not_found
+    @character = Character.find(params[:id]) || not_found
 
     respond_to do |wants|
       wants.html
