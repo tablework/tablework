@@ -29,7 +29,6 @@ class CharactersController < ApplicationController
 
   def summary
     @character = Character.find(params[:id]) || not_found
-
     respond_to do |wants|
       wants.html
       wants.pdf do
@@ -38,9 +37,7 @@ class CharactersController < ApplicationController
           client = Pdfcrowd::Client.new("rajahafify", "887e9e96ccc7c99845126bdae228f312")
 
           # convert a web page and store the generated PDF to a variable
-          url = "https://tablework.com/characters/#{@character.id}/summary"
-          pdf = client.convertURI(url)
-
+          pdf = client.convertURI("https://www.tablework.com/characters/#{@character.id}/summary")
           # send the generated PDF
           send_data(pdf, 
                     :filename => "character.pdf",
