@@ -30,8 +30,6 @@ gem "introjs-rails"
 gem "rails_admin"
 gem "autoprefixer-rails"
 gem 'meta-tags'
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
 gem 'pdfcrowd'
 
 group :development, :test do
