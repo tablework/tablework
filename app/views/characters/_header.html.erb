@@ -2,8 +2,8 @@
   <a id="js-back-to-main-centerbox-<%= character.id %>" href="#" class="grey">
     <i class="arrow left icon"></i><h3>Character Profile</h3>
   </a>
-  <%= link_to summary_character_path(id: character.id, format: :pdf), class: 'ui button', style: "float: right", target: "_blank" do %>
-    <small>PDF</small>
+  <%= link_to share_form_character_path(character), class: 'ui button', style: "float: right", target: "_blank" do %>
+    <small>Share</small>
   <% end %>
   <%= link_to summary_character_path(character), class: 'ui button', style: "float: right", target: "_blank" do %>
     <small>Summary</small>

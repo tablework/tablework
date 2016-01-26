@@ -149,6 +149,8 @@ Rails.application.routes.draw do
       get :add_note
       post :create_note
       get :summary
+      get :share_form
+      post :share
     end
     resources :scenes
     resources :notes

@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit, :summary]
+  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit, :summary, :share, :share_form]
   before_action  :authenticate_user!, except: :summary
 
   def index
@@ -35,7 +35,6 @@ class CharactersController < ApplicationController
         begin
           # create an API client instance
           client = Pdfcrowd::Client.new("rajahafify", "887e9e96ccc7c99845126bdae228f312")
-
           # convert a web page and store the generated PDF to a variable
           pdf = client.convertURI("https://www.tablework.com/characters/#{@character.id}/summary")
           # send the generated PDF
@@ -48,6 +47,14 @@ class CharactersController < ApplicationController
         end
       end
     end
+  end
+
+  def share_form
+    @character = @user.characters.find(params[:id])
+  end
+
+  def share
+    redirect_to root_path(character: Character.find(params[:id])), notice: 'PDF shared'
   end
 
   def assign_space
