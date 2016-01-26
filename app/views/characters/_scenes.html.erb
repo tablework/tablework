@@ -2,7 +2,7 @@
   <section class="header row">
     <h2>My Scenes</h2>
   </section>
-  <section class="ui styled accordion fluid">
+  <section class="ui styled fluid">
     <% character.scenes.order('created_at ASC').each do |scene| %>
       <section class="title" style="line-height:2">
         <section class="row" style="height:30px;">
@@ -18,18 +18,11 @@
             <% end %>
             &nbsp;
             <%= link_to polymorphic_path([@space, scene]), method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="minus icon"></i>
+              <i class="remove icon"></i>
               <span class="link">Delete</span>
             <% end %>
           </section>
         </section>
-      </section>
-      <section id="scene-<%= scene.id %>" class="content">
-        <% scene.notes.order('created_at ASC').each do |note |%>
-          <section id="note-<%= note.id %>" style="margin-bottom:10px;">
-            <%= render 'shared/note', space: nil, scenable: scene, note: note %>
-          </section>
-        <% end %>
       </section>
     <% end %>
     <%= link_to polymorphic_path([character, :scene], action: :new), class: 'ui button attached bottom', remote: false, id: 'step10' do %>

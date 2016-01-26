@@ -1,15 +1,14 @@
 <section>
-  <section class="dashboard_header" style="position:relative;top:-20px">
-    <h3>
-      <%= link_to root_path(character: @scenable) do %>
-        <i class="angle left large icon"></i>
-        <span>
+  <section class="dashboard_header rehearsal_header" style="position:relative;top:-20px">
+    <section class="ui grid">
+      <h3>
+        <%= link_to root_path(character: @scenable) do %>
+          <i class="angle left large icon"></i>
           <%= @scene.title %>
-        </span>
-      <% end %>
-    </h3>
+        <% end %>
+      </h3>
+    </section>
   </section>
-
   <section style="margin: 0 50px;">
     <% @scene.notes.order(:created_at).each do |note| %>
       <section class="ui card fluid note-<%= note.id %>">
