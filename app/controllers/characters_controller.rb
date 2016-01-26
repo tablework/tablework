@@ -1,9 +1,16 @@
 class CharactersController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit, :summary, :share, :share_form]
+  before_action :set_user, only: [:index, :new, :create, :update, :assign_space, :add_note, :create_note, :show, :edit, :summary, :share, :share_form, :persona_page_render]
   before_action  :authenticate_user!, except: :summary
 
   def index
+  end
+
+  def persona_page_render
+    @character = @user.characters.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new

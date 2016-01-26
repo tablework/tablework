@@ -1,0 +1,8 @@
+$("#js-persona-page-<%= @character.id %>").html("<%= j render 'characters/character_persona_page', character: @character %>");
+$('#js-back-to-main-centerbox-<%= @character.id %>').click(function(){
+  $('#js-persona-page-<%= @character.id %>').toggle().css('opacity', '0');
+  $('.find').show();
+  $('#js-main-centerbox').find('.find').animate({
+    left: "0px"
+  }, function(){});
+})

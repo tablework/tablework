@@ -151,6 +151,7 @@ Rails.application.routes.draw do
       get :summary
       get :share_form
       post :share
+      get :persona_page_render
     end
     resources :scenes
     resources :notes

@@ -15,33 +15,24 @@
 </section>
 
 
+<%= link_to '#', persona_page_render_character_path(character), style: 'display:none', id: "render_persona_page-#{character.id}", remote: true %>
 <% sym = character.name.to_sym %>
 <% content_for sym  do %>
   <section id="js-persona-page-<%= character.id %>" style="opacity:0;display:none">
-    <%= render 'characters/character_profile', character: character %>
-    <%= render 'characters/assign_space_modal_character', character: character %>
-    <%= render 'characters/add_note_modal_character', character: character %>
+    LOADING...
   </section>
 <% end  %>
 
 <script>
   $(document).ready(function(){
     $('#js-show-character-<%= character.id %>').click(function(){
+      $('#render_persona_page-<%= character.id %>').click();
       $('#js-main-centerbox').find('.find').animate({
         left: "900px"
         }, function(){
           $(this).toggle();
           $('#js-persona-page-<%= character.id %>').toggle().css('opacity', '100');
         });
-    })
-    $('#js-back-to-main-centerbox-<%= character.id %>').click(function(){
-      $('#js-persona-page-<%= character.id %>').toggle().css('opacity', '0');
-      $('.find').show();
-      $('#js-main-centerbox').find('.find').animate({
-        left: "0px"
-      }, function(){
-
-      });
-    })
+    }); 
   })
 </script>
