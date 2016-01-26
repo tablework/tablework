@@ -54,6 +54,7 @@ class CharactersController < ApplicationController
   end
 
   def share
+    CharacterMailer.share_pdf(Character.find(params[:id]), params[:email]).deliver_now
     redirect_to root_path(character: Character.find(params[:id])), notice: 'PDF shared'
   end
 
