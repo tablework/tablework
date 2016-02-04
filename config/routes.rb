@@ -141,6 +141,12 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'static_pages#index'
 
+  resources :editor_images do
+    collection do
+      post 'upload', defaults: { :format => 'json' }
+    end
+  end
+
   get 'unread_count/:id', to: 'users#unread', as: 'unread_count'
 
   resources :characters do

@@ -43,17 +43,8 @@
             key: 'xesqxpaxjrF3xsp==', 
             height:300, 
             alwaysBlank: true,
-            imageUploadToS3: {
-              region: 's3',
-              bucket: 'tablework',
-              keyStart: 'uploads/',
-              params: {
-                acl: 'public-read',
-                AWSAccesKeyId: '<%= ENV.fetch('AWS_ACCESS_KEY_ID') %>',
-                policy: '<%= policy %>',
-                signature: '<%= signature %>'
-              }
-            }
+            imageUploadURL: '<%= upload_editor_images_path %>',
+            imageUploadMethod: 'POST'
           });
           $('.froala-box > div:not(.f-basic)').hide();
           $('.edit-note-<%= note.id %>').click(function(){
