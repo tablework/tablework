@@ -38,7 +38,23 @@
           $('#note-<%= note.id %> .view').click(function(){
             $('.note-<%= note.id %>').modal('show');
           });
-          $('.editable').editable({inlineMode: false, key: 'xesqxpaxjrF3xsp==', height:300, alwaysBlank: true});
+          $('.editable').editable({
+            inlineMode: false, 
+            key: 'xesqxpaxjrF3xsp==', 
+            height:300, 
+            alwaysBlank: true,
+            imageUploadToS3: {
+              region: 's3',
+              bucket: 'tablework',
+              keyStart: 'uploads/',
+              params: {
+                acl: 'public-read',
+                AWSAccesKeyId: '<%= ENV.fetch('AWS_ACCESS_KEY_ID') %>',
+                policy: '<%= policy %>',
+                signature: '<%= signature %>'
+              }
+            }
+          });
           $('.froala-box > div:not(.f-basic)').hide();
           $('.edit-note-<%= note.id %>').click(function(){
             $('.editor-<%= note.id %>').modal('show');
