@@ -31,6 +31,7 @@ gem "rails_admin"
 gem "autoprefixer-rails"
 gem 'meta-tags'
 gem 'pdfcrowd'
+gem 'delayed_job_active_record'
 
 group :development, :test do
   gem 'dotenv-rails'
