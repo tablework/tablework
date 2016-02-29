@@ -36,24 +36,6 @@ class CharactersController < ApplicationController
 
   def summary
     @character = Character.find(params[:id]) || not_found
-    respond_to do |wants|
-      wants.html
-      wants.pdf do
-        begin
-          # create an API client instance
-          client = Pdfcrowd::Client.new("rajahafify", "887e9e96ccc7c99845126bdae228f312")
-          # convert a web page and store the generated PDF to a variable
-          pdf = client.convertURI("https://www.tablework.com/characters/#{@character.id}/summary")
-          # send the generated PDF
-          send_data(pdf, 
-                    :filename => "character.pdf",
-                    :type => "application/pdf",
-                    :disposition => "attachment")
-        rescue Pdfcrowd::Error => why
-          render :text => why
-        end
-      end
-    end
   end
 
   def share_form
@@ -61,7 +43,8 @@ class CharactersController < ApplicationController
   end
 
   def share
-    CharacterMailer.share_pdf(Character.find(params[:id]), params[:email]).deliver_now
+    @character = @user.characters.find(params[:id])
+    @character.set_pdf params[:email]
     redirect_to root_path(character: Character.find(params[:id])), notice: 'PDF shared'
   end
 

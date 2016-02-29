@@ -37,4 +37,16 @@ class Character < ActiveRecord::Base
     self.image = File.open(image_path)
     self.save
   end
+
+  def set_pdf email
+    client = Pdfcrowd::Client.new("razifhashim", "b0ec564497d0ed90c1bc6d9c7de03e5b")
+    file = client.convertURI("https://www.tablework.com/characters/#{self.id}/summary")
+    filename = "character-#{self.id}-#{SecureRandom.urlsafe_base64(8)}"
+    pdf = S3Store.new(file, filename).store
+    self.pdf_link = pdf.url
+    self.save
+    CharacterMailer.share_pdf(self, email).deliver
+  end
+
+  handle_asynchronously :set_pdf
 end

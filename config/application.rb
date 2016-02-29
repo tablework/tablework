@@ -19,5 +19,7 @@ module Tablework
       generate.view_specs false
     end
     config.active_record.raise_in_transactional_callbacks = true
+    config.autoload_paths += %W(#{config.root}/lib/classes)
+    config.active_job.queue_adapter = :delayed_job
   end
 end

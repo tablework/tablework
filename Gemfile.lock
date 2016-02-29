@@ -369,6 +369,7 @@ DEPENDENCIES
   annotate (~> 2.6.5)
   auto_html
   autoprefixer-rails
+  aws-sdk
   better_errors
   binding_of_caller
   braintree
